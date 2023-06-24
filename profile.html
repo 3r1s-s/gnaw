@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Profile | gnaw</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     .page {
       max-width: 1000px;
@@ -185,6 +186,186 @@
 }
 
   </style>
+<script>
+  function goBack() {
+    history.back();
+}
+
+function goToSearchPage() {
+    var url = 'index.html';
+    window.location.href = url;
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    var username = urlParams.get("username");
+
+    if (username) {
+        fetchUserInfo(username);
+      }
+});
+
+function fetchUserInfo(username) {
+    var url = "https://corsproxy.io/?https://api.scratch.mit.edu/users/" + username;
+    
+    fetch(url)
+        .then(function(response) {
+            return response.json();
+          })
+        .then(function(data) {
+          displayUserInfo(data);
+        })
+        .catch(function(error) {
+            console.log("Error:", error);
+        });
+        
+        var url = "https://corsproxy.io/?https://api.scratch.mit.edu/users/" + username + "/following";
+        
+        fetch(url)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+          displayfollowing(data);
+        })
+        .catch(function(error) {
+          console.log("Error:", error);
+        });
+        
+        var url = "https://corsproxy.io/?https://api.scratch.mit.edu/users/" + username + "/followers";
+        
+        fetch(url)
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(data) {
+            displayfollower(data);
+        })
+        .catch(function(error) {
+          console.log("Error:", error);
+        });
+        
+    var url = "https://corsproxy.io/?https://api.scratch.mit.edu/users/" + username + "/projects";
+
+    fetch(url)
+    .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+          displayprojects(data);
+        })
+        .catch(function(error) {
+            console.log("Error:", error);
+        });
+
+    var url = "https://scratchdb.lefty.one/v3/user/info/" + username;
+
+    fetch(url)
+    .then(function(response) {
+      return response.json();
+    })
+        .then(function(data) {
+          displaystats(data);
+        })
+        .catch(function(error) {
+          console.log("Error:", error);
+        });
+}
+
+function displayUserInfo(data) {
+  var userInfo = document.getElementById("user-info");
+  var profilePicUrl = "https://cdn2.scratch.mit.edu/get_image/user/" + data.id + "_90x90.png?v=" + Date.now();
+  var blurredProfilePicUrl = "https://cdn2.scratch.mit.edu/get_image/user/" + data.id + "_90x90.png?v=" + Date.now() + "&x=0&y=0&width=90&height=90&blur=100";
+
+  
+  userInfo.innerHTML = "<div style='display: flex; align-items: center;'>" +
+    "<div style='position: relative;'>" +
+      "<img src='" + blurredProfilePicUrl + "'height='80' width='80' style='filter: blur(20px); border-radius: 50%; opacity: 0.5; margin-top: 5px; margin-left: 5px;'>" +
+      "<img src='" + profilePicUrl + "'height='80' width='80' style='position: absolute; top: 5px; left: 5px; border-radius: 50%;'>" +
+      "</div>" +
+      "<div style='flex: 1; margin-left: 20px;'>" +
+        "<h1 class='title' style='height: 25px;'><a href='https://scratch.mit.edu/users/" + data.username + "'>" + data.username + "</a><font style='font-size:16px;'><em>#" + data.id + "</em></font></h1>" +
+        "<div style='font-size: 16px;'>" +
+        "<p><em>" + formatDate(data.history.joined) + " | " + data.profile.country + "</em></p>" +
+        "</div>" +
+        "</div>" +
+        "</div>" +
+        "<div class='user-info'>" +
+          "<div class='read'>" + formatText(data.profile.bio) + "</div>" +
+          "<div class='read'>" + formatText(data.profile.status) + "</div>" +
+          "</div>";
+        }
+        
+        function displayfollowing(data) {
+          var userInfo = document.getElementById("following");
+          var htmlContent = "<h2 class='title'>Following</h2>";
+          
+          data.forEach(function(item) {
+        var username = item.username;
+        htmlContent += "<p><a href='profile.html?username=" + username + "'>" + username + "</a></p>";
+      });
+      
+    userInfo.innerHTML = htmlContent;
+  }
+  
+function displayfollower(data) {
+    var userInfo = document.getElementById("follower");
+    var htmlContent = "<h2 class='title'>Followers</h2>";
+    
+    data.forEach(function(item) {
+      var username = item.username;
+      htmlContent += "<p><a href='profile.html?username=" + username + "'>" + username + "</a></p>";
+    });
+
+    userInfo.innerHTML = htmlContent;
+  }
+  
+  function displayprojects(data) {
+    var userInfo = document.getElementById("projects");
+    var htmlContent = "<div class='header'><h2 class='title'>Projects</h2></div>";
+    
+    data.forEach(function(item) {
+      var projectId = item.id;
+      var projectName = item.title;
+      var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${item.id}_480x360.png`;
+      htmlContent += `
+      <div class="project read">
+        <div class="thumbnail-container">
+          <img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail">
+          </div>
+          <div class="project-info">
+    <h3 style='margin:0;'><a href="project.html?project=${item.id}">${item.title}</a></h3>
+    <p>Views: ${item.stats.views} | Loves: ${item.stats.loves} | Favorites: ${item.stats.favorites}</p>
+    </div>
+    </div>
+    `
+  });
+  
+  userInfo.innerHTML = htmlContent;
+}
+
+function displaystats(data) {
+  var userInfo = document.getElementById("stats");
+  var htmlContent = "Followers: " + data.statistics.followers + " | Loves: " + data.statistics.loves + " | Favorites: " + data.statistics.favorites + " | Views: " + data.statistics.views;
+  
+  userInfo.innerHTML = htmlContent;
+}
+
+function formatDate(dateString) {
+  var options = {
+    year: "numeric",
+        month: "long",
+        day: "numeric"
+      };
+    var date = new Date(dateString);
+    return date.toLocaleDateString(undefined, options);
+  }
+
+  function formatText(text) {
+    return text.replace(/\n/g, "<br>");
+  }
+  </script>
 </head>
 <body>
   <div class="nav">
@@ -211,185 +392,5 @@
         <button onclick='goBack()'>&lt; Back</button>
         <button onclick='goToSearchPage()'>Home</button>
   </div>
-<script>
-function goBack() {
-    history.back();
-}
-
-function goToSearchPage() {
-    var url = 'index.html';
-    window.location.href = url;
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    var queryString = window.location.search;
-    var urlParams = new URLSearchParams(queryString);
-    var username = urlParams.get("username");
-
-    if (username) {
-        fetchUserInfo(username);
-    }
-});
-
-function fetchUserInfo(username) {
-    var url = "https://corsproxy.io/?https://api.scratch.mit.edu/users/" + username;
-
-    fetch(url)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            displayUserInfo(data);
-        })
-        .catch(function(error) {
-            console.log("Error:", error);
-        });
-
-    var url = "https://corsproxy.io/?https://api.scratch.mit.edu/users/" + username + "/following";
-
-    fetch(url)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            displayfollowing(data);
-        })
-        .catch(function(error) {
-            console.log("Error:", error);
-        });
-
-    var url = "https://corsproxy.io/?https://api.scratch.mit.edu/users/" + username + "/followers";
-
-    fetch(url)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            displayfollower(data);
-        })
-        .catch(function(error) {
-            console.log("Error:", error);
-        });
-
-    var url = "https://corsproxy.io/?https://api.scratch.mit.edu/users/" + username + "/projects";
-
-    fetch(url)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            displayprojects(data);
-        })
-        .catch(function(error) {
-            console.log("Error:", error);
-        });
-
-    var url = "https://scratchdb.lefty.one/v3/user/info/" + username;
-
-    fetch(url)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            displaystats(data);
-        })
-        .catch(function(error) {
-            console.log("Error:", error);
-        });
-}
-
-function displayUserInfo(data) {
-    var userInfo = document.getElementById("user-info");
-    var profilePicUrl = "https://cdn2.scratch.mit.edu/get_image/user/" + data.id + "_90x90.png?v=" + Date.now();
-    var blurredProfilePicUrl = "https://cdn2.scratch.mit.edu/get_image/user/" + data.id + "_90x90.png?v=" + Date.now() + "&x=0&y=0&width=90&height=90&blur=100";
-
-
-    userInfo.innerHTML = "<div style='display: flex; align-items: center;'>" +
-        "<div style='position: relative;'>" +
-        "<img src='" + blurredProfilePicUrl + "'height='80' width='80' style='filter: blur(20px); border-radius: 50%; opacity: 0.5; margin-top: 5px; margin-left: 5px;'>" +
-        "<img src='" + profilePicUrl + "'height='80' width='80' style='position: absolute; top: 5px; left: 5px; border-radius: 50%;'>" +
-        "</div>" +
-        "<div style='flex: 1; margin-left: 20px;'>" +
-        "<h1 class='title' style='height: 25px;'><a href='https://scratch.mit.edu/users/" + data.username + "'>" + data.username + "</a><font style='font-size:16px;'><em>#" + data.id + "</em></font></h1>" +
-        "<div style='font-size: 16px;'>" +
-        "<p><em>" + formatDate(data.history.joined) + " | " + data.profile.country + "</em></p>" +
-        "</div>" +
-        "</div>" +
-        "</div>" +
-        "<div class='user-info'>" +
-        "<div class='read'>" + formatText(data.profile.bio) + "</div>" +
-        "<div class='read'>" + formatText(data.profile.status) + "</div>" +
-        "</div>";
-}
-
-function displayfollowing(data) {
-    var userInfo = document.getElementById("following");
-    var htmlContent = "<h2 class='title'>Following</h2>";
-
-    data.forEach(function(item) {
-        var username = item.username;
-        htmlContent += "<p><a href='profile.html?username=" + username + "'>" + username + "</a></p>";
-    });
-
-    userInfo.innerHTML = htmlContent;
-}
-
-function displayfollower(data) {
-    var userInfo = document.getElementById("follower");
-    var htmlContent = "<h2 class='title'>Followers</h2>";
-
-    data.forEach(function(item) {
-        var username = item.username;
-        htmlContent += "<p><a href='profile.html?username=" + username + "'>" + username + "</a></p>";
-    });
-
-    userInfo.innerHTML = htmlContent;
-}
-
-function displayprojects(data) {
-    var userInfo = document.getElementById("projects");
-    var htmlContent = "<div class='header'><h2 class='title'>Projects</h2></div>";
-
-    data.forEach(function(item) {
-        var projectId = item.id;
-        var projectName = item.title;
-        var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${item.id}_480x360.png`;
-        htmlContent += `
-    <div class="project read">
-  <div class="thumbnail-container">
-    <img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail">
-  </div>
-  <div class="project-info">
-    <h3 style='margin:0;'><a href="project.html?project=${item.id}">${item.title}</a></h3>
-      <p>Views: ${item.stats.views} | Loves: ${item.stats.loves} | Favorites: ${item.stats.favorites}</p>
-  </div>
-</div>
-    `
-    });
-
-    userInfo.innerHTML = htmlContent;
-}
-
-function displaystats(data) {
-    var userInfo = document.getElementById("stats");
-    var htmlContent = "Followers: " + data.statistics.followers + " | Loves: " + data.statistics.loves + " | Favorites: " + data.statistics.favorites + " | Views: " + data.statistics.views;
-
-    userInfo.innerHTML = htmlContent;
-}
-
-function formatDate(dateString) {
-    var options = {
-        year: "numeric",
-        month: "long",
-        day: "numeric"
-    };
-    var date = new Date(dateString);
-    return date.toLocaleDateString(undefined, options);
-}
-
-function formatText(text) {
-    return text.replace(/\n/g, "<br>");
-}
-</script>
 </body>
 </html>

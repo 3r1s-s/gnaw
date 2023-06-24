@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Search | gnaw</title>
+  <title>gnaw</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -10,7 +10,6 @@
       font-family: Whitney;
       overflow-x: hidden;
       margin: 0;
-
     }
 
     .page {
@@ -64,6 +63,25 @@
       margin: 10px;
     }
 
+    .thumbnail-container {
+      flex-shrink: 0;
+      margin-right: 10px;
+    }
+
+    .thumbnail {
+      width: 100px;
+      height: auto;
+      border-radius: 5px;
+    }
+
+    .project {
+      display: flex;
+    }
+
+    .about {
+      display: flex;
+    }
+
     button {
       width: 100px;
       height: 33px;
@@ -103,24 +121,9 @@
       text-decoration: underline;
     }
 
-.thumbnail-container {
-  flex-shrink: 0;
-  margin-right: 10px;
-}
-
-.thumbnail {
-  width: 100px;
-  height: auto;
-  border-radius: 5px;
-}
-
-.project {
-    display: flex;
-}
-
-
-
-
+    img {
+        border-radius: 5px;
+    }
 
     @font-face {
       font-family: Whitney;
@@ -154,7 +157,7 @@
 
     @font-face {
       font-family: Whitney Italic;
-      font-weight: lighter;
+      font-weight: light;
       src: url(fonts/whitney/whitney-lightitalic.otf) format("opentype");
     }
 
@@ -166,44 +169,58 @@
 
   </style>
   <script>
-function fetchExplore(query) {
-    fetch('https://corsproxy.io/?https://api.scratch.mit.edu/search/projects?q=' + query + '&mode=popular&language=en')
+    document.addEventListener('DOMContentLoaded', function () {
+      fetchHealth();
+    });
+
+    function fetchHealth() {
+      fetch('https://corsproxy.io/?https://api.scratch.mit.edu/health')
         .then(response => response.json())
         .then(data => {
-            var exploreContainer = document.getElementById('explore-container');
-            var exploreHTML = '';
+          var healthContainer = document.getElementById('health-container');
+          var healthHTML = '';
 
-            data.forEach(project => {
-                var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${project.id}_480x360.png`;
-                exploreHTML += `
-  <div class="project read">
-  <div class="thumbnail-container">
-    <img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail">
-  </div>
-  <div class="project-info">
-    <h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
-    <p><em>by <a href='profile.html?username=${project.author.username}'>${project.author.username}</a></em>
-      | Views: ${project.stats.views} | Loves: ${project.stats.loves} | Favorites: ${project.stats.favorites}</p>
-  </div>
-</div>
-  `;
-            });
+          healthHTML += `<button id="expand-button" class="btn" onclick="toggleHealth()">+</button>`;
+          healthHTML += `<div id="health-details" style="display: none;">`;
+          healthHTML += `<p>Version: ${data.version}</p>`;
+          healthHTML += `<p>Uptime: ${data.uptime}</p>`;
+          healthHTML += `<p>Load: ${data.load.join(', ')}</p>`;
 
-            exploreContainer.innerHTML = exploreHTML;
+          healthHTML += `<h3>SQL</h3>`;
+          for (var key in data.sql) {
+            healthHTML += `<h4>${key}</h4>`;
+            for (var type in data.sql[key]) {
+              healthHTML += `<h5>${type}</h5>`;
+              var sqlData = data.sql[key][type];
+              for (var property in sqlData) {
+                healthHTML += `<p>${property}: ${sqlData[property]}</p>`;
+              }
+            }
+          }
+
+          healthHTML += `</div>`;
+
+          healthContainer.innerHTML = healthHTML;
         })
         .catch(error => {
-            console.error('Error:', error);
+          console.error('Error:', error);
         });
-}
+    }
 
-document.addEventListener('DOMContentLoaded', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const query = urlParams.get('project');
-    console.log(query); //remove later
-    fetchExplore(query);
-});
+    function toggleHealth() {
+      var healthDetails = document.getElementById('health-details');
+      var expandButton = document.getElementById('expand-button');
 
-function goBack() {
+      if (healthDetails.style.display === 'none') {
+        healthDetails.style.display = 'block';
+        expandButton.textContent = '-';
+      } else {
+        healthDetails.style.display = 'none';
+        expandButton.textContent = '+';
+      }
+    }
+
+    function goBack() {
     history.back();
 }
 
@@ -211,23 +228,31 @@ function goToSearchPage() {
     var url = 'index.html';
     window.location.href = url;
 }
-  </script>
-</head>
+    </script>
+    </head>
 <body>
     <div class="nav">
         <div class="inner-nav">
           <div class="nav-item"><a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a></div>
         </div>
-    </div>
+      </div>    
     <div class="page">
-    <div class="header">
-        <h1>Search</h1>
+        <div class="header">
+            <h2>Health</h2>
+        </div>
+        <div class="read">
+            <div><img src="images/server.gif" width="100px"></div>
+        </div>
+        <div class="header">
+            <h2>Scratch Health</h2>
+        </div>
+        <div class="read">
+            <div id="health-container"></div>
+        </div>
+        <div style="margin: 10px;">
+            <button onclick="goBack()">&lt; Back</button>
+            <button onclick="goToSearchPage()">Home</button>
+          </div>
     </div>
-    <div id="explore-container"></div>
-    <div style="margin: 10px;">
-      <button onclick="goBack()">&lt; Back</button>
-      <button onclick="goToSearchPage()">Home</button>
-    </div>
-  </div>
 </body>
 </html>
