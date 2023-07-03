@@ -110,14 +110,12 @@
   border-radius: 5px;
 }
 
-.overflow {
-      max-height: 400px;
-      overflow-y: scroll;
-      overflow-x: scroll;
-    }
-
 .project {
     display: flex;
+}
+
+.overflow {
+  overflow-x: hidden;
 }
 
 #projects {
@@ -402,7 +400,7 @@ function formatDate(dateString) {
 </div>
   <div class="page">
     <div id="user-info"></div>
-    <div id="user-info">
+    <div id="user-info" class="overflow">
       <div id="stats" class="read">
       </div>
     </div>
@@ -411,8 +409,8 @@ function formatDate(dateString) {
           <h1>Recent Activity</h1>
         </div>
         <div class="user-info" id="user-info">
-        <div id='following' class="read"></div>
-        <div id='follower' class="read"></div>
+        <div id='following' class="read overflow"></div>
+        <div id='follower' class="read overflow"></div>
       </div>
       <div id='projects'></div>
       <div style='margin: 10px;'>
