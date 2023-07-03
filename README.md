@@ -1,2 +1,3 @@
 # gnaw
-Gnaw is a Scratch client thing (idrk)
+Scratch client-ish
+
