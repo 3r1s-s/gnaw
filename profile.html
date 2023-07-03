@@ -3,6 +3,8 @@
 <head>
   <title>Profile | gnaw</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="images/icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
   <style>
     .page {
       max-width: 1000px;
@@ -281,6 +283,7 @@ function displayUserInfo(data) {
   var userInfo = document.getElementById("user-info");
   var profilePicUrl = "https://cdn2.scratch.mit.edu/get_image/user/" + data.id + "_90x90.png?v=" + Date.now();
   var blurredProfilePicUrl = "https://cdn2.scratch.mit.edu/get_image/user/" + data.id + "_90x90.png?v=" + Date.now() + "&x=0&y=0&width=90&height=90&blur=100";
+  document.title = data.username + " | gnaw";
 
   
   userInfo.innerHTML = "<div style='display: flex; align-items: center;'>" +
