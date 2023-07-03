@@ -2,18 +2,18 @@
     "name": "gnaw",
     "short_name": "gnaw",
     "description": "Scratch client-ish",
-    "start_url": "/",
+    "start_url": "index.html",
     "display": "standalone",
     "background_color": "#010409",
     "theme_color": "#010409",
     "icons": [
       {
-        "src": "images/icon.png",
+        "src": "images/icon-safari.png",
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src": "images/icon.png",
+        "src": "images/icon-safari.png",
         "sizes": "512x512",
         "type": "image/png"
       }
