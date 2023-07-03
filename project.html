@@ -230,6 +230,7 @@ function displayProjectInfo(data) {
         "<p>Date Modified: " + formatDate(data.history.modified) + " | Date Created: " + formatDate(data.history.created) + "</p>" +
         "</div>";
     projectStats.innerHTML = htmlStats;
+    document.title = data.title + " | gnaw";
   }
   
   function formatText(text) {
