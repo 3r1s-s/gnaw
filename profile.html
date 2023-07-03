@@ -311,11 +311,8 @@ function displayUserInfo(data) {
       "<img src='" + blurredProfilePicUrl + "'height='80' width='80' style='filter: blur(20px); border-radius: 50%; opacity: 0.5; margin-top: 5px; margin-left: 5px;'>" +
       "<img src='" + profilePicUrl + "'height='80' width='80' style='position: absolute; top: 5px; left: 5px; border-radius: 50%;'>" +
       "</div>" +
-      "<div style='flex: 1; margin-left: 20px;'>" +
-        "<div style='flex: 1;' class='wrap'><div><h1 class='title'><a href='https://scratch.mit.edu/users/" + data.username + "'>" + data.username + "</a><font style='font-size:16px;'><em>#" + data.id + "</em></font></h1></div><div style='font-size: 16px;'><p><em id='username-id'></em></p></div></div>" +
-        "<div style='font-size: 16px;'>" +
+        "<div class='header'><h1 class='title'><a href='https://scratch.mit.edu/users/" + data.username + "'>" + data.username + "</a><font style='font-size:16px;'><em>#" + data.id + "</em></font></h1>" +
         "<p><em>" + formatDate(data.history.joined) + " | " + data.profile.country + "</em></p>" +
-        "</div>" +
         "</div>" +
         "</div>" +
         "<div class='user-info'>" +
