@@ -114,6 +114,13 @@
     display: flex;
 }
 
+.wrap {
+  word-wrap: break-word;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .overflow {
   overflow-x: hidden;
 }
@@ -303,8 +310,8 @@ function displayUserInfo(data) {
         "</div>" +
         "</div>" +
         "<div class='user-info'>" +
-          "<div class='read'>" + formatText(data.profile.bio) + "</div>" +
-          "<div class='read'>" + formatText(data.profile.status) + "</div>" +
+          "<div class='read wrap'>" + formatText(data.profile.bio) + "</div>" +
+          "<div class='read wrap'>" + formatText(data.profile.status) + "</div>" +
           "</div>";
         }
         
