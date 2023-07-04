@@ -95,6 +95,15 @@
       overflow-y: scroll;
     }
 
+    .title {
+  word-wrap: anywhere;
+  margin-bottom: 0;
+}
+
+.sub {
+  margin-top: 10px;
+}
+
     button {
       width: 100px;
       height: 33px;
@@ -213,7 +222,7 @@ function displayProjectInfo(data) {
         "<img src='" + thumbnailUrl + "' style='filter: blur(100px); opacity: 0.3; margin-top: 5px; margin-left: 5px;'></div>" +
         "</div>" +
         "<div class='header'><h1 class='title'><a href='https://scratch.mit.edu/projects/" + data.id + "'>" + data.title + "</a><font style='font-size:16px;'><em>#" + data.id + "</em></font></h1>" +
-        "<p><em>by <a href='profile.html?username=" + data.author.username + "'>" + data.author.username + "</a></em></p></div>" +
+        "<p class='sub'><em>by <a href='profile.html?username=" + data.author.username + "'>" + data.author.username + "</a></em></p></div>" +
         "<div class='desc'><div class='read overflow'>" + formatText(data.instructions) + "</div>";
         
     if (data.description && data.description.trim() !== "") {

@@ -123,6 +123,15 @@
   overflow-x: hidden;
 }
 
+.title {
+  word-wrap: anywhere;
+  margin-bottom: 0;
+}
+
+.sub {
+  margin-top: 10px;
+}
+
 #projects {
   margin: 5px;
 }
@@ -132,7 +141,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 
     button {
       width: 100px;
@@ -308,8 +316,8 @@ function displayUserInfo(data) {
       "<img src='" + blurredProfilePicUrl + "'height='80' width='80' style='filter: blur(20px); border-radius: 50%; opacity: 0.5; margin-top: 5px; margin-left: 5px;'>" +
       "<img src='" + profilePicUrl + "'height='80' width='80' style='position: absolute; top: 5px; left: 5px; border-radius: 50%;'>" +
       "</div>" +
-        "<div class='header'><h1 class='title '><a href='https://scratch.mit.edu/users/" + data.username + "'>" + data.username + "</a></h1>" +
-        "<p><em>" + formatDate(data.history.joined) + " | " + data.profile.country + "</em></p>" +
+        "<div class='header'><h1 class='title'><a href='https://scratch.mit.edu/users/" + data.username + "'>" + data.username + "</a></h1>" +
+        "<p class='sub'><em>" + formatDate(data.history.joined) + " | " + data.profile.country + "</em></p>" +
         "</div>" +
         "</div>" +
         "<div class='user-info'>" +
