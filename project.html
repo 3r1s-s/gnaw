@@ -1,277 +1,269 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Project | gnaw</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <link rel="icon" href="images/icon.png">
-  <link rel="manifest" href="manifest.webmanifest">
-  <style>
-    .page {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding-top: 50px;
-    }
-    
-    .project-info {
-      margin: 5px;
-      display: flex;
-      padding: 5px;
-      font-weight: lighter;
-    }
+	<title>Project | gnaw</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="icon" href="images/icon.png">
+	<link rel="manifest" href="manifest.webmanifest">
+	<style>
+		.page {
+			max-width: 1000px;
+			margin: 0 auto;
+			padding-top: 50px;
+		}
 
-    .desc {
-      display: flex;
-    }
+		.project-info {
+			margin: 5px;
+			display: flex;
+			padding: 5px;
+			font-weight: lighter;
+		}
 
-    .content {
-      margin: 5px;
-    }
+		.desc {
+			display: flex;
+		}
 
-    body {
-      background-color: #010409;
-      color: #fff;
-      font-family: Whitney;
-      overflow-x: hidden;
-      margin: 0;
-    }
+		.content {
+			margin: 5px;
+		}
 
-    a {
-      color: #fff;
-      text-decoration: none;
-    }
+		body {
+			background-color: #010409;
+			color: #fff;
+			font-family: Whitney;
+			overflow-x: hidden;
+			margin: 0;
+		}
 
-    a:hover {
-      color: #fff;
-      text-decoration: underline;
-    }
+		a {
+			color: #fff;
+			text-decoration: none;
+		}
 
-    .read {
-      flex: 1;
-      border: 1px solid #253042;
-      background-color: #0d1117;
-      margin: 5px;
-      padding: 15px;
-      border-radius: 5px;
-    }
+		a:hover {
+			color: #fff;
+			text-decoration: underline;
+		}
 
-    .nav {
-      display: flex;
-      align-items: center;
-      position: fixed;
-      background-color: #0d1117;
-      box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
-      padding: 0;
-      width: 100%;
-      height: 50px;
-      z-index: 1000;
-      font-size: 16px;
-    }
+		.read {
+			flex: 1;
+			border: 1px solid #253042;
+			background-color: #0d1117;
+			margin: 5px;
+			padding: 15px;
+			border-radius: 5px;
+		}
 
-    .inner-nav {
-      margin: auto;
-      box-sizing: border-box;
-      padding: 0 10px;
-      display: flex;
-      align-items: center;
-      flex-basis: 1000px;
-      height: 50px;
-    }
+		.nav {
+			display: flex;
+			align-items: center;
+			position: fixed;
+			background-color: #0d1117;
+			box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+			padding: 0;
+			width: 100%;
+			height: 50px;
+			z-index: 1000;
+			font-size: 16px;
+		}
 
-    .nav-item {
-      display: flex;
-      flex: 1;
-      height: 50px;
-      overflow: hidden;
-      flex-wrap: wrap;
-      align-items: center;
-    }
+		.inner-nav {
+			margin: auto;
+			box-sizing: border-box;
+			padding: 0 10px;
+			display: flex;
+			align-items: center;
+			flex-basis: 1000px;
+			height: 50px;
+		}
 
-    .header {
-      margin: 10px;
-    }
+		.nav-item {
+			display: flex;
+			flex: 1;
+			height: 50px;
+			overflow: hidden;
+			flex-wrap: wrap;
+			align-items: center;
+		}
 
-    .overflow {
-      max-height: 400px;
-      overflow-y: scroll;
-      word-wrap: anywhere;
-    }
+		.header {
+			margin: 10px;
+		}
 
-    .title {
-  word-wrap: anywhere;
-  margin-bottom: 0;
-}
+		.overflow {
+			max-height: 400px;
+			overflow-y: scroll;
+			word-wrap: anywhere;
+		}
 
-.sub {
-  margin-top: 10px;
-}
+		.title {
+			word-wrap: anywhere;
+			margin-bottom: 0;
+		}
 
-    button {
-      width: 100px;
-      height: 33px;
-      background-color: transparent;
-      border: 1px solid #253042;
-      color: #fff;
-      border-radius: 5px;
-      font-family: Whitney;
-    }
+		.sub {
+			margin-top: 10px;
+		}
 
-    button:hover {
-      border: 1px solid #36465f;
-      cursor: pointer;
-    }
+		.about {
+			display: flex;
+		}
 
-    form input {
-      width: 200px;
-      height: 30px;
-      background-color: transparent;
-      border: 1px solid #253042;
-      color: #fff;
-      border-radius: 5px;
-      font-family: Whitney;
-      color: #fff;
-      outline: none;
-    }
+		button {
+			width: 100px;
+			height: 33px;
+			background-color: transparent;
+			border: 1px solid #253042;
+			color: #fff;
+			border-radius: 5px;
+			font-family: Whitney;
+		}
 
-    form input:focus {
-      border: 1px solid #36465f;
-    }
-    
-    @font-face {
-      font-family: Whitney;
-      font-weight: normal;
-      src: url(fonts/whitney/whitney-medium.otf) format("opentype");
-    }
+		button:hover {
+			border: 1px solid #36465f;
+			cursor: pointer;
+		}
 
-    @font-face {
-      font-family: Whitney;
-      font-weight: bold;
-      src: url(fonts/whitney/whitney-bold.otf) format("opentype");
-    }
+		form input {
+			width: 200px;
+			height: 30px;
+			background-color: transparent;
+			border: 1px solid #253042;
+			color: #fff;
+			border-radius: 5px;
+			font-family: Whitney;
+			color: #fff;
+			outline: none;
+		}
 
-    @font-face {
-      font-family: Whitney;
-      font-weight: lighter;
-      src: url(fonts/whitney/whitney-light.otf) format("opentype");
-    }
+		form input:focus {
+			border: 1px solid #36465f;
+		}
 
-    @font-face {
-      font-family: Whitney Italic;
-      font-weight: normal;
-      src: url(fonts/whitney/whitney-mediumitalic.otf) format("opentype");
-    }
+		@font-face {
+			font-family: Whitney;
+			font-weight: normal;
+			src: url(fonts/whitney/whitney-medium.otf) format("opentype");
+		}
 
-    @font-face {
-      font-family: Whitney Italic;
-      font-weight: bold;
-      src: url(fonts/whitney/whitney-semibolditalic.otf) format("opentype");
-    }
+		@font-face {
+			font-family: Whitney;
+			font-weight: bold;
+			src: url(fonts/whitney/whitney-bold.otf) format("opentype");
+		}
 
-    @font-face {
-      font-family: Whitney Italic;
-      font-weight: lighter;
-      src: url(fonts/whitney/whitney-lightitalic.otf) format("opentype");
-    }
+		@font-face {
+			font-family: Whitney;
+			font-weight: lighter;
+			src: url(fonts/whitney/whitney-light.otf) format("opentype");
+		}
 
-    @font-face {
-      font-family: Whitney Book;
-      font-weight: normal;
-      src: url(fonts/whitney/whitneybook.otf) format("opentype");
-    }
+		@font-face {
+			font-family: Whitney Italic;
+			font-weight: normal;
+			src: url(fonts/whitney/whitney-mediumitalic.otf) format("opentype");
+		}
 
-  </style>
-  <script>
-    function goBack() {
-      history.back();
-    }
-    
-    function goToSearchPage() {
-      var url = 'index.html';
-      window.location.href = url;
-    }
-    
-    document.addEventListener("DOMContentLoaded", function() {
-      var queryString = window.location.search;
-      var urlParams = new URLSearchParams(queryString);
-      var projectID = urlParams.get("project");
-      
-    if (projectID) {
-      fetchProjectInfo(projectID);
-    }
-});
+		@font-face {
+			font-family: Whitney Italic;
+			font-weight: bold;
+			src: url(fonts/whitney/whitney-semibolditalic.otf) format("opentype");
+		}
 
-function fetchProjectInfo(projectID) {
-  var url = "https://corsproxy.io/?https://api.scratch.mit.edu/projects/" + projectID;
+		@font-face {
+			font-family: Whitney Italic;
+			font-weight: lighter;
+			src: url(fonts/whitney/whitney-lightitalic.otf) format("opentype");
+		}
 
-    fetch(url)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(data) {
-            displayProjectInfo(data);
-        })
-        .catch(function(error) {
-            console.log("Error:", error);
-        });
-}
+		@font-face {
+			font-family: Whitney Book;
+			font-weight: normal;
+			src: url(fonts/whitney/whitneybook.otf) format("opentype");
+		}
+	</style>
+	<script>
+		function goBack() {
+			history.back();
+		}
 
-function displayProjectInfo(data) {
-  var projectInfo = document.getElementById("project-info");
-    var thumbnailUrl = "https://cdn2.scratch.mit.edu/get_image/project/" + data.id + "_480x360.png";
-    var html =
-        "<div style='position: fixed; z-index: -1;'>" +
-        "<div>" +
-        "<img src='" + thumbnailUrl + "' style='filter: blur(100px); opacity: 0.3; margin-top: 5px; margin-left: 5px;'></div>" +
-        "</div>" +
-        "<div class='header'><h1 class='title'><a href='https://scratch.mit.edu/projects/" + data.id + "'>" + data.title + "</a><font style='font-size:16px;'><em>#" + data.id + "</em></font></h1>" +
-        "<p class='sub'><em>by <a href='profile.html?username=" + data.author.username + "'>" + data.author.username + "</a></em></p></div>" +
-        "<div class='desc'><div class='read overflow'>" + formatText(data.instructions) + "</div>";
-        
-    if (data.description && data.description.trim() !== "") {
-        html += "<div class='read overflow'>" + formatText(data.description) + "</div>";
-      }
-      
-    html += "</div>";
-    projectInfo.innerHTML = html;
-    
-    var projectStats = document.getElementById("project-stats");
-    var htmlStats =
-    "<div class='read'>" +
-        "<p>Loves: " + data.stats.loves + " | Favorites: " + data.stats.favorites + " | Views: " + data.stats.views + " | Remixes: " + data.stats.remixes + "</p>" +
-        "<p>Date Modified: " + formatDate(data.history.modified) + " | Date Created: " + formatDate(data.history.created) + "</p>" +
-        "</div>";
-    projectStats.innerHTML = htmlStats;
-    document.title = data.title + " | gnaw";
-  }
-  
-  function formatText(text) {
-    return text.replace(/\n/g, "<br>");
-  }
+		function goToSearchPage() {
+			var url = 'index.html';
+			window.location.href = url;
+		}
+		document.addEventListener("DOMContentLoaded", function() {
+			var queryString = window.location.search;
+			var urlParams = new URLSearchParams(queryString);
+			var projectID = urlParams.get("project");
+			if(projectID) {
+				fetchProjectInfo(projectID);
+			}
+		});
 
-  function formatDate(dateString) {
-    var date = new Date(dateString);
-    var options = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    };
-    return date.toLocaleDateString('en-US', options);
-  }  </script>
-  </head>
-  <body>
-    <div class="nav">
-      <div class="inner-nav">
-        <div class="nav-item"><a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a></div>
-      </div>
-  </div>
-    <div class="page">
-      <div class="content">
-        <div id="project-info"></div>
-        <div id="project-stats"></div>
-        <div style="margin: 5px; margin-top:10px;">
-          <button class="btn" onclick="goBack()">&lt; Back</button>
-          <button class="btn" onclick="goToSearchPage()">Home</button>
-        </div>
-      </div>
-    </div>
+		function fetchProjectInfo(projectID) {
+			var url = "https://corsproxy.io/?https://api.scratch.mit.edu/projects/" + projectID;
+			fetch(url).then(function(response) {
+				return response.json();
+			}).then(function(data) {
+				displayProjectInfo(data);
+			}).catch(function(error) {
+				console.log("Error:", error);
+			});
+		}
+
+		function displayProjectInfo(data) {
+			var projectInfo = document.getElementById("project-info");
+			var thumbnailUrl = "https://cdn2.scratch.mit.edu/get_image/project/" + data.id + "_480x360.png";
+			var html = "<div style='position: fixed; z-index: -1;'>" + "<div>" + "<img src='" + thumbnailUrl + "' style='filter: blur(100px); opacity: 0.3; margin-top: 5px; margin-left: 5px;'></div>" + "</div>" + "<div class='header'><h1 class='title'><a href='https://scratch.mit.edu/projects/" + data.id + "'>" + data.title + "</a><font style='font-size:16px;'><em>#" + data.id + "</em></font></h1>" + "<p class='sub'><em>by <a href='profile.html?username=" + data.author.username + "'>" + data.author.username + "</a></em></p></div>" + "<div class='desc'><div class='read overflow'>" + formatText(data.instructions) + "</div>";
+			if(data.description && data.description.trim() !== "") {
+				html += "<div class='read overflow'>" + formatText(data.description) + "</div>";
+			}
+			html += "</div>";
+			projectInfo.innerHTML = html;
+			var projectStats = document.getElementById("project-stats");
+			var htmlStats = "<div class='read'>" + "<p>Loves: " + data.stats.loves + " | Favorites: " + data.stats.favorites + " | Views: " + data.stats.views + " | Remixes: " + data.stats.remixes + "</p>" + "<p>Date Modified: " + formatDate(data.history.modified) + " | Date Created: " + formatDate(data.history.created) + "</p>" + "</div>";
+			projectStats.innerHTML = htmlStats;
+			document.title = data.title + " | gnaw";
+		}
+
+		function formatText(text) {
+			return text.replace(/\n/g, "<br>");
+		}
+
+		function formatDate(dateString) {
+			var date = new Date(dateString);
+			var options = {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric'
+			};
+			return date.toLocaleDateString('en-US', options);
+		}
+	</script>
+</head>
+
+<body>
+	<div class="nav">
+		<div class="inner-nav">
+			<div class="nav-item"><a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a></div>
+		</div>
+	</div>
+	<div class="page">
+		<div class="content">
+			<div id="project-info"></div>
+			<div id="project-stats"></div>
+			<div style="height:150px; margin: 10px;padding:10px ;margin-top:50px;border-top: 1px solid #253042;">
+				<div id="about">
+					<font style="font-weight: bold; font-family: Whitney Book;">gnaw</font> / <a href="https://discord.com/users/797570703419244594">discord</a> / <a href="mailto:schafezr0000@gmail.com">email me</a> / <a href="profile.html?username=schafezr0000">profile</a> / <a href="https://github.com/3r1s-s">github</a> / <a href="health.html">health</a> / <font style="color:#5bcefa">tr</font>
+					<font style="color:#f5a9b8">an</font>
+					<font style="color:#fff">s r</font>
+					<font style="color:#f5a9b8">igh</font>
+					<font style="color:#5bcefa">ts</font>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>
