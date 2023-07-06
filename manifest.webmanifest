@@ -4,8 +4,8 @@
     "description": "Scratch client-ish",
     "start_url": "index.html",
     "display": "standalone",
-    "background_color": "#010409",
-    "theme_color": "#0d1117",
+    "background_color": "#0d1117",
+    "theme_color": "#010409",
     "icons": [
       {
         "src": "images/icon-safari.png",
