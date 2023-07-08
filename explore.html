@@ -124,6 +124,10 @@
 			display: flex;
 		}
 
+		.wrap {
+			word-wrap: anywhere;
+		}
+
 		@font-face {
 			font-family: Whitney;
 			font-weight: normal;
@@ -179,7 +183,7 @@
             <img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail">
           </div>
           <div class="project-info">
-            <h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
+            <h3 style='margin:0;' class='wrap'><a href="project.html?project=${project.id}">${project.title}</a></h3>
             <p><em>by <a href='profile.html?username=${project.author.username}'>${project.author.username}</a></em>
               | Views: ${project.stats.views} | Loves: ${project.stats.loves} | Favorites: ${project.stats.favorites}</p>
           </div>
