@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Search | gnaw</title>
+	<title>Embed | gnaw</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<link rel="icon" href="images/icon.png">
 	<link rel="manifest" href="manifest.webmanifest">
@@ -169,7 +169,7 @@
 	</style>
 	<script>
 		function embedCont(embed) {
-			var htmlStats = "<div class='read'><iframe src='https://scratch.mit.edu/projects/" + embed + "/embed' allowtransparency='true' width='485' height='402' frameborder='0' scrolling='no' allowfullscreen='yes'></iframe></p></div>";
+			var htmlStats = "<div class='read'><iframe src='https://turbowarp.org/" + embed + "/embed' allowtransparency='true' width='485' height='402' frameborder='0' scrolling='no' allowfullscreen='yes'></iframe></p></div>";
 			document.getElementById('project-stats').innerHTML = htmlStats;
 		}
 		document.addEventListener('DOMContentLoaded', function() {
@@ -177,16 +177,44 @@
 			const embed = urlParams.get('project');
 			console.log(embed); //remove later
 			embedCont(embed);
+			var url = "https://corsproxy.io/?https://api.scratch.mit.edu/projects/" + embed;
+			fetch(url).then(function(response) {
+				return response.json();
+			}).then(function(data) {
+				displayProjectInfo(data);
+			}).catch(function(error) {
+				console.log("Error:", error);
+			});
 		});
 
-		function goBack() {
-			history.back();
+		function displayProjectInfo(data) {
+			var projectInfo = document.getElementById("project-info");
+			var html = "<div class='header'><h1 class='title'><a href='https://scratch.mit.edu/projects/" + data.id + "'>" + data.title + "</a><font style='font-size:16px;'><em>#" + data.id + "</em></font></h1>" + "<p class='sub'><em>by <a href='profile.html?username=" + data.author.username + "'>" + data.author.username + "</a></em></p></div>" + "<div class='desc'><div class='read overflow'>" + formatText(data.instructions) + "</div>";
+			if(data.description && data.description.trim() !== "") {
+				html += "<div class='read overflow'>" + formatText(data.description) + "</div>";
+			}
+			html += "</div>";
+			projectInfo.innerHTML = html;
+			var projectStats = document.getElementById("project-stats");
+			var htmlStats = "<div class='read'>" + "<p>Loves: " + data.stats.loves + " | Favorites: " + data.stats.favorites + " | Views: " + data.stats.views + " | Remixes: " + data.stats.remixes + "</p>" + "<p>Date Modified: " + formatDate(data.history.modified) + " | Date Created: " + formatDate(data.history.created) + "</p>" + "</div>";
+			projectStats.innerHTML = htmlStats;
+			document.title = data.title + " | gnaw";
 		}
 
-		function goToSearchPage() {
-			var url = 'index.html';
-			window.location.href = url;
+		function formatText(text) {
+			return text.replace(/\n/g, "<br>");
 		}
+
+		function formatDate(dateString) {
+			var date = new Date(dateString);
+			var options = {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric'
+			};
+			return date.toLocaleDateString('en-US', options);
+		}
+
 	</script>
 </head>
 
@@ -199,14 +227,17 @@
 	<div class="page">
 		<div id="project-stats"></div>
 		<div style="height:150px; margin: 10px;padding:10px ;margin-top:50px;border-top: 1px solid #253042;">
-			<div id="about">
-				<a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> / 
+		<div id="project-info">
+
+		</div>
+		<div id="about">
+		<a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> / 
         <a href="https://discord.com/users/797570703419244594">discord</a> / 
         <a href="mailto:schafezr0000@gmail.com">email me</a> / 
         <a href="profile.html?username=3r1s_s">profile</a> / 
         <a href="https://github.com/3r1s-s">github</a> / 
         <a href="health.html">health</a> / 
-			</div>
+		</div>
 		</div>
 	</div>
 </body>
