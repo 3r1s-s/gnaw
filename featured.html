@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>gnaw</title>
+	<title>Explore | gnaw</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<link rel="icon" href="images/icon.png">
 	<link rel="manifest" href="manifest.webmanifest">
@@ -66,31 +66,6 @@
 			margin: 10px;
 		}
 
-		.thumbnail-container {
-			flex-shrink: 0;
-			margin-right: 10px;
-		}
-
-		.thumbnail {
-			width: 100px;
-			height: auto;
-			border-radius: 5px;
-		}
-
-		.project {
-			display: flex;
-		}
-
-		about {
-			display: flex;
-		}
-
-		.news-item {
-			display: flex;
-			margin-bottom: 10px;
-			margin-top: 10px;
-		}
-
 		button {
 			width: 100px;
 			height: 33px;
@@ -128,6 +103,29 @@
 
 		a:hover {
 			text-decoration: underline;
+		}
+
+		.thumbnail-container {
+			flex-shrink: 0;
+			margin-right: 10px;
+		}
+
+		.thumbnail {
+			width: 100px;
+			height: auto;
+			border-radius: 5px;
+		}
+
+		.project {
+			display: flex;
+		}
+
+		.about {
+			display: flex;
+		}
+
+		.wrap {
+			word-wrap: anywhere;
 		}
 
 		@font-face {
@@ -173,105 +171,11 @@
 		}
 	</style>
 	<script>
-		function navigateToProfile(usernameInput, projectInput) {
-			var url;
-			if(usernameInput) {
-				url = "profile.html?username=" + encodeURIComponent(usernameInput);
-			}
-			else if(projectInput) {
-				url = "search.html?project=" + encodeURIComponent(projectInput);
-			}
-			else {
-				return;
-			}
-			window.location.href = url;
-		}
-
-		function clearInputs() {
-			document.getElementById("username").value = "";
-			document.getElementById("project").value = "";
-		}
-
-		function handleUserSearch() {
-			var usernameInput = document.getElementById("username").value;
-			navigateToProfile(usernameInput, null);
-		}
-
-		function handleProjectSearch() {
-			var projectInput = document.getElementById("project").value;
-			navigateToProfile(null, projectInput);
-		}
-
-		function handleKeyPress(event) {
-			if(event.key === 'Enter') {
-				event.preventDefault();
-				var usernameInput = document.getElementById("username").value;
-				var projectInput = document.getElementById("project").value;
-				navigateToProfile(usernameInput, projectInput);
-			}
-		}
-
-		function fetchNews() {
-			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/news').then(response => response.json()).then(data => {
-				var newsContainer = document.getElementById('news-container');
-				var newsHTML = '';
-				for(var i = 0; i < Math.min(data.length, 3); i++) {
-					var item = data[i];
-					newsHTML += `
-              <div class="news-item">
-                <img src="${item.image}" width="50px" height="50px" style="margin-right:15px;">
-                <div>
-                  <h3 style="margin-bottom:5px;">
-                    <a href="${item.url}">${item.headline}</a>
-                  </h3>
-                </div>
-              </div>`;
-				}
-				newsContainer.innerHTML = newsHTML;
-			}).catch(error => {
-				console.error('Error:', error);
-			});
-		}
-		document.addEventListener('DOMContentLoaded', function() {
-			clearInputs();
-			fetchNews();
-			fetchExplore();
-			fetchFeatured();
-		});
-
-		function fetchExplore() {
-			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/explore/projects?q=games&mode=trending&language=en').then(response => response.json()).then(data => {
-				var exploreContainer = document.getElementById('explore-container');
-				var exploreHTML = '';
-				for(var i = 0; i < 3; i++) {
-					var project = data[i];
-					var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${project.id}_480x360.png`;
-					exploreHTML += `
-              <div class="project read">
-                <div class="thumbnail-container">
-                  <img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail">
-                </div>
-                <div class="project-info">
-                  <h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
-                  <p>
-                    <em>by <a href='profile.html?username=${project.author.username}'>${project.author.username}</a></em>
-                    | Views: ${project.stats.views} | Loves: ${project.stats.loves} | Favorites: ${project.stats.favorites}
-                  </p>
-                </div>
-              </div>`;
-				}
-				exploreContainer.innerHTML = exploreHTML;
-			}).catch(error => {
-				console.error('Error:', error);
-			});
-		}
-
 		function fetchFeatured() {
 			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/studios/27205657/projects').then(response => response.json()).then(data => {
 				var exploreContainer = document.getElementById('featured-container');
 				var exploreHTML = '';
-				for(var i = 0; i < 3; i++) {
-					var project = data[i];
+				data.forEach(project => {
 					var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${project.id}_480x360.png`;
 					exploreHTML += `
               <div class="project read">
@@ -285,12 +189,16 @@
                   </p>
                 </div>
               </div>`;
-				}
+				});
 				exploreContainer.innerHTML = exploreHTML;
 			}).catch(error => {
 				console.error('Error:', error);
 			});
 		}
+		document.addEventListener('DOMContentLoaded', function() {
+			fetchFeatured();
+		});
+
 	</script>
 </head>
 
@@ -302,32 +210,7 @@
 	</div>
 	<div class="page">
 		<div class="header">
-			<h1>Home</h1>
-			<h2>Search</h2>
-		</div>
-		<div class="read">
-			<form onsubmit="event.preventDefault();">
-				<input type="text" id="username" placeholder="Enter username" autocomplete="off" autocapitalize="off">
-				<button onclick="handleUserSearch()" class="btn">Search User</button>
-			</form>
-			<br>
-			<form onsubmit="event.preventDefault();">
-				<input type="text" id="project" placeholder="Search project name" autocapitalize="off">
-				<button onclick="handleProjectSearch()" class="btn">Search Project</button>
-			</form>
-		</div>
-		<div class="header">
-			<h2>News</h2>
-		</div>
-		<div class="read">
-			<div id="news-container"></div>
-		</div>
-		<div class="header">
-			<h2><a href="explore.html">Explore</a></h2>
-		</div>
-		<div id="explore-container"></div>
-		<div class="header">
-			<h2><a href="featured.html">Featured</a></h2>
+			<h1>Featured</h1>
 		</div>
 		<div id="featured-container"></div>
 		<div style="height:150px; margin: 10px;padding:10px ;margin-top:50px;border-top: 1px solid #253042;">
