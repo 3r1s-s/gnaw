@@ -124,8 +124,22 @@
 			word-wrap: anywhere;
 			height: 155px;
 			overflow-y: scroll;
-			width: 400px;
 		}
+
+		#outer-desc {
+			width: 50%;
+		}
+
+		@media screen and (max-width: 600px) {
+
+	#outer-desc {
+		display: none;
+	}
+  }
+
+
+
+
 
 		@font-face {
 			font-family: Whitney;
@@ -170,10 +184,6 @@
 		}
 	</style>
 	<script>
-		function embedCont(embed) {
-			var htmlStats = "<div class='read'><iframe src='https://turbowarp.org/" + embed + "/embed' allowtransparency='true' width='485' height='402' frameborder='0' scrolling='no' allowfullscreen='yes'></iframe></p></div>";
-			document.getElementById('embed').innerHTML = htmlStats;
-		}
 
 		document.addEventListener('DOMContentLoaded', function() {
 			const urlParams = new URLSearchParams(window.location.search);
@@ -191,7 +201,7 @@
 
 		function displayProjectInfo(data) {
 			var projectInfo = document.getElementById("embed");
-			var html = "<div class='read flex'><iframe src='https://turbowarp.org/" + data.id + "/embed' allowtransparency='true' width='485' height='402' frameborder='0' scrolling='no' allowfullscreen='yes'></iframe>" + "<div style='display: block;'><div class='read desc'>" + formatText(data.instructions) + "</div>";
+			var html = "<div class='read flex'><iframe src='https://turbowarp.org/" + data.id + "/embed' allowtransparency='true' width='485' height='402' frameborder='0' scrolling='no' allowfullscreen='yes'></iframe>" + "<div id='outer-desc'><div class='read desc'>" + formatText(data.instructions) + "</div>";
 			if(data.description && data.description.trim() !== "") {
 				html += "<div class='read desc'>" + formatText(data.description) + "</div></div>";
 			}
@@ -227,10 +237,9 @@
 		</div>
 	</div>
 	<div class="page">
-		<div id="embed"></div>
-		<div id="project-stats"></div>
-		<div id="project-info">
-
+		<div class="project-container">
+			<div id="embed"></div>
+			<div class="project-description" id="project-stats"></div>
 		</div>
 		<div style="height:150px; margin: 10px;padding:10px ;margin-top:50px;border-top: 1px solid #253042;">
 		<div id="flex">
