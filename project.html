@@ -7,27 +7,6 @@
 	<link rel="icon" href="images/icon.png">
 	<link rel="manifest" href="manifest.webmanifest">
 	<style>
-		.page {
-			max-width: 1000px;
-			margin: 0 auto;
-			padding-top: 50px;
-		}
-
-		.project-info {
-			margin: 5px;
-			display: flex;
-			padding: 5px;
-			font-weight: lighter;
-		}
-
-		.desc {
-			display: flex;
-		}
-
-		.content {
-			margin: 5px;
-		}
-
 		body {
 			background-color: #010409;
 			color: #fff;
@@ -36,21 +15,17 @@
 			margin: 0;
 		}
 
-		a {
-			color: #fff;
-			text-decoration: none;
-		}
-
-		a:hover {
-			color: #fff;
-			text-decoration: underline;
+		.page {
+			max-width: 1000px;
+			margin: 0 auto;
+			padding-top: 50px;
 		}
 
 		.read {
 			flex: 1;
 			border: 1px solid #253042;
 			background-color: #0d1117;
-			margin: 5px;
+			margin: 10px;
 			padding: 15px;
 			border-radius: 5px;
 		}
@@ -91,25 +66,6 @@
 			margin: 10px;
 		}
 
-		.overflow {
-			max-height: 400px;
-			overflow-y: scroll;
-			word-wrap: anywhere;
-		}
-
-		.title {
-			word-wrap: anywhere;
-			margin-bottom: 0;
-		}
-
-		.sub {
-			margin-top: 10px;
-		}
-
-		.about {
-			display: flex;
-		}
-
 		button {
 			width: 100px;
 			height: 33px;
@@ -133,7 +89,6 @@
 			color: #fff;
 			border-radius: 5px;
 			font-family: Whitney;
-			color: #fff;
 			outline: none;
 		}
 
@@ -141,68 +96,90 @@
 			border: 1px solid #36465f;
 		}
 
+		a {
+			color: #fff;
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		.thumbnail-container {
+			flex-shrink: 0;
+			margin-right: 10px;
+		}
+
+		.thumbnail {
+			width: 100px;
+			height: auto;
+			border-radius: 5px;
+		}
+
+		.flex {
+			display: flex;
+		}
+
+		.desc {
+			word-wrap: anywhere;
+			height: 155px;
+			overflow-y: scroll;
+			width: 400px;
+		}
+
 		@font-face {
 			font-family: Whitney;
 			font-weight: normal;
-			src: url(../fonts/whitney/whitney-medium.otf) format("opentype");
+			src: url(fonts/whitney/whitney-medium.otf) format("opentype");
 		}
 
 		@font-face {
 			font-family: Whitney;
 			font-weight: bold;
-			src: url(../fonts/whitney/whitney-bold.otf) format("opentype");
+			src: url(fonts/whitney/whitney-bold.otf) format("opentype");
 		}
 
 		@font-face {
 			font-family: Whitney;
 			font-weight: lighter;
-			src: url(../fonts/whitney/whitney-light.otf) format("opentype");
+			src: url(fonts/whitney/whitney-light.otf) format("opentype");
 		}
 
 		@font-face {
 			font-family: Whitney Italic;
 			font-weight: normal;
-			src: url(../fonts/whitney/whitney-mediumitalic.otf) format("opentype");
+			src: url(fonts/whitney/whitney-mediumitalic.otf) format("opentype");
 		}
 
 		@font-face {
 			font-family: Whitney Italic;
 			font-weight: bold;
-			src: url(../fonts/whitney/whitney-semibolditalic.otf) format("opentype");
+			src: url(fonts/whitney/whitney-semibolditalic.otf) format("opentype");
 		}
 
 		@font-face {
 			font-family: Whitney Italic;
 			font-weight: lighter;
-			src: url(../fonts/whitney/whitney-lightitalic.otf) format("opentype");
+			src: url(fonts/whitney/whitney-lightitalic.otf) format("opentype");
 		}
 
 		@font-face {
 			font-family: Whitney Book;
 			font-weight: normal;
-			src: url(../fonts/whitney/whitneybook.otf) format("opentype");
+			src: url(fonts/whitney/whitneybook.otf) format("opentype");
 		}
 	</style>
 	<script>
-		function goBack() {
-			history.back();
+		function embedCont(embed) {
+			var htmlStats = "<div class='read'><iframe src='https://turbowarp.org/" + embed + "/embed' allowtransparency='true' width='485' height='402' frameborder='0' scrolling='no' allowfullscreen='yes'></iframe></p></div>";
+			document.getElementById('embed').innerHTML = htmlStats;
 		}
 
-		function goToSearchPage() {
-			var url = 'index.html';
-			window.location.href = url;
-		}
-		document.addEventListener("DOMContentLoaded", function() {
-			var queryString = window.location.search;
-			var urlParams = new URLSearchParams(queryString);
-			var projectID = urlParams.get("project");
-			if(projectID) {
-				fetchProjectInfo(projectID);
-			}
-		});
-
-		function fetchProjectInfo(projectID) {
-			var url = "https://corsproxy.io/?https://api.scratch.mit.edu/projects/" + projectID;
+		document.addEventListener('DOMContentLoaded', function() {
+			const urlParams = new URLSearchParams(window.location.search);
+			const embed = urlParams.get('project');
+			console.log(embed); //remove later
+			var url = "https://corsproxy.io/?https://api.scratch.mit.edu/projects/" + embed;
 			fetch(url).then(function(response) {
 				return response.json();
 			}).then(function(data) {
@@ -210,19 +187,18 @@
 			}).catch(function(error) {
 				console.log("Error:", error);
 			});
-		}
+		});
 
 		function displayProjectInfo(data) {
-			var projectInfo = document.getElementById("project-info");
-			var thumbnailUrl = "https://cdn2.scratch.mit.edu/get_image/project/" + data.id + "_480x360.png";
-			var html = "<div style='position: fixed; z-index: -1;'>" + "<div>" + "<img src='" + thumbnailUrl + "' style='filter: blur(100px); opacity: 0.3; margin-top: 5px; margin-left: 5px;'></div>" + "</div>" + "<div class='header'><h1 class='title'><a href='https://scratch.mit.edu/projects/" + data.id + "'>" + data.title + "</a><font style='font-size:16px;'><em>#" + data.id + "</em></font></h1>" + "<p class='sub'><em>by <a href='profile.html?username=" + data.author.username + "'>" + data.author.username + "</a></em></p></div>" + "<div class='desc'><div class='read overflow'>" + formatText(data.instructions) + "</div>";
+			var projectInfo = document.getElementById("embed");
+			var html = "<div class='read flex'><iframe src='https://turbowarp.org/" + data.id + "/embed' allowtransparency='true' width='485' height='402' frameborder='0' scrolling='no' allowfullscreen='yes'></iframe>" + "<div style='display: block;'><div class='read desc'>" + formatText(data.instructions) + "</div>";
 			if(data.description && data.description.trim() !== "") {
-				html += "<div class='read overflow'>" + formatText(data.description) + "</div>";
+				html += "<div class='read desc'>" + formatText(data.description) + "</div></div>";
 			}
 			html += "</div>";
 			projectInfo.innerHTML = html;
 			var projectStats = document.getElementById("project-stats");
-			var htmlStats = "<div class='read'>" + "<p>Loves: " + data.stats.loves + " | Favorites: " + data.stats.favorites + " | Views: " + data.stats.views + " | Remixes: " + data.stats.remixes + "</p>" + "<p>Date Modified: " + formatDate(data.history.modified) + " | Date Created: " + formatDate(data.history.created) + "</p>" + "</div>";
+			var htmlStats = "<div class='read'>" + "<h1 class='title'><a href='https://scratch.mit.edu/projects/" + data.id + "'>" + data.title + "</a><font style='font-size:16px;'><em>#" + data.id + "</em></font></h1>" + "<p class='sub'><em>by <a href='profile.html?username=" + data.author.username + "'>" + data.author.username + "</a></em>" + " | Loves: " + data.stats.loves + " | Favorites: " + data.stats.favorites + " | Views: " + data.stats.views + " | Remixes: " + data.stats.remixes + "</p>" + "</div>";
 			projectStats.innerHTML = htmlStats;
 			document.title = data.title + " | gnaw";
 		}
@@ -240,6 +216,7 @@
 			};
 			return date.toLocaleDateString('en-US', options);
 		}
+
 	</script>
 </head>
 
@@ -250,19 +227,20 @@
 		</div>
 	</div>
 	<div class="page">
-		<div class="content">
-			<div id="project-info"></div>
-			<div id="project-stats"></div>
-			<div style="height:150px; margin: 10px;padding:10px ;margin-top:50px;border-top: 1px solid #253042;">
-        <div id="about">
-          <a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> / 
-          <a href="https://discord.com/users/797570703419244594">discord</a> / 
-          <a href="mailto:schafezr0000@gmail.com">email me</a> / 
-		  <a href="profile.html?username=3r1s_s">profile</a> / 
-          <a href="https://github.com/3r1s-s">github</a> / 
-          <a href="health.html">health</a> / 
-        </div>
-			</div>
+		<div id="embed"></div>
+		<div id="project-stats"></div>
+		<div id="project-info">
+
+		</div>
+		<div style="height:150px; margin: 10px;padding:10px ;margin-top:50px;border-top: 1px solid #253042;">
+		<div id="flex">
+		<a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> / 
+        <a href="https://discord.com/users/797570703419244594">discord</a> / 
+        <a href="mailto:schafezr0000@gmail.com">email me</a> / 
+        <a href="profile.html?username=3r1s_s">profile</a> / 
+        <a href="https://github.com/3r1s-s">github</a> / 
+        <a href="health.html">health</a> / 
+		</div>
 		</div>
 	</div>
 </body>
