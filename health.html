@@ -1,260 +1,110 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>Health | gnaw</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <link rel="icon" href="images/icon.png">
-  <link rel="manifest" href="manifest.webmanifest">
-  <style>
-  body {
-    background-color: #010409;
-    color: #fff;
-    font-family: Whitney;
-    overflow-x: hidden;
-    margin: 0;
-  }
+	<title>Health | gnaw</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="icon" href="images/icon.png">
+	<link rel="manifest" href="manifest.webmanifest">
+	<link rel="stylesheet" href="styles.css">
+	<style>
+		.thumbnail-container {
+			flex-shrink: 0;
+			margin-right: 10px;
+		}
 
-  .page {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding-top: 50px;
-  }
+		.thumbnail {
+			width: 100px;
+			height: auto;
+			border-radius: 5px;
+		}
 
-  .read {
-    flex: 1;
-    border: 1px solid #253042;
-    background-color: #0d1117;
-    margin: 10px;
-    padding: 15px;
-    border-radius: 5px;
-  }
+		.project {
+			display: flex;
+		}
 
-  .nav {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    background-color: #0d1117;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
-    padding: 0;
-    width: 100%;
-    height: 50px;
-    z-index: 1000;
-    font-size: 16px;
-  }
+		.about {
+			display: flex;
+		}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			fetchHealth();
+		});
 
-  .inner-nav {
-    margin: auto;
-    box-sizing: border-box;
-    padding: 0 10px;
-    display: flex;
-    align-items: center;
-    flex-basis: 1000px;
-    height: 50px;
-  }
+		function fetchHealth() {
+			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/health').then(response => response.json()).then(data => {
+				var healthContainer = document.getElementById('health-container');
+				var healthHTML = '';
+				healthHTML += `<button id="expand-button" class="btn" onclick="toggleHealth()">+</button>`;
+				healthHTML += `<div id="health-details" style="display: none;">`;
+				healthHTML += `<p>Version: ${data.version}</p>`;
+				healthHTML += `<p>Uptime: ${data.uptime}</p>`;
+				healthHTML += `<p>Load: ${data.load.join(', ')}</p>`;
+				healthHTML += `<h3>SQL</h3>`;
+				for(var key in data.sql) {
+					healthHTML += `<h4>${key}</h4>`;
+					for(var type in data.sql[key]) {
+						healthHTML += `<h5>${type}</h5>`;
+						var sqlData = data.sql[key][type];
+						for(var property in sqlData) {
+							healthHTML += `<p>${property}: ${sqlData[property]}</p>`;
+						}
+					}
+				}
+				healthHTML += `</div>`;
+				healthContainer.innerHTML = healthHTML;
+			}).catch(error => {
+				console.error('Error:', error);
+			});
+		}
 
-  .nav-item {
-    display: flex;
-    flex: 1;
-    height: 50px;
-    overflow: hidden;
-    flex-wrap: wrap;
-    align-items: center;
-  }
+		function toggleHealth() {
+			var healthDetails = document.getElementById('health-details');
+			var expandButton = document.getElementById('expand-button');
+			if(healthDetails.style.display === 'none') {
+				healthDetails.style.display = 'block';
+				expandButton.textContent = '-';
+			}
+			else {
+				healthDetails.style.display = 'none';
+				expandButton.textContent = '+';
+			}
+		}
 
-  .header {
-    margin: 10px;
-  }
+		function goBack() {
+			history.back();
+		}
 
-  .thumbnail-container {
-    flex-shrink: 0;
-    margin-right: 10px;
-  }
-
-  .thumbnail {
-    width: 100px;
-    height: auto;
-    border-radius: 5px;
-  }
-
-  .project {
-    display: flex;
-  }
-
-  .about {
-    display: flex;
-  }
-
-  button {
-    width: 100px;
-    height: 33px;
-    background-color: transparent;
-    border: 1px solid #253042;
-    color: #fff;
-    border-radius: 5px;
-    font-family: Whitney;
-  }
-
-  button:hover {
-    border: 1px solid #36465f;
-    cursor: pointer;
-  }
-
-  form input {
-    width: 200px;
-    height: 30px;
-    background-color: transparent;
-    border: 1px solid #253042;
-    color: #fff;
-    border-radius: 5px;
-    font-family: Whitney;
-    outline: none;
-  }
-
-  form input:focus {
-    border: 1px solid #36465f;
-  }
-
-  a {
-    color: #fff;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  img {
-    border-radius: 5px;
-  }
-
-  @font-face {
-    font-family: Whitney;
-    font-weight: normal;
-    src: url(fonts/whitney/whitney-medium.otf) format("opentype");
-  }
-
-  @font-face {
-    font-family: Whitney;
-    font-weight: bold;
-    src: url(fonts/whitney/whitney-bold.otf) format("opentype");
-  }
-
-  @font-face {
-    font-family: Whitney;
-    font-weight: lighter;
-    src: url(fonts/whitney/whitney-light.otf) format("opentype");
-  }
-
-  @font-face {
-    font-family: Whitney Italic;
-    font-weight: normal;
-    src: url(fonts/whitney/whitney-mediumitalic.otf) format("opentype");
-  }
-
-  @font-face {
-    font-family: Whitney Italic;
-    font-weight: bold;
-    src: url(fonts/whitney/whitney-semibolditalic.otf) format("opentype");
-  }
-
-  @font-face {
-    font-family: Whitney Italic;
-    font-weight: light;
-    src: url(fonts/whitney/whitney-lightitalic.otf) format("opentype");
-  }
-
-  @font-face {
-    font-family: Whitney Book;
-    font-weight: normal;
-    src: url(fonts/whitney/whitneybook.otf) format("opentype");
-  }
-  </style>
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    fetchHealth();
-  });
-
-  function fetchHealth() {
-    fetch('https://corsproxy.io/?https://api.scratch.mit.edu/health').then(response => response.json()).then(data => {
-      var healthContainer = document.getElementById('health-container');
-      var healthHTML = '';
-      healthHTML += `<button id="expand-button" class="btn" onclick="toggleHealth()">+</button>`;
-      healthHTML += `<div id="health-details" style="display: none;">`;
-      healthHTML += `<p>Version: ${data.version}</p>`;
-      healthHTML += `<p>Uptime: ${data.uptime}</p>`;
-      healthHTML += `<p>Load: ${data.load.join(', ')}</p>`;
-      healthHTML += `<h3>SQL</h3>`;
-      for (var key in data.sql) {
-        healthHTML += `<h4>${key}</h4>`;
-        for (var type in data.sql[key]) {
-          healthHTML += `<h5>${type}</h5>`;
-          var sqlData = data.sql[key][type];
-          for (var property in sqlData) {
-            healthHTML += `<p>${property}: ${sqlData[property]}</p>`;
-          }
-        }
-      }
-      healthHTML += `</div>`;
-      healthContainer.innerHTML = healthHTML;
-    }).catch(error => {
-      console.error('Error:', error);
-    });
-  }
-
-  function toggleHealth() {
-    var healthDetails = document.getElementById('health-details');
-    var expandButton = document.getElementById('expand-button');
-    if (healthDetails.style.display === 'none') {
-      healthDetails.style.display = 'block';
-      expandButton.textContent = '-';
-    } else {
-      healthDetails.style.display = 'none';
-      expandButton.textContent = '+';
-    }
-  }
-
-  function goBack() {
-    history.back();
-  }
-
-  function goToSearchPage() {
-    var url = 'index.html';
-    window.location.href = url;
-  }
-  </script>
+		function goToSearchPage() {
+			var url = 'index.html';
+			window.location.href = url;
+		}
+	</script>
 </head>
-
 <body>
-  <div class="nav">
-    <div class="inner-nav">
-      <div class="nav-item"><a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a></div>
-    </div>
-  </div>
-  <div class="page">
-    <div class="header">
-      <h2>Health</h2>
-    </div>
-    <div class="read">
-      <div><img src="images/server.gif" width="100px"></div>
-    </div>
-    <div class="header">
-      <h2>Scratch Health</h2>
-    </div>
-    <div class="read">
-      <div id="health-container"></div>
-    </div>
-    <div style="height:150px; margin: 10px;padding:10px ;margin-top:50px;border-top: 1px solid #253042;">
-      <div id="about">
-        <a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> /
-        <a href="https://discord.com/users/797570703419244594">discord</a> /
-        <a href="mailto:schafezr0000@gmail.com">email me</a> /
-        <a href="profile.html?username=3r1s_s">profile</a> /
-        <a href="https://github.com/3r1s-s">github</a> /
-        <a href="health.html">health</a> /
-      </div>
-    </div>
-  </div>
+	<div class="nav">
+		<div class="inner-nav">
+			<div class="nav-item"><a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a></div>
+		</div>
+	</div>
+	<div class="page">
+		<div class="header">
+			<h2>Health</h2>
+		</div>
+		<div class="read">
+			<div><img src="images/server.gif" width="100px"></div>
+		</div>
+		<div class="header">
+			<h2>Scratch Health</h2>
+		</div>
+		<div class="read">
+			<div id="health-container"></div>
+		</div>
+		<div style="height:150px; margin: 10px;padding:10px ;margin-top:50px;border-top: 1px solid #253042;">
+			<div id="about">
+				<a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> / <a href="https://discord.com/users/797570703419244594">discord</a> / <a href="mailto:schafezr0000@gmail.com">email me</a> / <a href="profile.html?username=3r1s_s">profile</a> / <a href="https://github.com/3r1s-s">github</a> / <a href="health.html">health</a> / <a href="about.html">about</a> /
+			</div>
+		</div>
+	</div>
 </body>
-
 </html>

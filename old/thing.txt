@@ -1,0 +1,7 @@
+<span style="display: flex;">
+          <font style="color:#5bcefa">tr</font>
+          <font style="color:#f5a9b8">an</font>
+          <font style="color:#fff">s r</font>
+          <font style="color:#f5a9b8">igh</font>
+          <font style="color:#5bcefa">ts</font>
+        </span>

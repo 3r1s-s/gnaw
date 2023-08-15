@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<title>Profile | gnaw</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<link rel="icon" href="images/icon.png">
 	<link rel="manifest" href="manifest.webmanifest">
+	<link rel="stylesheet" href="styles.css">
 	<style>
-		.page {
-			max-width: 1000px;
-			margin: 0 auto;
-			padding-top: 50px;
-		}
-
 		.user-info {
 			display: flex;
 			font-weight: lighter;
@@ -30,67 +24,8 @@
 			display: none;
 		}
 
-		body {
-			background-color: #010409;
-			color: #fff;
-			font-family: Whitney;
-			overflow-x: hidden;
-			margin: 0;
-		}
-
-		a {
-			color: #fff;
-			text-decoration: none;
-		}
-
-		a:hover {
-			color: #fff;
-			text-decoration: underline;
-		}
-
 		.read {
-			flex: 1;
-			border: 1px solid #253042;
-			background-color: #0d1117;
 			margin: 5px;
-			padding: 15px;
-			border-radius: 5px;
-		}
-
-		.nav {
-			display: flex;
-			align-items: center;
-			position: fixed;
-			background-color: #0d1117;
-			box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
-			padding: 0;
-			width: 100%;
-			height: 50px;
-			z-index: 1000;
-			font-size: 16px;
-		}
-
-		.inner-nav {
-			margin: auto;
-			box-sizing: border-box;
-			padding: 0 10px;
-			display: flex;
-			align-items: center;
-			flex-basis: 1000px;
-			height: 50px;
-		}
-
-		.nav-item {
-			display: flex;
-			flex: 1;
-			height: 50px;
-			overflow: hidden;
-			flex-wrap: wrap;
-			align-items: center;
-		}
-
-		.header {
-			margin: 10px;
 		}
 
 		.recent {
@@ -148,79 +83,6 @@
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
-		}
-
-		button {
-			width: 100px;
-			height: 33px;
-			background-color: transparent;
-			border: 1px solid #253042;
-			color: #fff;
-			border-radius: 5px;
-			font-family: Whitney;
-		}
-
-		button:hover {
-			border: 1px solid #36465f;
-			cursor: pointer;
-		}
-
-		form input {
-			width: 200px;
-			height: 30px;
-			background-color: transparent;
-			border: 1px solid #253042;
-			color: #fff;
-			border-radius: 5px;
-			font-family: Whitney;
-			color: #fff;
-			outline: none;
-		}
-
-		form input:focus {
-			border: 1px solid #36465f;
-		}
-
-		@font-face {
-			font-family: Whitney;
-			font-weight: normal;
-			src: url(fonts/whitney/whitney-medium.otf) format("opentype");
-		}
-
-		@font-face {
-			font-family: Whitney;
-			font-weight: bold;
-			src: url(fonts/whitney/whitney-bold.otf) format("opentype");
-		}
-
-		@font-face {
-			font-family: Whitney;
-			font-weight: lighter;
-			src: url(fonts/whitney/whitney-light.otf) format("opentype");
-		}
-
-		@font-face {
-			font-family: Whitney Italic;
-			font-weight: normal;
-			src: url(fonts/whitney/whitney-mediumitalic.otf) format("opentype");
-		}
-
-		@font-face {
-			font-family: Whitney Italic;
-			font-weight: bold;
-			src: url(fonts/whitney/whitney-semibolditalic.otf) format("opentype");
-		}
-
-		@font-face {
-			font-family: Whitney Italic;
-			font-weight: lighter;
-			src: url(fonts/whitney/whitney-lightitalic.otf) format("opentype");
-		}
-
-		@font-face {
-			font-family: Whitney Book;
-			font-weight: normal;
-			src: url(fonts/whitney/whitneybook.otf) format("opentype");
 		}
 	</style>
 	<script>
@@ -355,7 +217,6 @@
 		}
 	</script>
 </head>
-
 <body>
 	<div class="nav">
 		<div class="inner-nav">
@@ -378,15 +239,11 @@
 			</div>
 			<div id='projects'></div>
 			<div style="height:150px; margin: 10px;padding:10px ;margin-top:50px;border-top: 1px solid #253042;">
-        <div id="about">
-          <a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> / 
-          <a href="https://discord.com/users/797570703419244594">discord</a> / 
-          <a href="mailto:schafezr0000@gmail.com">email me</a> / 
-		  <a href="profile.html?username=3r1s_s">profile</a> / 
-          <a href="https://github.com/3r1s-s">github</a> / 
-          <a href="health.html">health</a> / 
-        </div>
+				<div id="about">
+					<a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> / <a href="https://discord.com/users/797570703419244594">discord</a> / <a href="mailto:schafezr0000@gmail.com">email me</a> / <a href="profile.html?username=3r1s_s">profile</a> / <a href="https://github.com/3r1s-s">github</a> / <a href="health.html">health</a> / <a href="about.html">about</a> /
+				</div>
 			</div>
+		</div>
+	</div>
 </body>
-
 </html>

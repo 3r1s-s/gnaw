@@ -1,221 +1,83 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title>gnaw</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <link rel="icon" href="images/icon.png">
-  <link rel="manifest" href="manifest.webmanifest">
-  <style>
-  body {
-    background-color: #010409;
-    color: #fff;
-    font-family: Whitney;
-    overflow-x: hidden;
-    margin: 0;
-  }
+	<title>gnaw</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="icon" href="images/icon.png">
+	<link rel="manifest" href="manifest.webmanifest">
+	<link rel="stylesheet" href="styles.css">
+	<style>
+		.thumbnail-container {
+			flex-shrink: 0;
+			margin-right: 10px;
+		}
 
-  .page {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding-top: 50px;
-  }
+		.thumbnail {
+			width: 100px;
+			height: auto;
+			border-radius: 5px;
+		}
 
-  .read {
-    flex: 1;
-    border: 1px solid #253042;
-    background-color: #0d1117;
-    margin: 10px;
-    padding: 15px;
-    border-radius: 5px;
-  }
+		.project {
+			display: flex;
+		}
 
-  .nav {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    background-color: #0d1117;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
-    padding: 0;
-    width: 100%;
-    height: 50px;
-    z-index: 1000;
-    font-size: 16px;
-  }
+		.about {
+			display: flex;
+		}
 
-  .inner-nav {
-    margin: auto;
-    box-sizing: border-box;
-    padding: 0 10px;
-    display: flex;
-    align-items: center;
-    flex-basis: 1000px;
-    height: 50px;
-  }
+		.news-item {
+			display: flex;
+			margin-bottom: 10px;
+			margin-top: 10px;
+		}
+	</style>
+	<script>
+		function navigateToProfile(usernameInput, projectInput) {
+			var url;
+			if(usernameInput) {
+				url = "profile.html?username=" + encodeURIComponent(usernameInput);
+			}
+			else if(projectInput) {
+				url = "search.html?project=" + encodeURIComponent(projectInput);
+			}
+			else {
+				return;
+			}
+			window.location.href = url;
+		}
 
-  .nav-item {
-    display: flex;
-    flex: 1;
-    height: 50px;
-    overflow: hidden;
-    flex-wrap: wrap;
-    align-items: center;
-  }
+		function clearInputs() {
+			document.getElementById("username").value = "";
+			document.getElementById("project").value = "";
+		}
 
-  .header {
-    margin: 10px;
-  }
+		function handleUserSearch() {
+			var usernameInput = document.getElementById("username").value;
+			navigateToProfile(usernameInput, null);
+		}
 
-  .thumbnail-container {
-    flex-shrink: 0;
-    margin-right: 10px;
-  }
+		function handleProjectSearch() {
+			var projectInput = document.getElementById("project").value;
+			navigateToProfile(null, projectInput);
+		}
 
-  .thumbnail {
-    width: 100px;
-    height: auto;
-    border-radius: 5px;
-  }
+		function handleKeyPress(event) {
+			if(event.key === 'Enter') {
+				event.preventDefault();
+				var usernameInput = document.getElementById("username").value;
+				var projectInput = document.getElementById("project").value;
+				navigateToProfile(usernameInput, projectInput);
+			}
+		}
 
-  .project {
-    display: flex;
-  }
-
-  about {
-    display: flex;
-  }
-
-  .news-item {
-    display: flex;
-    margin-bottom: 10px;
-    margin-top: 10px;
-  }
-
-  button {
-    width: 100px;
-    height: 33px;
-    background-color: transparent;
-    border: 1px solid #253042;
-    color: #fff;
-    border-radius: 5px;
-    font-family: Whitney;
-  }
-
-  button:hover {
-    border: 1px solid #36465f;
-    cursor: pointer;
-  }
-
-  form input {
-    width: 200px;
-    height: 30px;
-    background-color: transparent;
-    border: 1px solid #253042;
-    color: #fff;
-    border-radius: 5px;
-    font-family: Whitney;
-    outline: none;
-  }
-
-  form input:focus {
-    border: 1px solid #36465f;
-  }
-
-  a {
-    color: #fff;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  @font-face {
-    font-family: Whitney;
-    font-weight: normal;
-    src: url(fonts/whitney/whitney-medium.otf) format("opentype");
-  }
-
-  @font-face {
-    font-family: Whitney;
-    font-weight: bold;
-    src: url(fonts/whitney/whitney-bold.otf) format("opentype");
-  }
-
-  @font-face {
-    font-family: Whitney;
-    font-weight: lighter;
-    src: url(fonts/whitney/whitney-light.otf) format("opentype");
-  }
-
-  @font-face {
-    font-family: Whitney Italic;
-    font-weight: normal;
-    src: url(fonts/whitney/whitney-mediumitalic.otf) format("opentype");
-  }
-
-  @font-face {
-    font-family: Whitney Italic;
-    font-weight: bold;
-    src: url(fonts/whitney/whitney-semibolditalic.otf) format("opentype");
-  }
-
-  @font-face {
-    font-family: Whitney Italic;
-    font-weight: lighter;
-    src: url(fonts/whitney/whitney-lightitalic.otf) format("opentype");
-  }
-
-  @font-face {
-    font-family: Whitney Book;
-    font-weight: normal;
-    src: url(fonts/whitney/whitneybook.otf) format("opentype");
-  }
-  </style>
-  <script>
-  function navigateToProfile(usernameInput, projectInput) {
-    var url;
-    if (usernameInput) {
-      url = "profile.html?username=" + encodeURIComponent(usernameInput);
-    } else if (projectInput) {
-      url = "search.html?project=" + encodeURIComponent(projectInput);
-    } else {
-      return;
-    }
-    window.location.href = url;
-  }
-
-  function clearInputs() {
-    document.getElementById("username").value = "";
-    document.getElementById("project").value = "";
-  }
-
-  function handleUserSearch() {
-    var usernameInput = document.getElementById("username").value;
-    navigateToProfile(usernameInput, null);
-  }
-
-  function handleProjectSearch() {
-    var projectInput = document.getElementById("project").value;
-    navigateToProfile(null, projectInput);
-  }
-
-  function handleKeyPress(event) {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      var usernameInput = document.getElementById("username").value;
-      var projectInput = document.getElementById("project").value;
-      navigateToProfile(usernameInput, projectInput);
-    }
-  }
-
-  function fetchNews() {
-    fetch('https://corsproxy.io/?https://api.scratch.mit.edu/news').then(response => response.json()).then(data => {
-      var newsContainer = document.getElementById('news-container');
-      var newsHTML = '';
-      for (var i = 0; i < Math.min(data.length, 3); i++) {
-        var item = data[i];
-        newsHTML += `
+		function fetchNews() {
+			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/news').then(response => response.json()).then(data => {
+				var newsContainer = document.getElementById('news-container');
+				var newsHTML = '';
+				for(var i = 0; i < Math.min(data.length, 3); i++) {
+					var item = data[i];
+					newsHTML += `
               <div class="news-item">
                 <img src="${item.image}" width="50px" height="50px" style="margin-right:15px;">
                 <div>
@@ -224,27 +86,27 @@
                   </h3>
                 </div>
               </div>`;
-      }
-      newsContainer.innerHTML = newsHTML;
-    }).catch(error => {
-      console.error('Error:', error);
-    });
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    clearInputs();
-    fetchNews();
-    fetchExplore();
-    fetchFeatured();
-  });
+				}
+				newsContainer.innerHTML = newsHTML;
+			}).catch(error => {
+				console.error('Error:', error);
+			});
+		}
+		document.addEventListener('DOMContentLoaded', function() {
+			clearInputs();
+			fetchNews();
+			fetchExplore();
+			fetchFeatured();
+		});
 
-  function fetchExplore() {
-    fetch('https://corsproxy.io/?https://api.scratch.mit.edu/explore/projects?q=games&mode=trending&language=en').then(response => response.json()).then(data => {
-      var exploreContainer = document.getElementById('explore-container');
-      var exploreHTML = '';
-      for (var i = 0; i < 3; i++) {
-        var project = data[i];
-        var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${project.id}_480x360.png`;
-        exploreHTML += `
+		function fetchExplore() {
+			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/explore/projects?q=games&mode=trending&language=en').then(response => response.json()).then(data => {
+				var exploreContainer = document.getElementById('explore-container');
+				var exploreHTML = '';
+				for(var i = 0; i < 3; i++) {
+					var project = data[i];
+					var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${project.id}_480x360.png`;
+					exploreHTML += `
               <div class="project read">
                 <div class="thumbnail-container">
                   <img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail">
@@ -257,21 +119,21 @@
                   </p>
                 </div>
               </div>`;
-      }
-      exploreContainer.innerHTML = exploreHTML;
-    }).catch(error => {
-      console.error('Error:', error);
-    });
-  }
+				}
+				exploreContainer.innerHTML = exploreHTML;
+			}).catch(error => {
+				console.error('Error:', error);
+			});
+		}
 
-  function fetchFeatured() {
-    fetch('https://corsproxy.io/?https://api.scratch.mit.edu/studios/27205657/projects').then(response => response.json()).then(data => {
-      var exploreContainer = document.getElementById('featured-container');
-      var exploreHTML = '';
-      for (var i = 0; i < 3; i++) {
-        var project = data[i];
-        var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${project.id}_480x360.png`;
-        exploreHTML += `
+		function fetchFeatured() {
+			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/studios/27205657/projects').then(response => response.json()).then(data => {
+				var exploreContainer = document.getElementById('featured-container');
+				var exploreHTML = '';
+				for(var i = 0; i < 3; i++) {
+					var project = data[i];
+					var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${project.id}_480x360.png`;
+					exploreHTML += `
               <div class="project read">
                 <div class="thumbnail-container">
                   <img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail">
@@ -283,62 +145,55 @@
                   </p>
                 </div>
               </div>`;
-      }
-      exploreContainer.innerHTML = exploreHTML;
-    }).catch(error => {
-      console.error('Error:', error);
-    });
-  }
-  </script>
+				}
+				exploreContainer.innerHTML = exploreHTML;
+			}).catch(error => {
+				console.error('Error:', error);
+			});
+		}
+	</script>
 </head>
-
 <body>
-  <div class="nav">
-    <div class="inner-nav">
-      <div class="nav-item"><a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a></div>
-    </div>
-  </div>
-  <div class="page">
-    <div class="header">
-      <h1>Home</h1>
-      <h2>Search</h2>
-    </div>
-    <div class="read">
-      <form onsubmit="event.preventDefault();">
-        <input type="text" id="username" placeholder="Enter username" autocomplete="off" autocapitalize="off">
-        <button onclick="handleUserSearch()" class="btn">Search User</button>
-      </form>
-      <br>
-      <form onsubmit="event.preventDefault();">
-        <input type="text" id="project" placeholder="Search project name" autocapitalize="off">
-        <button onclick="handleProjectSearch()" class="btn">Search Project</button>
-      </form>
-    </div>
-    <div class="header">
-      <h2>News</h2>
-    </div>
-    <div class="read">
-      <div id="news-container"></div>
-    </div>
-    <div class="header">
-      <h2><a href="explore.html">Explore</a></h2>
-    </div>
-    <div id="explore-container"></div>
-    <div class="header">
-      <h2><a href="featured.html">Featured</a></h2>
-    </div>
-    <div id="featured-container"></div>
-    <div style="height:150px; margin: 10px;padding:10px ;margin-top:50px;border-top: 1px solid #253042;">
-      <div id="about">
-        <a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> /
-        <a href="https://discord.com/users/797570703419244594">discord</a> /
-        <a href="mailto:schafezr0000@gmail.com">email me</a> /
-        <a href="profile.html?username=3r1s_s">profile</a> /
-        <a href="https://github.com/3r1s-s">github</a> /
-        <a href="health.html">health</a> /
-      </div>
-    </div>
-  </div>
+	<div class="nav">
+		<div class="inner-nav">
+			<div class="nav-item"><a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a></div>
+		</div>
+	</div>
+	<div class="page">
+		<div class="header">
+			<h1>Home</h1>
+			<h2>Search</h2>
+		</div>
+		<div class="read">
+			<form onsubmit="event.preventDefault();">
+				<input type="text" id="username" placeholder="Enter username" autocomplete="off" autocapitalize="off">
+				<button onclick="handleUserSearch()" class="btn">Search User</button>
+			</form>
+			<br>
+			<form onsubmit="event.preventDefault();">
+				<input type="text" id="project" placeholder="Search project name" autocapitalize="off">
+				<button onclick="handleProjectSearch()" class="btn">Search Project</button>
+			</form>
+		</div>
+		<div class="header">
+			<h2>News</h2>
+		</div>
+		<div class="read">
+			<div id="news-container"></div>
+		</div>
+		<div class="header">
+			<h2><a href="explore.html">Explore</a></h2>
+		</div>
+		<div id="explore-container"></div>
+		<div class="header">
+			<h2><a href="featured.html">Featured</a></h2>
+		</div>
+		<div id="featured-container"></div>
+		<div style="height:150px; margin: 10px;padding:10px ;margin-top:50px;border-top: 1px solid #253042;">
+			<div id="about">
+				<a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> / <a href="https://discord.com/users/797570703419244594">discord</a> / <a href="mailto:schafezr0000@gmail.com">email me</a> / <a href="profile.html?username=3r1s_s">profile</a> / <a href="https://github.com/3r1s-s">github</a> / <a href="health.html">health</a> / <a href="about.html">about</a> /
+			</div>
+		</div>
+	</div>
 </body>
-
 </html>
