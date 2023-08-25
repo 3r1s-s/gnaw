@@ -117,6 +117,7 @@
 			fetchNews();
 			fetchExplore();
 			fetchFeatured();
+			fetchChange();
 		});
 
 		function fetchExplore() {
@@ -171,6 +172,35 @@
 				console.error('Error:', error);
 			});
 		}
+
+		function fetchChange() {
+    // Load the JSON file locally
+    fetch('changelog.json')
+        .then(response => response.json())
+        .then(changelogData => {
+            var exploreContainer = document.getElementById('changelog');
+            var exploreHTML = '';
+
+            // Loop through the JSON data and generate HTML
+            for (var i = 0; i < 3 && i < changelogData.length; i++) {
+                exploreHTML += `
+                <div class="project read">
+                    <div class="thumbnail-container">
+                    </div>
+                    <div class="project-info">
+                        <h3 style='margin:0;'>${changelogData[i].date}</h3>
+                    </div>
+                </div>`;
+            }
+
+            exploreContainer.innerHTML = exploreHTML;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+
 	</script>
 </head>
 <body>
@@ -218,6 +248,10 @@
 			<h2><a href="featured.html">Featured</a></h2>
 		</div>
 		<div id="featured-container"></div>
+		<div class="header">
+			<h2><a href="changelog.html">Changelog</a></h2>
+		</div>
+		<div id="changelog"></div>
 		<div style="height:150px; margin: 10px;padding:10px ;margin-top:50px;border-top: 1px solid #253042;">
 			<div id="about">
 				<a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> / <a href="https://discord.com/users/797570703419244594">discord</a> / <a href="mailto:schafezr0000@gmail.com">email me</a> / <a href="profile.html?username=3r1s_s">profile</a> / <a href="https://github.com/3r1s-s">github</a> / <a href="health.html">health</a> / <a href="about.html">about</a> /
