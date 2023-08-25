@@ -31,6 +31,26 @@
 			margin-bottom: 10px;
 			margin-top: 10px;
 		}
+
+		.search {
+			display: flex;
+			align-items: end;
+		}
+
+		.searchbox {
+			border-top-right-radius: 0px;
+			border-bottom-right-radius: 0px;
+		}
+
+		.in {
+			border-top-left-radius: 0px;
+			border-bottom-left-radius: 0px;	
+		}
+
+		input, label {
+			display: block;
+		}
+
 	</style>
 	<script>
 		function navigateToProfile(usernameInput, projectInput) {
@@ -79,7 +99,7 @@
 					var item = data[i];
 					newsHTML += `
               <div class="news-item">
-                <img src="${item.image}" width="50px" height="50px" style="margin-right:15px;">
+                <img src="${item.image}" width="50px" height="50px" style="margin-right:15px;" alt="news-item">
                 <div>
                   <h3 style="margin-bottom:5px;">
                     <a href="${item.url}">${item.headline}</a>
@@ -120,7 +140,7 @@
                 </div>
               </div>`;
 				}
-				exploreContainer.innerHTML = exploreHTML;
+				exploreContainer.innerHTML = exploreHTML; //fix the loves and faves counter later (the scratch explore api is slower to update) do the same in explore.html
 			}).catch(error => {
 				console.error('Error:', error);
 			});
@@ -165,15 +185,24 @@
 			<h2>Search</h2>
 		</div>
 		<div class="read">
-			<form onsubmit="event.preventDefault();">
-				<input type="text" id="username" placeholder="Enter username" autocomplete="off" autocapitalize="off">
-				<button onclick="handleUserSearch()" class="btn">Search User</button>
-			</form>
+			<div class="search">
+				<form onsubmit="event.preventDefault();">
+					<label>
+						<p style="margin:5px;">Search User</p>
+						<input type="text" id="username" class="searchbox" autocomplete="off" autocapitalize="off">
+					</label>
+				</form>
+			<button onclick="handleUserSearch()" class="btn in" style="height: 34px;">Search User</button></div>
 			<br>
-			<form onsubmit="event.preventDefault();">
-				<input type="text" id="project" placeholder="Search project name" autocapitalize="off" autocomplete="off">
-				<button onclick="handleProjectSearch()" class="btn">Search Project</button>
-			</form>
+			<div class="search">
+				<form onsubmit="event.preventDefault();">
+				<label>
+					<p style="margin:5px;">Search Project</p>
+					<input type="text" id="project" class="searchbox" autocapitalize="off" autocomplete="off">
+				</label>
+				</form>
+			<button onclick="handleProjectSearch()" class="btn in">Search Project</button>
+		</div>
 		</div>
 		<div class="header">
 			<h2>News</h2>
