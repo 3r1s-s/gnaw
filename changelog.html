@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Explore | gnaw</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="icon" href="images/icon.png">
+	<link rel="manifest" href="manifest.webmanifest">
+	<link rel="stylesheet" href="styles.css">
+	<style>
+		.thumbnail-container {
+			flex-shrink: 0;
+			margin-right: 10px;
+		}
+
+		.thumbnail {
+			width: 100px;
+			height: auto;
+			border-radius: 5px;
+		}
+
+		.project {
+			display: flex;
+		}
+
+		.about {
+			display: flex;
+		}
+
+		.wrap {
+			word-wrap: anywhere;
+		}
+	</style>
+	<script>
+function fetchChange() {
+    fetch('changelog.json')
+        .then(response => response.json())
+        .then(changelogData => {
+            var exploreContainer = document.getElementById('changelog');
+            var exploreHTML = '';
+
+            for (var i = 0; i < changelogData.length; i++) {
+                exploreHTML += `
+                <div class="project read">
+                    <div class="thumbnail-container">
+                    </div>
+                    <div class="project-info">
+                        <h3 style='margin:0;'>${changelogData[i].date}</h3>
+                        <p style='margin:0;'>${changelogData[i].log}</p>
+                    </div>
+                </div>`;
+            }
+
+            exploreContainer.innerHTML = exploreHTML;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+		document.addEventListener('DOMContentLoaded', function() {
+			fetchExplore();
+		});
+
+	</script>
+</head>
+
+<body>
+	<div class="nav">
+		<div class="inner-nav">
+			<div class="nav-item"><a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a></div>
+		</div>
+	</div>
+	<div class="page">
+		<div class="header">
+			<h1>Changelog</h1>
+		</div>
+		<div id="change"></div>
+		<div style="height:150px; margin: 10px;padding:10px ;margin-top:50px;border-top: 1px solid #253042;">
+			<div id="about">
+				<a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> / <a href="https://discord.com/users/797570703419244594">discord</a> / <a href="mailto:schafezr0000@gmail.com">email me</a> / <a href="profile.html?username=3r1s_s">profile</a> / <a href="https://github.com/3r1s-s">github</a> / <a href="health.html">health</a> / <a href="about.html">about</a> /
+			</div>
+		</div>
+	</div>
+</body>
+</html>
