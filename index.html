@@ -44,13 +44,13 @@
 
 		.in {
 			border-top-left-radius: 0px;
-			border-bottom-left-radius: 0px;	
+			border-bottom-left-radius: 0px;
 		}
 
-		input, label {
+		input,
+		label {
 			display: block;
 		}
-
 	</style>
 	<script>
 		function navigateToProfile(usernameInput, projectInput) {
@@ -174,16 +174,11 @@
 		}
 
 		function fetchChange() {
-    // Load the JSON file locally
-    fetch('changelog.json')
-        .then(response => response.json())
-        .then(changelogData => {
-            var exploreContainer = document.getElementById('changelog');
-            var exploreHTML = '';
-
-            // Loop through the JSON data and generate HTML
-            for (var i = 0; i < 3 && i < changelogData.length; i++) {
-                exploreHTML += `
+			fetch('changelog.json').then(response => response.json()).then(changelogData => {
+				var exploreContainer = document.getElementById('changelog');
+				var exploreHTML = '';
+				for(var i = 0; i < 3 && i < changelogData.length; i++) {
+					exploreHTML += `
                 <div class="project read">
                     <div class="thumbnail-container">
                     </div>
@@ -192,18 +187,15 @@
                         <p style='margin:0;'>${changelogData[i].log}</p>
                     </div>
                 </div>`;
-            }
-
-            exploreContainer.innerHTML = exploreHTML;
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
-
-
+				}
+				exploreContainer.innerHTML = exploreHTML;
+			}).catch(error => {
+				console.error('Error:', error);
+			});
+		}
 	</script>
 </head>
+
 <body>
 	<div class="nav">
 		<div class="inner-nav">
@@ -223,17 +215,18 @@
 						<input type="text" id="username" class="searchbox" autocomplete="off" autocapitalize="off">
 					</label>
 				</form>
-			<button onclick="handleUserSearch()" class="btn in" style="height: 34px;">Search User</button></div>
+				<button onclick="handleUserSearch()" class="btn in" style="height: 34px;">Search User</button>
+			</div>
 			<br>
 			<div class="search">
 				<form onsubmit="event.preventDefault();">
-				<label>
-					<p style="margin:5px;">Search Project</p>
-					<input type="text" id="project" class="searchbox" autocapitalize="off" autocomplete="off">
-				</label>
+					<label>
+						<p style="margin:5px;">Search Project</p>
+						<input type="text" id="project" class="searchbox" autocapitalize="off" autocomplete="off">
+					</label>
 				</form>
-			<button onclick="handleProjectSearch()" class="btn in">Search Project</button>
-		</div>
+				<button onclick="handleProjectSearch()" class="btn in">Search Project</button>
+			</div>
 		</div>
 		<div class="header">
 			<h2>News</h2>

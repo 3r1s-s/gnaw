@@ -31,15 +31,12 @@
 		}
 	</style>
 	<script>
-function fetchChange() {
-    fetch('changelog.json')
-        .then(response => response.json())
-        .then(changelogData => {
-            var exploreContainer = document.getElementById('changelog');
-            var exploreHTML = '';
-
-            for (var i = 0; i < changelogData.length; i++) {
-                exploreHTML += `
+		function fetchChange() {
+			fetch('changelog.json').then(response => response.json()).then(changelogData => {
+				var exploreContainer = document.getElementById('changelog');
+				var exploreHTML = '';
+				for(var i = 0; i < changelogData.length; i++) {
+					exploreHTML += `
                 <div class="project read">
                     <div class="thumbnail-container">
                     </div>
@@ -48,19 +45,15 @@ function fetchChange() {
                         <p style='margin:0;'>${changelogData[i].log}</p>
                     </div>
                 </div>`;
-            }
-
-            exploreContainer.innerHTML = exploreHTML;
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-}
-
+				}
+				exploreContainer.innerHTML = exploreHTML;
+			}).catch(error => {
+				console.error('Error:', error);
+			});
+		}
 		document.addEventListener('DOMContentLoaded', function() {
 			fetchChange();
 		});
-
 	</script>
 </head>
 
