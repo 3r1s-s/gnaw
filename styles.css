@@ -24,11 +24,16 @@ button {
 	color: #fff;
 	border-radius: 5px;
 	font-family: Whitney;
+	outline: none;
 }
 
 button:hover {
 	border: 1px solid #36465f;
 	cursor: pointer;
+}
+
+button:focus {
+	border: 1px solid #36465f;
 }
 
 form input {
