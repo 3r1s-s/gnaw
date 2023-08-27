@@ -74,6 +74,16 @@ hr {
 	border-radius: 5px;
 }
 
+@media screen and (max-width: 480px) {
+	.read {
+		margin-left: 0;
+		margin-right: 0;
+		border-radius: 0;
+		border-left: none;
+		border-right: none;
+	}
+}
+
 .nav {
 	display: flex;
 	align-items: center;
