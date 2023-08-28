@@ -176,14 +176,14 @@
 			}).catch(function(error) {
 				console.log("Error:", error);
 			});
-			var url = "https://scratchdb.lefty.one/v3/user/info/" + username;
+			/*var url = "https://scratchdb.lefty.one/v3/user/info/" + username;
 			fetch(url).then(function(response) {
 				return response.json();
 			}).then(function(data) {
 				displaystats(data);
 			}).catch(function(error) {
 				console.log("Error:", error);
-			});
+			}); */ // removed since scratchdb sucks
 		}
 
 		function displayUserInfo(data) {
