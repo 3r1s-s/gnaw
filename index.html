@@ -55,6 +55,29 @@
 		.in:focus {
 			border-left: none;
 		}
+
+		@media screen and (max-width: 480px) {
+			.in {
+      			border-radius: 5px;
+				border: 1px solid #253042;
+				margin-left: 5px;
+			}
+
+			.in:hover {
+				border-left: none;
+				border: 1px solid #36465f;
+			}
+		
+			.in:focus {
+				border-left: none;
+				border: 1px solid #36465f;
+			}
+	
+			.searchbox {
+				border-radius: 5px;
+			}
+		}			
+
 		input,
 		label {
 			display: block;
