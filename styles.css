@@ -110,6 +110,26 @@ hr {
 	margin: 10px;
 }
 
+.icon {
+	font-weight: bold;
+}
+
+.mobile {
+	display: none;
+	font-size: 32px;
+	transform: translateY(-4px);
+	font-family: Whitney;
+}
+
+.mobile:hover {
+	text-decoration: none;
+}
+
+.desktop {
+	display: block;
+	font-family: Whitney Book;
+}
+
 @media screen and (max-width: 480px) {
 	.read {
 		margin-left: 0;
@@ -123,6 +143,13 @@ hr {
 		display: block;
 		height: auto;
 		text-align: center;
+	}
+
+	.mobile {
+		display: block;
+	}
+	.desktop {
+		display: none;
 	}
 }
 
