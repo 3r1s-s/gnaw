@@ -130,6 +130,16 @@ hr {
 	font-family: Whitney Book;
 }
 
+.about {
+	height: 150px; 
+	margin: 10px;
+	padding: 10px;
+	margin-top: 50px;
+	border-top: 1px solid #253042;
+	/*background-color: #010409ee;*/
+	background-color: #010409ef;
+}
+
 @media screen and (max-width: 480px) {
 	.read {
 		margin-left: 0;
@@ -138,18 +148,27 @@ hr {
 		border-left: none;
 		border-right: none;
 	}
-
+	
 	.nav-item {
 		display: block;
 		height: auto;
 		text-align: center;
 	}
-
+	
 	.mobile {
 		display: block;
 	}
+	
 	.desktop {
 		display: none;
+	}
+	
+	.about {
+		margin: 0;
+		position: sticky;
+		bottom: 0;
+		height: auto;
+		backdrop-filter: blur(5px);
 	}
 }
 
