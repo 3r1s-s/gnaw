@@ -143,6 +143,7 @@ hr {
 	display: none;
 }
 
+
 @media screen and (max-width: 480px) {
 	.read {
 		margin-left: 0;
@@ -167,10 +168,10 @@ hr {
 	}
 	
 	.about {
-		height: 150px;
+		height: 50px;
 		opacity: 0;
 	}
-
+	
 	.mobile-nav {
 		display: flex;
 		position: fixed;
