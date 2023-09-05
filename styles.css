@@ -180,10 +180,11 @@ hr {
 		padding-bottom: 50px;
 		padding-top: 5px;
 		border-top: 1px solid #253042;
-		background-color: #010409ef;
 		justify-content: space-evenly;
+		background-color: #010409;
+		/*background-color: #010409ef;
 		backdrop-filter: blur(5px);
-		-webkit-backdrop-filter: blur(5px);
+		-webkit-backdrop-filter: blur(5px);*/
 	}
 	
 }
