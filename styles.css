@@ -177,14 +177,15 @@ hr {
 		position: fixed;
 		bottom: 0;
 		width: 100%;
-		padding-bottom: 60px;
-		padding-top: 15px;
+		padding-bottom: 50px;
+		padding-top: 5px;
 		border-top: 1px solid #253042;
 		background-color: #010409ef;
 		justify-content: space-evenly;
 		backdrop-filter: blur(5px);
 		-webkit-backdrop-filter: blur(5px);
 	}
+	
 }
 
 /*Fonts*/
@@ -258,6 +259,13 @@ hr {
   'FILL' 1,
   'wght' 400,
   'GRAD' 0,
-  'opsz' 24
+  'opsz' 24;
+	font-size: 30px;
+	padding: 15px;
+	transition: all 250ms;
+}
+
+.material-symbols-outlined:active {
+transform: scale(0.8);
 }
   
