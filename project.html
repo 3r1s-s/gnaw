@@ -36,47 +36,78 @@
 			overflow-wrap: anywhere;
 		}
 
+		.mobile-desc {
+			display: none;
+		}
+
 		@media screen and (max-width: 600px) {
 			#outer-desc {
 				display: none;
 			}
+			
+			.mobile-desc {
+				display: block;
+			}
+
+			.desc {
+				flex: 1;
+				border: 1px solid #253042;
+				background-color: #0d1117;
+				padding: 15px;
+				border-radius: 5px;
+			}
 		}
 	</style>
 	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			const urlParams = new URLSearchParams(window.location.search);
-			const embed = urlParams.get('project');
-			var projectUrl = "https://corsproxy.io/?https://api.scratch.mit.edu/projects/" + embed;
-			var commentsVisible = false;
-			var toggleCommentsLink = document.getElementById('toggle-comments');
-			fetch(projectUrl).then(function(response) {
-				return response.json();
-			}).then(function(data) {
-				displayProjectInfo(data);
-				var commentsUrl = "https://corsproxy.io/?https://api.scratch.mit.edu/users/" + data.author.username + "/projects/" + embed + "/comments";
-				fetch(commentsUrl).then(function(response) {
-					return response.json();
-				}).then(function(comments) {
-					displayComments(data, comments);
-				}).catch(function(error) {
-					console.log("Error:", error);
-				});
-			}).catch(function(error) {
-				console.log("Error:", error);
-			});
-			toggleCommentsLink.addEventListener('click', function() {
-				var commentsSection = document.getElementById('comments-list');
-				if(commentsVisible) {
-					commentsSection.style.display = 'none';
-					toggleCommentsLink.textContent = 'Show Comments';
-				}
-				else {
-					commentsSection.style.display = 'block';
-					toggleCommentsLink.textContent = 'Hide Comments';
-				}
-				commentsVisible = !commentsVisible;
-			});
-		});
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const embed = urlParams.get('project');
+	var descVisible = false;
+    var projectUrl = "https://corsproxy.io/?https://api.scratch.mit.edu/projects/" + embed;
+    var commentsVisible = false;
+    var toggleCommentsLink = document.getElementById('toggle-comments');
+    
+    // Move this line after project information is loaded
+    var toggleDescLink;
+
+    console.log(toggleCommentsLink);
+	
+    fetch(projectUrl).then(function(response) {
+		return response.json();
+    }).then(function(data) {
+		displayProjectInfo(data);
+        var commentsUrl = "https://corsproxy.io/?https://api.scratch.mit.edu/users/" + data.author.username + "/projects/" + embed + "/comments";
+        fetch(commentsUrl).then(function(response) {
+			return response.json();
+        }).then(function(comments) {
+            displayComments(data, comments);
+			
+            // Now, get the toggle-desc element
+            toggleDescLink = document.getElementById('toggle-desc');
+			console.log(toggleDescLink);
+
+            // Add the event listener
+            toggleDescLink.addEventListener('click', function() {
+                var desc = document.getElementById('desc-mobile');
+                if(descVisible) {
+                    desc.style.display = 'none';
+                    toggleDescLink.textContent = 'Show Description';
+                }
+                else {
+                    desc.style.display = 'block';
+                    toggleDescLink.textContent = 'Hide Description';
+                }
+                descVisible = !descVisible;
+            });
+        }).catch(function(error) {
+            console.log("Error:", error);
+        });
+    }).catch(function(error) {
+        console.log("Error:", error);
+    });
+});
+
+
 
 		function displayComments(projectData, commentsResponse) {
 			var commentsList = document.getElementById("comments-list");
@@ -98,14 +129,14 @@
 
 		function displayProjectInfo(data) {
 			var projectInfo = document.getElementById("embed");
-			var html = "<div class='read flex'><iframe src='https://turbowarp.org/" + data.id + "/embed' allowtransparency='true' width='485' height='402' frameborder='0' scrolling='no' allowfullscreen='yes'></iframe>" + "<div id='outer-desc'><div class='read desc'>" + formatText(data.instructions) + "</div>";
+			var html = "<div class='read flex proj'><iframe src='https://turbowarp.org/" + data.id + "/embed' allowtransparency='true' width='485' height='402' class='project-frame' frameborder='0' scrolling='no' allowfullscreen='yes'></iframe>" + "<div id='outer-desc'><div class='read desc'>" + formatText(data.instructions) + "</div>";
 			if(data.description && data.description.trim() !== "") {
 				html += "<div class='read desc'>" + formatText(data.description) + "</div></div>";
 			}
 			html += "</div>";
 			projectInfo.innerHTML = html;
 			var projectStats = document.getElementById("project-stats");
-			var htmlStats = "<div class='read'>" + "<h1 class='title'><a href='https://scratch.mit.edu/projects/" + data.id + "'>" + data.title + "</a><font style='font-size:16px;'><em>#" + data.id + "</em></font></h1>" + "<p class='sub'><em>by <a href='profile.html?username=" + data.author.username + "'>" + data.author.username + "</a></em>" + " | Loves: " + data.stats.loves + " | Favorites: " + data.stats.favorites + " | Views: " + data.stats.views + " | Remixes: " + data.stats.remixes +  " | Shared on: " + formatDate(data.history.shared) + "</p>" + "</div>";
+			var htmlStats = "<div class='read'>" + "<h1 class='title'><a href='https://scratch.mit.edu/projects/" + data.id + "'>" + data.title + "</a><font style='font-size:16px;'><em>#" + data.id + "</em></font></h1>" + "<p class='sub'><em>by <a href='profile.html?username=" + data.author.username + "'>" + data.author.username + "</a></em>" + " | Loves: " + data.stats.loves + " | Favorites: " + data.stats.favorites + " | Views: " + data.stats.views + " | Remixes: " + data.stats.remixes +  " | Shared on: " + formatDate(data.history.shared) + "</p>" + "<a href='javascript:void(0);' id='toggle-desc' class='mobile-desc'> Show Description</a>" + "<div id='desc-mobile' class='mobile-desc' style='display:none;'><div class='read desc'>" + formatText(data.instructions) + "</div>" + "<div class='read desc'>" + formatText(data.description) + "</div></div>" + "</div>";
 			projectStats.innerHTML = htmlStats;
 			document.title = data.title + " | gnaw";
 		}

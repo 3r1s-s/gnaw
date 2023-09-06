@@ -182,11 +182,10 @@ hr {
 		border-top: 1px solid #253042;
 		justify-content: space-evenly;
 		/*background-color: #010409;*/
-		background-color: #010409ef;
+		background-color: #010409ee;
 		backdrop-filter: blur(15px) saturate(180%);
 		-webkit-backdrop-filter: blur(15px);
 	}
-	
 }
 
 .mobile-nav-item > a{
