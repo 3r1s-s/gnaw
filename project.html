@@ -1,222 +1,216 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Project | gnaw</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-	<link rel="icon" href="images/icon.png">
-	<link rel="manifest" href="manifest.webmanifest">
-	<link rel="stylesheet" href="styles.css">
-	<style>
-		.thumbnail-container {
-			flex-shrink: 0;
-			margin-right: 10px;
-		}
+    <title>Project | gnaw</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="icon" href="images/icon.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .thumbnail-container {
+            flex-shrink: 0;
+            margin-right: 10px;
+        }
 
-		.thumbnail {
-			width: 100px;
-			height: auto;
-			border-radius: 5px;
-		}
+        .thumbnail {
+            width: 100px;
+            height: auto;
+            border-radius: 5px;
+        }
 
-		.flex {
-			display: flex;
-		}
+        .flex {
+            display: flex;
+        }
 
-		.desc {
-			word-wrap: anywhere;
-			height: 155px;
-			overflow-y: scroll;
-		}
+        .desc {
+            word-wrap: anywhere;
+            height: 155px;
+            overflow-y: scroll;
+        }
 
-		#outer-desc {
-			width: 50%;
-		}
+        #outer-desc {
+            width: 50%;
+        }
 
-		.comments {
-			overflow-wrap: anywhere;
-		}
+        .comments {
+            overflow-wrap: anywhere;
+        }
 
-		.mobile-desc {
-			display: none;
-		}
+        .mobile-desc {
+            display: none;
+        }
 
-		@media screen and (max-width: 600px) {
-			#outer-desc {
-				display: none;
-			}
-			
-			.mobile-desc {
-				display: block;
-			}
+        @media screen and (max-width: 600px) {
+            #outer-desc {
+                display: none;
+            }
 
-			.desc {
-				flex: 1;
-				border: 1px solid #253042;
-				background-color: #0d1117;
-				padding: 15px;
-				border-radius: 5px;
-			}
-			
-			.comment {				
-				flex: 1;
-				border: 1px solid #253042;
-				background-color: #0d1117;
-				padding: 15px;
-				border-radius: 5px;
-			}
-		}
-	</style>
-	<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const embed = urlParams.get('project');
-	var descVisible = false;
-    var projectUrl = "https://corsproxy.io/?https://api.scratch.mit.edu/projects/" + embed;
-    var commentsVisible = false;
-    var toggleCommentsLink = document.getElementById('toggle-comments');
-    
-    // Move this line after project information is loaded
-    var toggleDescLink;
+            .mobile-desc {
+                display: block;
+            }
 
-    console.log(toggleCommentsLink);
-	
-    fetch(projectUrl).then(function(response) {
-		return response.json();
-    }).then(function(data) {
-		displayProjectInfo(data);
-        var commentsUrl = "https://corsproxy.io/?https://api.scratch.mit.edu/users/" + data.author.username + "/projects/" + embed + "/comments";
-        fetch(commentsUrl).then(function(response) {
-			return response.json();
-        }).then(function(comments) {
-            displayComments(data, comments);
-			
-            // Now, get the toggle-desc element
-            toggleDescLink = document.getElementById('toggle-desc');
-			console.log(toggleDescLink);
+            .desc {
+                flex: 1;
+                border: 1px solid #253042;
+                background-color: #0d1117;
+                padding: 15px;
+                border-radius: 5px;
+            }
 
-			toggleCommentsLink.addEventListener('click', function() {
-				var commentsSection = document.getElementById('comments-list');
-				if(commentsVisible) {
-					commentsSection.style.display = 'none';
-					toggleCommentsLink.textContent = 'Show Comments';
-				}
-				else {
-					commentsSection.style.display = 'block';
-					toggleCommentsLink.textContent = 'Hide Comments';
-				}
-				commentsVisible = !commentsVisible;
-			});
-            // Add the event listener
-            toggleDescLink.addEventListener('click', function() {
-                var desc = document.getElementById('desc-mobile');
-                if(descVisible) {
-                    desc.style.display = 'none';
-                    toggleDescLink.textContent = 'Show Description';
-                }
-                else {
-                    desc.style.display = 'block';
-                    toggleDescLink.textContent = 'Hide Description';
-                }
-                descVisible = !descVisible;
+            .comment {
+                flex: 1;
+                border: 1px solid #253042;
+                background-color: #0d1117;
+                padding: 15px;
+                border-radius: 5px;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const embed = urlParams.get('project');
+            var descVisible = false;
+            var projectUrl = "https://corsproxy.io/?https://api.scratch.mit.edu/projects/" + embed;
+            var commentsVisible = false;
+            var toggleCommentsLink = document.getElementById('toggle-comments');
+            var toggleDescLink;
+
+            console.log(toggleCommentsLink);
+
+            fetch(projectUrl).then(function(response) {
+                return response.json();
+            }).then(function(data) {
+                displayProjectInfo(data);
+                var commentsUrl = "https://corsproxy.io/?https://api.scratch.mit.edu/users/" + data.author.username + "/projects/" + embed + "/comments";
+                fetch(commentsUrl).then(function(response) {
+                    return response.json();
+                }).then(function(comments) {
+                    displayComments(data, comments);
+
+                    // Now, get the toggle-desc element
+                    toggleDescLink = document.getElementById('toggle-desc');
+                    console.log(toggleDescLink);
+
+                    toggleCommentsLink.addEventListener('click', function() {
+                        var commentsSection = document.getElementById('comments-list');
+                        if (commentsVisible) {
+                            commentsSection.style.display = 'none';
+                            toggleCommentsLink.textContent = 'Show Comments';
+                        } else {
+                            commentsSection.style.display = 'block';
+                            toggleCommentsLink.textContent = 'Hide Comments';
+                        }
+                        commentsVisible = !commentsVisible;
+                    });
+                    // Add the event listener
+                    toggleDescLink.addEventListener('click', function() {
+                        var desc = document.getElementById('desc-mobile');
+                        if (descVisible) {
+                            desc.style.display = 'none';
+                            toggleDescLink.textContent = 'Show Description';
+                        } else {
+                            desc.style.display = 'block';
+                            toggleDescLink.textContent = 'Hide Description';
+                        }
+                        descVisible = !descVisible;
+                    });
+                }).catch(function(error) {
+                    console.log("Error:", error);
+                });
+            }).catch(function(error) {
+                console.log("Error:", error);
             });
-        }).catch(function(error) {
-            console.log("Error:", error);
         });
-    }).catch(function(error) {
-        console.log("Error:", error);
-    });
-});
 
 
 
-		function displayComments(projectData, commentsResponse) {
-			var commentsList = document.getElementById("comments-list");
-			if(Array.isArray(commentsResponse)) {
-				commentsResponse.forEach(function(comment) {
-					var commentItem = document.createElement("div");
-					commentItem.className = "comment read";
-					commentItem.innerHTML = `
+        function displayComments(projectData, commentsResponse) {
+            var commentsList = document.getElementById("comments-list");
+            if (Array.isArray(commentsResponse)) {
+                commentsResponse.forEach(function(comment) {
+                    var commentItem = document.createElement("div");
+                    commentItem.className = "comment read";
+                    commentItem.innerHTML = `
           <div class="comment-author" style='margin-bottom:10px;'><strong style='font-size:18px;'><a href='profile.html?username=${comment.author.username}'>${comment.author.username}</strong></a></div>
         <div class="comment-content">${comment.content}</div>
       `;
-					commentsList.appendChild(commentItem);
-				});
-			}
-			else {
-				console.error("nope");
-			}
-		}
+                    commentsList.appendChild(commentItem);
+                });
+            } else {
+                console.error("nope");
+            }
+        }
 
-		function displayProjectInfo(data) {
-			var projectInfo = document.getElementById("embed");
-			var html = "<div class='read flex proj'><iframe src='https://turbowarp.org/" + data.id + "/embed' allowtransparency='true' width='485' height='402' class='project-frame' frameborder='0' scrolling='no' allowfullscreen='yes'></iframe>" + "<div id='outer-desc'><div class='read desc'>" + formatText(data.instructions) + "</div>";
-			if(data.description && data.description.trim() !== "") {
-				html += "<div class='read desc'>" + formatText(data.description) + "</div></div>";
-			}
-			html += "</div>";
-			projectInfo.innerHTML = html;
-			var projectStats = document.getElementById("project-stats");
-			var htmlStats = "<div class='read'>" + "<h1 class='title'><a href='https://scratch.mit.edu/projects/" + data.id + "'>" + data.title + "</a><font style='font-size:16px;'><em>#" + data.id + "</em></font></h1>" + "<p class='sub'><em>by <a href='profile.html?username=" + data.author.username + "'>" + data.author.username + "</a></em>" + " | Loves: " + data.stats.loves + " | Favorites: " + data.stats.favorites + " | Views: " + data.stats.views + " | Remixes: " + data.stats.remixes +  " | Shared on: " + formatDate(data.history.shared) + "</p>" + "<a href='javascript:void(0);' id='toggle-desc' class='mobile-desc'> Show Description</a>" + "<div id='desc-mobile' class='mobile-desc' style='display:none;'><div class='read desc'>" + formatText(data.instructions) + "</div>" + "<div class='read desc'>" + formatText(data.description) + "</div></div>" + "</div>";
-			projectStats.innerHTML = htmlStats;
-			document.title = data.title + " | gnaw";
-		}
+        function displayProjectInfo(data) {
+            var projectInfo = document.getElementById("embed");
+            var html = "<div class='read flex proj'><iframe src='https://turbowarp.org/" + data.id + "/embed' allowtransparency='true' width='485' height='402' class='project-frame' frameborder='0' scrolling='no' allowfullscreen='yes'></iframe>" + "<div id='outer-desc'><div class='read desc'>" + formatText(data.instructions) + "</div>";
+            if (data.description && data.description.trim() !== "") {
+                html += "<div class='read desc'>" + formatText(data.description) + "</div></div>";
+            }
+            html += "</div>";
+            projectInfo.innerHTML = html;
+            var projectStats = document.getElementById("project-stats");
+            var htmlStats = "<div class='read'>" + "<h1 class='title'><a href='https://scratch.mit.edu/projects/" + data.id + "'>" + data.title + "</a><font style='font-size:16px;'><em>#" + data.id + "</em></font></h1>" + "<p class='sub'><em>by <a href='profile.html?username=" + data.author.username + "'>" + data.author.username + "</a></em>" + " | Loves: " + data.stats.loves + " | Favorites: " + data.stats.favorites + " | Views: " + data.stats.views + " | Remixes: " + data.stats.remixes + " | Shared on: " + formatDate(data.history.shared) + "</p>" + "<a href='javascript:void(0);' id='toggle-desc' class='mobile-desc'> Show Description</a>" + "<div id='desc-mobile' class='mobile-desc' style='display:none;'><div class='read desc'>" + formatText(data.instructions) + "</div>" + "<div class='read desc'>" + formatText(data.description) + "</div></div>" + "</div>";
+            projectStats.innerHTML = htmlStats;
+            document.title = data.title + " | gnaw";
+        }
 
-		function formatText(text) {
-			return text.replace(/\n/g, "<br>");
-		}
+        function formatText(text) {
+            return text.replace(/\n/g, "<br>");
+        }
 
-		function formatDate(dateString) {
-			var date = new Date(dateString);
-			var options = {
-				year: 'numeric',
-				month: 'long',
-				day: 'numeric'
-			};
-			return date.toLocaleDateString('en-US', options);
-		}
-	</script>
+        function formatDate(dateString) {
+            var date = new Date(dateString);
+            var options = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            };
+            return date.toLocaleDateString('en-US', options);
+        }
+    </script>
 </head>
-
 <body>
-	<div class="nav">
-		<div class="inner-nav">
-			<div class="nav-item">
-				<a class="icon desktop" href="index.html">gnaw</a>
-				<a class="icon mobile" href="index.html">g</a>
-			</div>
-		</div>
-	</div>
-	<div class="page">
-		<div class="project-container">
-			<div id="embed"></div>
-			<div class="project-description" id="project-stats"></div>
-		</div>
-		<div class="comments read">
-			<div>
-				<h2 style="margin-top: 10px;">Comments</h2>
-				<a href="javascript:void(0);" id="toggle-comments"> Show Comments </a>
-			</div>
-			<div id="comments-list" style="display: none;"></div>
-		</div>
-		<div class="about">
-			<div id="about">
-				<a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> / <a href="https://discord.com/users/797570703419244594">discord</a> / <a href="mailto:eris@meower.org">email me</a> / <a href="profile.html?username=3r1s_s">profile</a> / <a href="https://github.com/3r1s-s">github</a> / <a href="health.html">health</a> / <a href="about.html">about</a> /
-			</div>
-		</div>
-		<div class="mobile-nav">
-			<div class="mobile-nav-item">
-				<a href="index.html"><i class="material-symbols-outlined">home</i></a>
-			</div>
-			<div class="mobile-nav-item">
-				<a href="featured.html"><i class="material-symbols-outlined">star</i></a>
-			</div>
-			<div class="mobile-nav-item">
-				<a href="explore.html"><i class="material-symbols-outlined">globe</i></a>
-			</div>
-			<div class="mobile-nav-item">
-				<a href="about.html"><i class="material-symbols-outlined">info</i></a>
-			</div>
-		</div>
-	</div>
+    <div class="nav">
+        <div class="inner-nav">
+            <div class="nav-item">
+                <a class="icon desktop" href="index.html">gnaw</a>
+                <a class="icon mobile" href="index.html">g</a>
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="project-container">
+            <div id="embed"></div>
+            <div class="project-description" id="project-stats"></div>
+        </div>
+        <div class="comments read">
+            <div>
+                <h2 style="margin-top: 10px;">Comments</h2>
+                <a href="javascript:void(0);" id="toggle-comments"> Show Comments </a>
+            </div>
+            <div id="comments-list" style="display: none;"></div>
+        </div>
+        <div class="about">
+            <div id="about">
+                <a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> / <a href="https://discord.com/users/797570703419244594">discord</a> / <a href="mailto:eris@meower.org">email me</a> / <a href="profile.html?username=3r1s_s">profile</a> / <a href="https://github.com/3r1s-s">github</a> / <a href="health.html">health</a> / <a href="about.html">about</a> /
+            </div>
+        </div>
+        <div class="mobile-nav">
+            <div class="mobile-nav-item">
+                <a href="index.html"><i class="material-symbols-outlined">home</i></a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="featured.html"><i class="material-symbols-outlined">star</i></a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="explore.html"><i class="material-symbols-outlined">globe</i></a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="about.html"><i class="material-symbols-outlined">info</i></a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
