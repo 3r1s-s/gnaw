@@ -152,6 +152,7 @@
 			fetchNews();
 			fetchExplore();
 			fetchFeatured();
+			fetchRecommend();
 			fetchChange();
 		});
 
@@ -185,6 +186,32 @@
 		function fetchFeatured() {
 			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/studios/27205657/projects').then(response => response.json()).then(data => {
 				var exploreContainer = document.getElementById('featured-container');
+				var exploreHTML = '';
+				for(var i = 0; i < 3; i++) {
+					var project = data[i];
+					var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${project.id}_480x360.png`;
+					exploreHTML += `
+              <div class="project read">
+                <div class="thumbnail-container">
+                  <img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail">
+                </div>
+                <div class="project-info">
+                  <h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
+                  <p>
+                    <em>by <a href='profile.html?username=${project.username}'>${project.username}</a></em>
+                  </p>
+                </div>
+              </div>`;
+				}
+				exploreContainer.innerHTML = exploreHTML;
+			}).catch(error => {
+				console.error('Error:', error);
+			});
+		}
+
+		function fetchRecommend() {
+			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/studios/33806259/projects').then(response => response.json()).then(data => {
+				var exploreContainer = document.getElementById('recommend-container');
 				var exploreHTML = '';
 				for(var i = 0; i < 3; i++) {
 					var project = data[i];
@@ -280,6 +307,10 @@
 			<h2><a href="featured.html">Featured</a></h2>
 		</div>
 		<div id="featured-container"></div>
+		<div class="header">
+			<h2><a href="recommend.html">Recommend</a></h2>
+		</div>
+		<div id="recommend-container"></div>
 		<div class="header">
 			<h2><a href="changelog.html">Changelog</a></h2>
 		</div>

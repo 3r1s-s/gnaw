@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Featured | gnaw</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="icon" href="images/icon.png">
+	<link rel="manifest" href="manifest.webmanifest">
+	<link rel="stylesheet" href="styles.css">
+	<style>
+		.thumbnail-container {
+			flex-shrink: 0;
+			margin-right: 10px;
+		}
+
+		.thumbnail {
+			width: 100px;
+			height: auto;
+			border-radius: 5px;
+		}
+
+		.project {
+			display: flex;
+		}
+
+		.wrap {
+			word-wrap: anywhere;
+		}
+	</style>
+	<script>
+		function fetchFeatured() {
+			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/studios/33806259/projects').then(response => response.json()).then(data => {
+				var exploreContainer = document.getElementById('featured-container');
+				var exploreHTML = '';
+				data.forEach(project => {
+					var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${project.id}_480x360.png`;
+					exploreHTML += `
+              <div class="project read">
+                <div class="thumbnail-container">
+                  <img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail">
+                </div>
+                <div class="project-info">
+                  <h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
+                  <p>
+                    <em>by <a href='profile.html?username=${project.username}'>${project.username}</a></em>
+                  </p>
+                </div>
+              </div>`;
+				});
+				exploreContainer.innerHTML = exploreHTML;
+			}).catch(error => {
+				console.error('Error:', error);
+			});
+		}
+		document.addEventListener('DOMContentLoaded', function() {
+			fetchFeatured();
+		});
+	</script>
+</head>
+<body>
+	<div class="nav">
+		<div class="inner-nav">
+			<div class="nav-item">
+				<a class="icon desktop" href="index.html">gnaw</a>
+				<a class="icon mobile" href="index.html">g</a>
+			</div>
+		</div>
+	</div>
+	<div class="page">
+		<div class="header">
+			<h1>Recommend</h1>
+			<i>Projects that I really like</i>
+		</div>
+		<div id="featured-container"></div>
+		<div class="about">
+			<div id="about">
+				<a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> / <a href="https://discord.com/users/797570703419244594">discord</a> / <a href="mailto:eris@meower.org">email me</a> / <a href="profile.html?username=3r1s_s">profile</a> / <a href="https://github.com/3r1s-s">github</a> / <a href="health.html">health</a> / <a href="about.html">about</a> /
+			</div>
+		</div>
+		<div class="mobile-nav">
+			<div class="mobile-nav-item">
+				<a href="index.html"><i class="material-symbols-outlined">home</i></a>
+			</div>
+			<div class="mobile-nav-item">
+				<a href="featured.html"><i class="material-symbols-outlined">star</i></a>
+			</div>
+			<div class="mobile-nav-item">
+				<a href="explore.html"><i class="material-symbols-outlined">globe</i></a>
+			</div>
+			<div class="mobile-nav-item">
+				<a href="about.html"><i class="material-symbols-outlined">info</i></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
