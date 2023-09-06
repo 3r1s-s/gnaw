@@ -223,10 +223,6 @@ hr {
 }
 
 .material-symbols-outlined:hover {
-	transform: scale(1.2);
-}
-
-.material-symbols-outlined:active {
 	transform: scale(0.8);
 }
 
