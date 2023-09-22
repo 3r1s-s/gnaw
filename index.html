@@ -118,6 +118,19 @@
 			navigateToProfile(null, projectInput);
 		}
 
+		function handleProjectIdSearch() {
+			var projectIdInput = document.getElementById("Project-ID").value;
+			if (projectIdInput) {
+				var url = "project.html?project=" + encodeURIComponent(projectIdInput);
+				window.location.href = url;
+			}
+		}
+
+		function extractNumbers(input) {
+			// Remove non-numeric characters
+			input.value = input.value.replace(/\D/g, '');
+		}
+
 		function handleKeyPress(event) {
 			if(event.key === 'Enter') {
 				event.preventDefault();
@@ -292,6 +305,16 @@
 					</label>
 				</form>
 				<button onclick="handleProjectSearch()" class="btn in">Search Project</button>
+			</div>
+			<br>
+			<div class="search">
+				<form onsubmit="event.preventDefault();">
+					<label>
+						<p style="margin:5px;">Project ID</p>
+						<input type="text" id="Project-ID" class="searchbox"  autocapitalize="off" autocomplete="off" oninput="extractNumbers(this)">
+					</label>
+				</form>
+				<button onclick="handleProjectIdSearch()" class="btn in">Project ID</button>
 			</div>
 		</div>
 		<div class="header">
