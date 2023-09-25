@@ -1,6 +1,7 @@
 [
-    {"log" : "Buttons are now evenly sized", "date" : "5/22/23"},
-    {"log" : "Project ID input added", "date" : "5/22/23"},
+    {"log" : "Light mode added", "date" : "25/9/23"},
+    {"log" : "Buttons are now evenly sized", "date" : "22/9/23"},
+    {"log" : "Project ID input added", "date" : "22/9/23"},
     {"log" : "Project description now available on mobile", "date" : "5/9/23"},
     {"log" : "Mobile Navbar added", "date" : "4/9/23"},
     {"log" : "Subtitles on the featured and explore pages", "date" : "2/9/23"},
