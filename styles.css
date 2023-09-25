@@ -1,18 +1,39 @@
+:root {
+	--background-color: #010409;
+	--text-color: #fff;
+	--border-color: #253042;
+	--border-hov: #36465f;
+	--accent: #0d1117;
+	--navbar: #0d1117;
+	--navtext: #fff;
+	--mobilenav: #010409ee;
+}
+
+.light {
+	--background-color: #fff;
+	--text-color: #575e75;
+	--border-color: #dedede;
+	--border-hov: #cdcdcd;
+	--accent: #fff;
+	--navbar: #855cd6;
+	--navtext: #fff;
+	--mobilenav: #ffffff91;
+}
+
 body {
-	background-color: #010409;
-	color: #fff;
+	background-color: var(--background-color);
+	color: var(--text-color);
 	font-family: Whitney;
 	overflow-x: hidden;
 	margin: 0;
 }
 
 a {
-	color: #fff;
+	color: var(--text-color);
 	text-decoration: none;
 }
 
 a:hover {
-	color: #fff;
 	text-decoration: underline;
 }
 
@@ -20,8 +41,8 @@ button {
 	width: 100px;
 	height: 33px;
 	background-color: transparent;
-	border: 1px solid #253042;
-	color: #fff;
+	border: 1px solid var(--border-color);
+	color: var(--text-color);
 	border-radius: 5px;
 	font-family: Whitney;
 	outline: none;
@@ -30,20 +51,20 @@ button {
 }
 
 button:hover {
-	border: 1px solid #36465f;
+	border: 1px solid var(--border-hov);
 	cursor: pointer;
 }
 
 button:focus {
-	border: 1px solid #36465f;
+	border: 1px solid var(--border-hov);
 }
 
 form input {
 	width: 200px;
 	height: 30px;
 	background-color: transparent;
-	border: 1px solid #253042;
-	color: #fff;
+	border: 1px solid var(--border-color);
+	color: var(--text-color);
 	border-radius: 5px;
 	font-family: Whitney;
 	outline: none;
@@ -53,7 +74,7 @@ form input {
 }
 
 form input:focus {
-	border: 1px solid #36465f;
+	border: 1px solid var(--border-hov);
 }
 
 img {
@@ -61,7 +82,7 @@ img {
 }
 
 hr {
-    border-color: #253042;
+    border-color: var(--border-color);
 }
 
 .page {
@@ -72,8 +93,8 @@ hr {
 
 .read {
 	flex: 1;
-	border: 1px solid #253042;
-	background-color: #0d1117;
+	border: 1px solid var(--border-color);
+	background-color: var(--accent);
 	margin: 10px;
 	padding: 15px;
 	border-radius: 5px;
@@ -83,7 +104,7 @@ hr {
 	display: flex;
 	align-items: center;
 	position: fixed;
-	background-color: #0d1117;
+	background-color: var(--navbar);
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
 	padding: 0;
 	width: 100%;
@@ -117,6 +138,7 @@ hr {
 
 .icon {
 	font-weight: bold;
+	color: var(--navtext);
 }
 
 .mobile {
@@ -140,8 +162,8 @@ hr {
 	margin: 10px;
 	padding: 10px;
 	margin-top: 50px;
-	border-top: 1px solid #253042;
-	background-color: #010409ef;
+	border-top: 1px solid var(--border-color);
+	background-color: var(--background-color);
 }
 
 .mobile-nav {
@@ -184,10 +206,10 @@ hr {
 		width: 100%;
 		padding-bottom: 50px;
 		padding-top: 5px;
-		border-top: 1px solid #253042;
+		border-top: 1px solid var(--border-color);
 		justify-content: space-evenly;
 		/*background-color: #010409;*/
-		background-color: #010409ee;
+		background-color: var(--mobilenav);
 		backdrop-filter: blur(15px) saturate(180%);
 		-webkit-backdrop-filter: blur(15px);
 	}
