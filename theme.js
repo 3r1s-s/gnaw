@@ -5,10 +5,9 @@ function theme() {
   function setTheme() {
     const body = document.body;
     if (theme()) {
-      body.classList.add('dark');
     } else {
       body.classList.add('light');
     }
   }
   
-  window.addEventListener('load', setTheme);
+//  window.addEventListener('load', setTheme);
