@@ -234,6 +234,11 @@ hr {
 	align-items: center;
 }
 
+.nvl {
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
 .header {
 	margin: 10px;
 }

@@ -287,6 +287,10 @@
 			<div class="nav-item">
 				<a class="icon desktop" href="index.html">gnaw</a>
 				<a class="icon mobile" href="index.html">g</a>
+				<div class="nav-item" style="justify-content: right;">
+					<a class="icon desktop nvl" href="explore.html">Explore</a>
+					<a class="icon desktop nvl" href="featured.html">Featured</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -299,15 +303,15 @@
 			<div class="search">
 				<form onsubmit="event.preventDefault();">
 					<label>
-						<p style="margin: 5px;">Search</p>
+						<p style="margin: 5px; display: none;">Search</p>
 						<input type="text" id="searchInput" class="searchbox" autocapitalize="off" autocomplete="off">
 					</label>
 				</form>
-				<select id="searchType">
-					<option value="user">User</option>
-					<option value="project">Project</option>
-					<option value="projectID">Project ID</option>
-				</select>
+					<select id="searchType">
+						<option value="user">User</option>
+						<option value="project">Project</option>
+						<option value="projectID">Project ID</option>
+					</select>
 				<button onclick="handleSearch()" class="btn in">Search</button>
 			</div>
 			
