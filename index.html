@@ -57,9 +57,17 @@
 		.in:focus {
 			border-left: none;
 		}
-
+		
 		.btn .in {
 			font-size: 13px;
+		}
+		
+		.headline {
+			margin-top: 15px;
+		}
+		
+		#searchType {
+			border-left: none;
 		}
 
 		input,
@@ -83,8 +91,9 @@
 		}
 
 		function clearInputs() {
-			document.getElementById("username").value = "";
-			document.getElementById("project").value = "";
+			/*document.getElementById("username").value = "";
+			document.getElementById("project").value = "";*/
+			return("");
 		}
 
 		function handleUserSearch() {
@@ -129,7 +138,7 @@
               <div class="news-item">
                 <img src="${item.image}" width="50px" height="50px" style="margin-right:15px;" alt="news-item">
                 <div>
-                  <h3 style="margin-bottom:5px;">
+                  <h3 class='headline'>
                     <a href="${item.url}">${item.headline}</a>
                   </h3>
                 </div>
@@ -248,10 +257,31 @@
 				console.error('Error:', error);
 			});
 		}
+
+		function handleSearch() {
+			var searchInput = document.getElementById("searchInput").value;
+			var searchType = document.getElementById("searchType").value;
+
+			if (searchType === "user") {
+				// Handle user search
+				navigateToProfile(searchInput, null);
+			} else if (searchType === "project") {
+				// Handle project search
+				navigateToProfile(null, searchInput);
+			} else if (searchType === "projectID") {
+				// Handle project ID search
+				var projectIdInput = searchInput;
+				if (projectIdInput) {
+					var url = "project.html?project=" + encodeURIComponent(projectIdInput);
+					window.location.href = url;
+				}
+			}
+		}
+
 	</script>
 </head>
 
-<body>
+<body class="">
 	<div class="nav">
 		<div class="inner-nav">
 			<div class="nav-item">
@@ -269,32 +299,18 @@
 			<div class="search">
 				<form onsubmit="event.preventDefault();">
 					<label>
-						<p style="margin:5px;">Search User</p>
-						<input type="text" id="username" class="searchbox" autocomplete="off" autocapitalize="off">
+						<p style="margin: 5px;">Search</p>
+						<input type="text" id="searchInput" class="searchbox" autocapitalize="off" autocomplete="off">
 					</label>
 				</form>
-				<button onclick="handleUserSearch()" class="btn in">Search User</button>
+				<select id="searchType">
+					<option value="user">User</option>
+					<option value="project">Project</option>
+					<option value="projectID">Project ID</option>
+				</select>
+				<button onclick="handleSearch()" class="btn in">Search</button>
 			</div>
-			<br>
-			<div class="search">
-				<form onsubmit="event.preventDefault();">
-					<label>
-						<p style="margin:5px;">Search Project</p>
-						<input type="text" id="project" class="searchbox" autocapitalize="off" autocomplete="off">
-					</label>
-				</form>
-				<button onclick="handleProjectSearch()" class="btn in">Search Project</button>
-			</div>
-			<br>
-			<div class="search">
-				<form onsubmit="event.preventDefault();">
-					<label>
-						<p style="margin:5px;">Project ID</p>
-						<input type="text" id="Project-ID" class="searchbox"  autocapitalize="off" autocomplete="off" oninput="extractNumbers(this)">
-					</label>
-				</form>
-				<button onclick="handleProjectIdSearch()" class="btn in">Project ID</button>
-			</div>
+			
 		</div>
 		<div class="header">
 			<h2>News</h2>
