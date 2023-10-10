@@ -1,13 +1,11 @@
-function theme() {
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+function setTheme() {
+  const savedTheme = localStorage.getItem("selectedTheme");
+  const body = document.body;
+  body.classList.remove("default", "light", "grain", "zip", "dawn", "rose", "ice", "glacier");
+  if (savedTheme) {
+      body.classList.add(savedTheme);
   }
-  
-  function setTheme() {
-    const body = document.body;
-    if (theme()) {
-    } else {
-      body.classList.add('light');
-    }
-  }
-  
-//  window.addEventListener('load', setTheme);
+  console.log(localStorage.getItem("selectedTheme"));
+}
+
+window.addEventListener("load", setTheme);

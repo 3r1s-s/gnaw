@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title>gnaw</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -7,6 +7,7 @@
 	<meta content="gnaw is a Scratch browser/client thingy I guess" property="og:description" />
 	<meta content="https://gnaw.pages.dev" property="og:url" />
 	<meta property="og:image" content="https://gnaw.pages.dev/images/icon-safari.png" />
+	<meta charset="UTF-8">
 	<link rel="icon" sizes="512x512" href="images/icon.png">
 	<link rel="icon" sizes="64x64" href="images/icon64.png">
 	<link rel="manifest" href="manifest.webmanifest">
@@ -115,7 +116,6 @@
 		}
 
 		function extractNumbers(input) {
-			// Remove non-numeric characters
 			input.value = input.value.replace(/\D/g, '');
 		}
 
@@ -340,7 +340,7 @@
 		<div id="changelog"></div>
 		<div class="about">
 			<div id="about">
-				<a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> / <a href="https://discord.com/users/797570703419244594">discord</a> / <a href="mailto:eris@meower.org">email me</a> / <a href="profile.html?username=3r1s_s">profile</a> / <a href="https://github.com/3r1s-s">github</a> / <a href="health.html">health</a> / <a href="about.html">about</a> /
+				<a href="index.html" style="font-weight: bold; ">gnaw</a> / <a href="https://discord.com/users/797570703419244594">discord</a> / <a href="mailto:eris@meower.org">email me</a> / <a href="profile.html?username=3r1s_s">profile</a> / <a href="https://github.com/3r1s-s">github</a> / <a href="health.html">health</a> / <a href="about.html">about</a> / <a href="settings.html">settings</a> /
 			</div>
 		</div>
 		<div class="mobile-nav">
@@ -354,7 +354,7 @@
 				<a href="explore.html"><i class="material-symbols-outlined">globe</i></a>
 			</div>
 			<div class="mobile-nav-item">
-				<a href="about.html"><i class="material-symbols-outlined">info</i></a>
+				<a href="settings.html"><i class="material-symbols-outlined">settings</i></a>
 			</div>
 		</div>
 	</div>

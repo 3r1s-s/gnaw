@@ -9,6 +9,17 @@
 	--mobilenav: #010409ee;
 }
 
+.default {
+	--background-color: #010409;
+	--text-color: #fff;
+	--border-color: #253042;
+	--border-hov: #36465f;
+	--accent: #0d1117;
+	--navbar: #0d1117;
+	--navtext: #fff;
+	--mobilenav: #010409ee;
+}
+
 .light {
 	--background-color: #fff;
 	--text-color: #575e75;
@@ -32,58 +43,47 @@
 }
 
 .zip {
-	--background-color: #1f1e24;
+	--background-color: #111114;
 	--text-color: #fff;
-	--border-color: #474b54;
+	--border-color: #4a4854;
 	--border-hov: #676d7a;
-	--accent: #27292e;
+	--accent: #1f1e24;
 	--navbar: #1f1e24;
 	--navtext: #fff;
 	--mobilenav: #1f1e24aa;
 }
 
 .dawn {
-	--background-color: #fff;
+	--background-color: #fff7db;
 	--text-color: #27272a;
 	--border-color: #fbab24;
 	--border-hov: #92340e;
-	--accent: #fff8e7;
+	--accent: #fff2d4;
 	--navbar: #fbab24;
 	--navtext: #fff8e7;
 	--mobilenav: #fff8e7aa;
 }
 
 .rose {
-	--background-color: #fff;
-	--text-color: #27272a;
-	--border-color: #ffc8e7;
-	--border-hov: #ffd8e7;
-	--accent: #fff8e7;
-	--navbar: #ff74d0;
+	--background-color: #5c113c;
+	--text-color: #fff;
+	--border-color: #c62982;
+	--border-hov: #da238b;
+	--accent: #782152;
+	--navbar: #b00b69;
 	--navtext: #fff8e7;
-	--mobilenav: #fff8e7aa;
-}
-
-.teal {
-	--background-color: #fff;
-	--text-color: #27272a;
-	--border-color: #bff8e7;
-	--border-hov: #a5d9b5; 
-	--accent: #f2fffb;
-	--navbar: #bff8e7;
-	--navtext: #27272a;
-	--mobilenav: #fff8e7aa;
+	--mobilenav: #b00b69aa;
 }
 
 .ice {
-	--background-color: #f1f4fd;
+	--background-color: #f6f9ff;
 	--text-color: #27272a;
-	--border-color: #7498e6;
+	--border-color: #cedaf0;
 	--border-hov: #3546c0; 
-	--accent: #e0e8f9;
+	--accent: #f1f4fd;
 	--navbar: #496ddc;
 	--navtext: #fff;
-	--mobilenav: #fff8e7aa;
+	--mobilenav: #e7e8ffaa;
 }
 
 .glacier {
@@ -94,7 +94,7 @@
 	--accent: #1f234c;
 	--navbar: #496ddc;
 	--navtext: #fff;
-	--mobilenav: #fff8e7aa;
+	--mobilenav: #496ddcaa;
 }
 
 
@@ -218,7 +218,7 @@ hr {
 .inner-nav {
 	margin: auto;
 	box-sizing: border-box;
-	padding: 0 10px;
+	padding: 2px 12px;
 	display: flex;
 	align-items: center;
 	flex-basis: 1000px;
@@ -261,7 +261,6 @@ hr {
 
 .desktop {
 	display: block;
-	font-family: Whitney Book;
 }
 
 .about {
@@ -317,8 +316,8 @@ hr {
 		justify-content: space-evenly;
 		/*background-color: #010409;*/
 		background-color: var(--mobilenav);
-		backdrop-filter: blur(15px) saturate(180%);
 		-webkit-backdrop-filter: blur(15px);
+		backdrop-filter: blur(15px) saturate(180%);
 	}
 }
 
@@ -360,17 +359,19 @@ hr {
 	transform: scale(0.8);
 }
 
-.exp-nav {
+/*.exp-nav {
 	background: none;
 	mask-image: linear-gradient(rgb(0, 0, 0) 55%, rgba(0, 0, 0, 0.8) 70%, rgba(0, 0, 0, 0) 100%);
+	-webkit-backdrop-filter: blur(15px);
 	backdrop-filter: blur(15px);
 }
 
 .exp-nav-mobile {
 	background: #01040955;
 	mask-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0,0,0) 25% ,rgb(0, 0, 0) 100%);
+	-webkit-backdrop-filter: blur(15px);
 	backdrop-filter: blur(15px);
-}
+}*/
 
 /*Fonts*/
 @font-face {

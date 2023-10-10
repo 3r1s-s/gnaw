@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Settings | gnaw</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta content="gnaw" property="og:title" />
+	<meta content="gnaw is a Scratch browser/client thingy I guess" property="og:description" />
+	<meta content="https://gnaw.pages.dev" property="og:url" />
+	<meta property="og:image" content="https://gnaw.pages.dev/images/icon-safari.png" />
+    <meta charset="UTF-8">
+	<link rel="icon" sizes="512x512" href="images/icon.png">
+	<link rel="icon" sizes="64x64" href="images/icon64.png">
+	<link rel="manifest" href="manifest.webmanifest">
+	<link rel="stylesheet" href="styles.css">
+	<script src="theme.js"></script>
+    <style>
+        select {
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        function applyTheme() {
+            const selectedTheme = document.getElementById("themeSelector").value;
+            const body = document.body;
+
+            body.classList.remove("default", "light", "grain", "zip", "dawn", "rose", "teal", "ice", "glacier");
+
+            body.classList.add(selectedTheme);
+            localStorage.setItem("selectedTheme", selectedTheme);
+            console.log(selectedTheme);
+        }
+
+
+        function resetToDefault() {
+            const body = document.body;
+            body.className = "";
+        }
+        
+        window.addEventListener("load", setTheme);
+    </script>    
+</head>
+<body class="">
+    <div class="nav">
+        <div class="inner-nav">
+            <div class="nav-item">
+                <a class="icon desktop" href="index.html">gnaw</a>
+                <a class="icon mobile" href="index.html">g</a>
+                <div class="nav-item" style="justify-content: right;">
+                    <a class="icon desktop nvl" href="explore.html">Explore</a>
+                    <a class="icon desktop nvl" href="featured.html">Featured</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="header">
+            <h1>Settings</h1>
+        </div>
+        <div class="header">
+            <h2>Theme</h2>
+        </div>
+        <div class="read">
+            <label for="themeSelector"><p style="display: none;">Theme</p></label>
+            <select id="themeSelector">
+                <option value="default">Default</option>
+                <option value="light">Light</option>
+                <option value="grain">Grain</option>
+                <option value="zip">Zip</option>
+                <option value="dawn">Dawn</option>
+                <option value="rose">Rose</option>
+                <option value="ice">Ice</option>
+                <option value="glacier">Glacier</option>
+            </select>
+            <button onclick="applyTheme()">Apply Theme</button>
+
+        </div>
+		<div class="about">
+			<div id="about">
+				<a href="index.html" style="font-weight: bold; ">gnaw</a> / <a href="https://discord.com/users/797570703419244594">discord</a> / <a href="mailto:eris@meower.org">email me</a> / <a href="profile.html?username=3r1s_s">profile</a> / <a href="https://github.com/3r1s-s">github</a> / <a href="health.html">health</a> / <a href="about.html">about</a> / <a href="settings.html">settings</a> /
+			</div>
+		</div>
+		<div class="mobile-nav">
+			<div class="mobile-nav-item">
+				<a href="index.html"><i class="material-symbols-outlined">home</i></a>
+			</div>
+			<div class="mobile-nav-item">
+				<a href="featured.html"><i class="material-symbols-outlined">star</i></a>
+			</div>
+			<div class="mobile-nav-item">
+				<a href="explore.html"><i class="material-symbols-outlined">globe</i></a>
+			</div>
+			<div class="mobile-nav-item">
+				<a href="settings.html"><i class="material-symbols-outlined">settings</i></a>
+			</div>
+		</div>
+    </div>
+</body>
+</html>

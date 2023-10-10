@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Project | gnaw</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
 	<link rel="icon" sizes="512x512" href="images/icon.png">
 	<link rel="icon" sizes="64x64" href="images/icon64.png">
     <link rel="manifest" href="manifest.webmanifest">
@@ -88,7 +89,6 @@
                 }).then(function(comments) {
                     displayComments(data, comments);
 
-                    // Now, get the toggle-desc element
                     toggleDescLink = document.getElementById('toggle-desc');
                     toggleCommentsLink.addEventListener('click', function() {
                         var commentsSection = document.getElementById('comments-list');
@@ -101,7 +101,6 @@
                         }
                         commentsVisible = !commentsVisible;
                     });
-                    // Add the event listener
                     toggleDescLink.addEventListener('click', function() {
                         var desc = document.getElementById('desc-mobile');
                         if (descVisible) {
@@ -190,25 +189,25 @@
             </div>
             <div id="comments-list" style="display: none;"></div>
         </div>
-        <div class="about">
-            <div id="about">
-                <a href="index.html" style="font-weight: bold; font-family: Whitney Book;">gnaw</a> / <a href="https://discord.com/users/797570703419244594">discord</a> / <a href="mailto:eris@meower.org">email me</a> / <a href="profile.html?username=3r1s_s">profile</a> / <a href="https://github.com/3r1s-s">github</a> / <a href="health.html">health</a> / <a href="about.html">about</a> /
-            </div>
-        </div>
-        <div class="mobile-nav">
-            <div class="mobile-nav-item">
-                <a href="index.html"><i class="material-symbols-outlined">home</i></a>
-            </div>
-            <div class="mobile-nav-item">
-                <a href="featured.html"><i class="material-symbols-outlined">star</i></a>
-            </div>
-            <div class="mobile-nav-item">
-                <a href="explore.html"><i class="material-symbols-outlined">globe</i></a>
-            </div>
-            <div class="mobile-nav-item">
-                <a href="about.html"><i class="material-symbols-outlined">info</i></a>
-            </div>
-        </div>
+		<div class="about">
+			<div id="about">
+				<a href="index.html" style="font-weight: bold; ">gnaw</a> / <a href="https://discord.com/users/797570703419244594">discord</a> / <a href="mailto:eris@meower.org">email me</a> / <a href="profile.html?username=3r1s_s">profile</a> / <a href="https://github.com/3r1s-s">github</a> / <a href="health.html">health</a> / <a href="about.html">about</a> / <a href="settings.html">settings</a> /
+			</div>
+		</div>
+		<div class="mobile-nav">
+			<div class="mobile-nav-item">
+				<a href="index.html"><i class="material-symbols-outlined">home</i></a>
+			</div>
+			<div class="mobile-nav-item">
+				<a href="featured.html"><i class="material-symbols-outlined">star</i></a>
+			</div>
+			<div class="mobile-nav-item">
+				<a href="explore.html"><i class="material-symbols-outlined">globe</i></a>
+			</div>
+			<div class="mobile-nav-item">
+				<a href="settings.html"><i class="material-symbols-outlined">settings</i></a>
+			</div>
+		</div>
     </div>
 </body>
 </html>
