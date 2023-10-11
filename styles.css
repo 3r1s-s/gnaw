@@ -379,6 +379,13 @@ hr {
 	display: none;
 }
 
+.mobile-header {
+	display: none;
+}
+
+.about-mobile {
+	display: none;
+}
 
 @media screen and (max-width: 480px) {
 	.read {
@@ -407,7 +414,7 @@ hr {
 		height: 50px;
 		opacity: 0;
 	}
-
+	
 	#about {
 		height: 50px;
 		display: none;
@@ -427,9 +434,20 @@ hr {
 		-webkit-backdrop-filter: blur(15px);
 		backdrop-filter: blur(15px) saturate(180%);
 	}
-
+	
 	.mobile-header {
 		display: block;
+	}
+	
+	.about-mobile {
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.about-mobile > a {
+		font-size: 18px;
+		padding-bottom: 5px;
+		padding-top: 5px;
 	}
 }
 
@@ -439,7 +457,7 @@ hr {
 }
 
 .material-symbols-outlined {
-  font-family: 'Material Symbols Round';
+	font-family: 'Material Symbols Round';
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
