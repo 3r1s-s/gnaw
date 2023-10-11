@@ -5,6 +5,10 @@ function setTheme() {
   if (savedTheme) {
       body.classList.add(savedTheme);
   }
+
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', "#000");
+  document.querySelector('meta[name="background-color"]').setAttribute('content', themeColor);
+
 }
 
 window.addEventListener("load", setTheme);
