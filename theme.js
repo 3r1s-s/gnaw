@@ -2,16 +2,20 @@ function setTheme() {
   const savedTheme = localStorage.getItem("selectedTheme");
   const body = document.body;
   body.classList.remove("default", "light", "grain", "zip", "dawn", "black", "rose", "teal", "ice", "glacier", "hamtter", "midnight", "mastodon", "pleroma", "twitter", "x", "classic", "first");
-  
+
   if (savedTheme) {
     body.classList.add(savedTheme);
     
-    const backgroundColorHex = getComputedStyle(body).getPropertyValue("--background-color");
+    // Access the computed value of --navbar from the linked stylesheet (styles.css)
+    const computedStyle = getComputedStyle(body);
+    const navbarColor = computedStyle.getPropertyValue("--navbar");
     
-    document.querySelector('meta[name="theme-color"]').setAttribute('content', backgroundColorHex);
-    console.log("hi");
+    // Set the content attribute of the meta tag to the navbar color hexcode
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', navbarColor);
+    console.log(navbarColor);
   }
-  console.log("hi2");
 }
+
+
 
 window.addEventListener("load", setTheme);
