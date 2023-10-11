@@ -97,6 +97,83 @@
 	--mobilenav: #496ddcaa;
 }
 
+.black {
+	--background-color: #000000;
+	--text-color: #fff;
+	--border-color: #000;
+	--border-hov: #191919; 
+	--accent: #0c0c0c;
+	--navbar: #0c0c0c;
+	--navtext: #fff;
+	--mobilenav: #0c0c0caa;
+}
+
+.midnight {
+	--background-color: #282a36;
+	--text-color: #fff;
+	--border-color: #b37dff;
+	--border-hov: #d3b5ff; 
+	--accent: #44475a;
+	--navbar: #44475a;
+	--navtext: #e6d5ff;
+	--mobilenav: #44475aaa;
+}
+
+.hamtter {
+	--background-color: #0F0F0F;
+	--text-color: #F8F8F2;
+	--border-color: #121212;
+	--border-hov: #292929; 
+	--accent: #1f1f1f;
+	--navbar: #1f1f1f;
+	--navtext: #ff6c60;
+	--mobilenav: #1f1f1faa;
+}
+
+.mastodon {
+	--background-color: #191b22;
+	--text-color: #F8F8F2;
+	--border-color: #748294;
+	--border-hov: #9baec8; 
+	--accent: #282c37;
+	--navbar: #282c37;
+	--navtext: #cddef5;
+	--mobilenav: #282c37aa;
+}
+
+.pleroma {
+	--background-color: #0a1117;
+	--text-color: #b9b9ba;
+	--border-color: #282c37;
+	--border-hov: #b9b9ba; 
+	--accent: #282c37;
+	--navbar: #282c37;
+	--navtext: #b9b9ba;
+	--mobilenav: #282c37aa;
+}
+
+.twitter {
+	--background-color: #e6ecf0;
+	--text-color: #0f0f0f;
+	--border-color: #fff;
+	--border-hov: #79c7f6; 
+	--accent: #fff;
+	--navbar: #fff;
+	--navtext: #1da1f2;
+	--mobilenav: #ffffffaa;
+}
+
+.x {
+	--background-color: #101821;
+	--text-color: #fff;
+	--border-color: 15202b;
+	--border-hov: #79c7f6; 
+	--accent: #15202b;
+	--navbar: #15202b;
+	--navtext: #1da1f2;
+	--mobilenav: #15202baa;
+}
+
 
 body {
 	background-color: var(--background-color);
@@ -303,6 +380,11 @@ hr {
 	.about {
 		height: 50px;
 		opacity: 0;
+	}
+
+	#about {
+		height: 50px;
+		display: none;
 	}
 	
 	.mobile-nav {
