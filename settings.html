@@ -23,7 +23,7 @@
             const selectedTheme = document.getElementById("themeSelector").value;
             const body = document.body;
 
-            body.classList.remove("default", "light", "grain", "zip", "dawn", "black", "rose", "teal", "ice", "glacier", "hamtter", "midnight", "mastodon", "pleroma", "twitter", "x");
+            body.classList.remove("default", "light", "grain", "zip", "dawn", "black", "rose", "teal", "ice", "glacier", "hamtter", "midnight", "mastodon", "pleroma", "twitter", "x", "classic", "first");
 
             body.classList.add(selectedTheme);
             localStorage.setItem("selectedTheme", selectedTheme);
@@ -77,6 +77,8 @@
                 <option value="twitter">Twitter</option>
                 <option value="x">Twitter Dark</option>
                 <option value="hamtter">Hamtter</option>
+                <option value="classic">Classic</option>
+                <option value="first">First</option>
             </select>
             <button onclick="applyTheme()">Apply Theme</button>
 
