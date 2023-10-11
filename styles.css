@@ -375,6 +375,10 @@ hr {
 	display: none;
 }
 
+.mobile {
+	display: none;
+}
+
 
 @media screen and (max-width: 480px) {
 	.read {
@@ -422,6 +426,10 @@ hr {
 		background-color: var(--mobilenav);
 		-webkit-backdrop-filter: blur(15px);
 		backdrop-filter: blur(15px) saturate(180%);
+	}
+
+	.mobile-header {
+		display: block;
 	}
 }
 

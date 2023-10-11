@@ -5,7 +5,6 @@ function setTheme() {
   if (savedTheme) {
       body.classList.add(savedTheme);
   }
-  console.log(localStorage.getItem("selectedTheme"));
 }
 
 window.addEventListener("load", setTheme);
