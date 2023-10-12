@@ -72,14 +72,20 @@
 		#searchType {
 			border-left: none;
 		}
-
+		
 		input,
 		label {
 			display: block;
 		}
 		
-	</style>
+		</style>
 	<script>
+		try {
+			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/news');
+			} catch (error) {
+				alert("An error occurred: " + error.message);
+			}
+		
 		function navigateToProfile(usernameInput, projectInput) {
 			var url;
 			if(usernameInput) {
@@ -93,7 +99,7 @@
 			}
 			window.location.href = url;
 		}
-
+		
 		function clearInputs() {
 			/*document.getElementById("username").value = "";
 			document.getElementById("project").value = "";*/
