@@ -111,7 +111,7 @@
 .midnight {
 	--background-color: #282a36;
 	--text-color: #fff;
-	--border-color: #b37dff;
+	--border-color: #e6d5ff;
 	--border-hov: #d3b5ff; 
 	--accent: #44475a;
 	--navbar: #44475a;
@@ -487,6 +487,30 @@ hr {
 
 .material-symbols-outlined:hover {
 	transform: scale(0.8);
+}
+
+.material-symbols-outlined-no-trans {
+	font-family: 'Material Symbols Round';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
+
+.material-symbols-outlined-no-trans {
+	font-variation-settings:
+	'FILL' 1,
+	'wght' 400,
+	'GRAD' 0,
+	'opsz' 24;
+	border-radius: 5px;
 }
 
 /*.exp-nav {
