@@ -107,12 +107,12 @@
 }
 
 .black {
-	--background-color: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0,0,0,0.5) 100%);
+	--background-color: #000;
 	--text-color: #fff;
 	--border-color: #ffffff25;
 	--border-hov: #ffffff15; 
 	--accent: #1c1c1e;
-	--navbar: #000000aa;
+	--navbar: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0,0,0,0.5) 100%);
 	--navtext: #fff;
 	--mobilenav: #000000aa;
 	--nav-blur: blur(15px) saturate(180%);
