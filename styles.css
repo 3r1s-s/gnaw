@@ -100,10 +100,10 @@
 .black {
 	--background-color: #000000;
 	--text-color: #fff;
-	--border-color: #383838;
-	--border-hov: #4f4f4f; 
+	--border-color: #272729;
+	--border-hov: #383839; 
 	--accent: #1c1c1e;
-	--navbar: #000000aa;
+	--navbar: #000000;
 	--navtext: #fff;
 	--mobilenav: #0c0c0caa;
 }
