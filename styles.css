@@ -107,7 +107,7 @@
 }
 
 .black {
-	--background-color: #000000;
+	--background-color: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0,0,0,0.5) 100%);
 	--text-color: #fff;
 	--border-color: #ffffff25;
 	--border-hov: #ffffff15; 
@@ -323,7 +323,7 @@ hr {
 	display: flex;
 	align-items: center;
 	position: fixed;
-	background-color: var(--navbar);
+	background: var(--navbar);
 	-webkit-backdrop-filter: var(--nav-blur);
 	backdrop-filter: var(--nav-blur);
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
