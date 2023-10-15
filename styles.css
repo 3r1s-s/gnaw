@@ -7,6 +7,7 @@
 	--navbar: #0d1117;
 	--navtext: #fff;
 	--mobilenav: #010409ee;
+	--nav-blur: none;
 }
 
 .default {
@@ -18,6 +19,7 @@
 	--navbar: #0d1117;
 	--navtext: #fff;
 	--mobilenav: #010409ee;
+	--nav-blur: none;
 }
 
 .light {
@@ -29,6 +31,7 @@
 	--navbar: #855cd6;
 	--navtext: #fff;
 	--mobilenav: #ffffff91;
+	--nav-blur: none;
 }
 
 .grain {
@@ -40,6 +43,7 @@
 	--navbar: #111;
 	--navtext: #fff;
 	--mobilenav: #0e0e0eaa;
+	--nav-blur: none;
 }
 
 .zip {
@@ -51,6 +55,7 @@
 	--navbar: #1f1e24;
 	--navtext: #fff;
 	--mobilenav: #1f1e24aa;
+	--nav-blur: none;
 }
 
 .dawn {
@@ -62,6 +67,7 @@
 	--navbar: #fbab24;
 	--navtext: #fff8e7;
 	--mobilenav: #fff8e7aa;
+	--nav-blur: none;
 }
 
 .rose {
@@ -73,6 +79,7 @@
 	--navbar: #b00b69;
 	--navtext: #fff8e7;
 	--mobilenav: #b00b69aa;
+	--nav-blur: none;
 }
 
 .ice {
@@ -84,6 +91,7 @@
 	--navbar: #496ddc;
 	--navtext: #fff;
 	--mobilenav: #e7e8ffaa;
+	--nav-blur: none;
 }
 
 .glacier {
@@ -95,6 +103,7 @@
 	--navbar: #496ddc;
 	--navtext: #fff;
 	--mobilenav: #496ddcaa;
+	--nav-blur: none;
 }
 
 .black {
@@ -106,6 +115,7 @@
 	--navbar: #000000;
 	--navtext: #fff;
 	--mobilenav: #0c0c0caa;
+	--nav-blur: blur(15px) saturate(180%);
 }
 
 .midnight {
@@ -117,6 +127,7 @@
 	--navbar: #44475a;
 	--navtext: #e6d5ff;
 	--mobilenav: #44475aaa;
+	--nav-blur: none;
 }
 
 .hamtter {
@@ -128,6 +139,7 @@
 	--navbar: #1f1f1f;
 	--navtext: #ff6c60;
 	--mobilenav: #1f1f1faa;
+	--nav-blur: none;
 }
 
 .mastodon {
@@ -139,6 +151,7 @@
 	--navbar: #282c37;
 	--navtext: #cddef5;
 	--mobilenav: #282c37aa;
+	--nav-blur: none;
 }
 
 .pleroma {
@@ -150,6 +163,7 @@
 	--navbar: #282c37;
 	--navtext: #b9b9ba;
 	--mobilenav: #282c37aa;
+	--nav-blur: none;
 }
 
 .twitter {
@@ -161,6 +175,7 @@
 	--navbar: #fff;
 	--navtext: #1da1f2;
 	--mobilenav: #ffffffaa;
+	--nav-blur: none;
 }
 
 .x {
@@ -172,6 +187,7 @@
 	--navbar: #15202b;
 	--navtext: #1da1f2;
 	--mobilenav: #15202baa;
+	--nav-blur: none;
 }
 
 .classic {
@@ -183,6 +199,7 @@
 	--navbar: #1f1f1f;
 	--navtext: #fff;
 	--mobilenav: #1f1f1faa;
+	--nav-blur: none;
 }
 
 .first {
@@ -194,6 +211,7 @@
 	--navbar: #18181b;
 	--navtext: #fff;
 	--mobilenav: #18181baa;
+	--nav-blur: none;
 }
 
 
@@ -306,6 +324,8 @@ hr {
 	align-items: center;
 	position: fixed;
 	background-color: var(--navbar);
+	-webkit-backdrop-filter: var(--nav-blur);
+	backdrop-filter: var(--nav-blur);
 	box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
 	padding: 0;
 	width: 100%;
