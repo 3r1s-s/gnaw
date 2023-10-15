@@ -112,9 +112,9 @@
 	--border-color: #272729;
 	--border-hov: #383839; 
 	--accent: #1c1c1e;
-	--navbar: #000000;
+	--navbar: #000000aa;
 	--navtext: #fff;
-	--mobilenav: #0c0c0caa;
+	--mobilenav: #000000aa;
 	--nav-blur: blur(15px) saturate(180%);
 }
 
