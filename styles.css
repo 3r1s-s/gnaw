@@ -100,10 +100,10 @@
 .black {
 	--background-color: #000000;
 	--text-color: #fff;
-	--border-color: #000;
-	--border-hov: #191919; 
-	--accent: #0c0c0c;
-	--navbar: #0c0c0c;
+	--border-color: #383838;
+	--border-hov: #4f4f4f; 
+	--accent: #1c1c1e;
+	--navbar: #000000aa;
 	--navtext: #fff;
 	--mobilenav: #0c0c0caa;
 }
@@ -333,6 +333,38 @@ hr {
 	align-items: center;
 }
 
+.search {
+	display: flex;
+	align-items: end;
+}
+
+.searchbox {
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.in {
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-left: none;
+}
+
+.in:hover {
+	border-left: none;
+}
+
+.in:focus {
+	border-left: none;
+}
+
+.btn .in {
+	font-size: 13px;
+}
+
+#searchType {
+	border-left: none;
+}
+
 .nvl {
 	margin-left: 5px;
 	margin-right: 5px;
@@ -481,7 +513,6 @@ hr {
 	padding: 15px;
 	padding-left: 25px;
 	padding-right: 25px;
-	border-radius: 5px;
 	transition: all 250ms;
 }
 
@@ -510,7 +541,6 @@ hr {
 	'wght' 400,
 	'GRAD' 0,
 	'opsz' 24;
-	border-radius: 5px;
 }
 
 /*.exp-nav {
@@ -526,6 +556,7 @@ hr {
 	-webkit-backdrop-filter: blur(15px);
 	backdrop-filter: blur(15px);
 }*/
+
 
 /*Fonts*/
 @font-face {
