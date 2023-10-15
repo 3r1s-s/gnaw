@@ -109,8 +109,8 @@
 .black {
 	--background-color: #000000;
 	--text-color: #fff;
-	--border-color: #272729;
-	--border-hov: #383839; 
+	--border-color: #ffffff25;
+	--border-hov: #ffffff15; 
 	--accent: #1c1c1e;
 	--navbar: #000000aa;
 	--navtext: #fff;
