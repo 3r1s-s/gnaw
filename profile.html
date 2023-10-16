@@ -127,7 +127,7 @@
 		}
 	</style>
 	<script>
-		document.addEventListener("DOMContentLoaded", function() {
+		window.addEventListener("load", function() {
 			var queryString = window.location.search;
 			var urlParams = new URLSearchParams(queryString);
 			var username = urlParams.get("username");

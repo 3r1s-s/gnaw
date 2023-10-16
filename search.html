@@ -52,7 +52,7 @@
 				console.error('Error:', error);
 			});
 		}
-		document.addEventListener('DOMContentLoaded', function() {
+		window.addEventListener("load", function() {
 			const urlParams = new URLSearchParams(window.location.search);
 			const query = urlParams.get('project');
 			console.log(query); //remove later
