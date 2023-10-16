@@ -132,12 +132,12 @@
 
 .mint {
 	--background-color: #efffef;
-	--text-color: #000;
+	--text-color: #322;
 	--border-color: #00000025;
 	--border-hov: #00000045; 
 	--accent: #cfc;
 	--navbar: #cfc;
-	--navtext: #000;
+	--navtext: #322;
 	--mobilenav: #000000aa;
 	--nav-blur: none;
 }
