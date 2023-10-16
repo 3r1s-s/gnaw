@@ -4,7 +4,7 @@ function setTheme() {
   body.classList.remove(
     "default", "light", "grain", "zip", "dawn", "black", "rose",
     "teal", "ice", "glacier", "hamtter", "midnight", "mastodon", 
-    "pleroma", "twitter", "x", "classic", "first", "eagles"
+    "pleroma", "twitter", "x", "classic", "first", "eagles", "mint"
   );
 
   if (savedTheme) {

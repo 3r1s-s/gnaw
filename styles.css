@@ -130,6 +130,18 @@
 	--nav-blur: none;
 }
 
+.mint {
+	--background-color: #efffef;
+	--text-color: #000;
+	--border-color: #00000025;
+	--border-hov: #00000045; 
+	--accent: #cfc;
+	--navbar: #cfc;
+	--navtext: #000;
+	--mobilenav: #000000aa;
+	--nav-blur: none;
+}
+
 .midnight {
 	--background-color: #282a36;
 	--text-color: #fff;
