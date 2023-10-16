@@ -25,7 +25,9 @@
             const selectedTheme = document.getElementById("themeSelector").value;
             const body = document.body;
 
-            body.classList.remove("default", "light", "grain", "zip", "dawn", "black", "rose", "teal", "ice", "glacier", "hamtter", "midnight", "mastodon", "pleroma", "twitter", "x", "classic", "first");
+            body.classList.remove(
+                "default", "light", "grain", "zip", "dawn", "black", "rose", "teal", "ice", "glacier", "hamtter", "midnight", "mastodon", "pleroma", "twitter", "x", "classic", "first", "eagles"
+            );
 
             body.classList.add(selectedTheme);
             localStorage.setItem("selectedTheme", selectedTheme);
@@ -74,6 +76,7 @@
             <select id="themeSelector">
                 <option value="default">Default</option>
                 <option value="light">Light</option>
+                <option value="black">Black</option>
                 <option value="grain">Grain</option>
                 <option value="zip">Zip</option>
                 <option value="midnight">Midnight</option>
@@ -81,7 +84,7 @@
                 <option value="rose">Rose</option>
                 <option value="ice">Ice</option>
                 <option value="glacier">Glacier</option>
-                <option value="black">Black</option>
+                <option value="eagles">Eagles</option>
                 <!--<option value="mastodon">Mastodon</option>
                 <option value="pleroma">Pleroma</option>
                 <option value="twitter">Twitter</option>

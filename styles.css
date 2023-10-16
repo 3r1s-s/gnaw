@@ -118,6 +118,18 @@
 	--nav-blur: blur(15px) saturate(180%);
 }
 
+.eagles {
+	--background-color: #fff;
+	--text-color: #000;
+	--border-color: #000;
+	--border-hov: #666; 
+	--accent: #a2aaad;
+	--navbar: #004851;
+	--navtext: #fff;
+	--mobilenav: #004851aa;
+	--nav-blur: none;
+}
+
 .midnight {
 	--background-color: #282a36;
 	--text-color: #fff;
