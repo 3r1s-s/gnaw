@@ -27,4 +27,4 @@ function isValidColor(str) {
   return s.color !== '';
 }
 
-window.addEventListener("load", setTheme);
+document.addEventListener("DOMContentLoaded", setTheme);

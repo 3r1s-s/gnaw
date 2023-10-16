@@ -35,17 +35,17 @@
 				data.forEach(project => {
 					var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${project.id}_480x360.png`;
 					exploreHTML += `
-  <div class="project read">
-  <div class="thumbnail-container">
-    <img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail">
-  </div>
-  <div class="project-info">
-    <h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
-    <p><em>by <a href='profile.html?username=${project.author.username}'>${project.author.username}</a></em>
-      | Views: ${project.stats.views} | Loves: ${project.stats.loves} | Favorites: ${project.stats.favorites}</p>
-  </div>
-</div>
-  `;
+					<div class="project read">
+					<div class="thumbnail-container">
+						<img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail">
+					</div>
+					<div class="project-info">
+						<h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
+						<p><em>by <a href='profile.html?username=${project.author.username}'>${project.author.username}</a></em>
+						| Views: ${project.stats.views} | Loves: ${project.stats.loves} | Favorites: ${project.stats.favorites}</p>
+					</div>
+					</div>
+					`;
 				});
 				exploreContainer.innerHTML = exploreHTML;
 			}).catch(error => {
