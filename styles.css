@@ -520,6 +520,21 @@ hr {
     display: none;
 }
 
+.thumbnail-container {
+	flex-shrink: 0;
+	margin-right: 10px;
+}
+
+.thumbnail {
+	width: 100px;
+	height: auto;
+	border-radius: 5px;
+}
+
+.project {
+	display: flex;
+}
+
 @media screen and (max-width: 480px) {
     .read {
         margin-left: 0;

@@ -11,22 +11,6 @@
 	<link rel="manifest" href="manifest.webmanifest">
 	<link rel="stylesheet" href="styles.css">
 	<script src="theme.js"></script>
-	<style>
-		.thumbnail-container {
-			flex-shrink: 0;
-			margin-right: 10px;
-		}
-
-		.thumbnail {
-			width: 100px;
-			height: auto;
-			border-radius: 5px;
-		}
-
-		.project {
-			display: flex;
-		}
-	</style>
 	<script>
 		function fetchExplore(query) {
 			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/search/projects?q=' + query + '&mode=popular&language=en').then(response => response.json()).then(data => {
