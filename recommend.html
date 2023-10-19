@@ -28,7 +28,7 @@
 					exploreHTML += `
               <div class="project read">
                 <div class="thumbnail-container">
-                  <img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail">
+					<a href="project.html?project=${project.id}"><img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail"></a>
                 </div>
                 <div class="project-info">
                   <h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
@@ -43,7 +43,7 @@
 				console.error('Error:', error);
 			});
 		}
-		document.addEventListener('load', function() {
+		window.addEventListener("load", function() {
 			fetchFeatured();
 		});
 	</script>
