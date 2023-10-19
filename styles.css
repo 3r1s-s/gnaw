@@ -52,6 +52,7 @@
     --nav-blur: blur(15px) saturate(180%);
     --button-color: transparent;
     --button-hover: transparent;
+	--webkit-nav: #000;
 }
 
 .white {
@@ -66,6 +67,7 @@
 	--nav-blur: blur(15px) saturate(180%);
 	--button-color: transparent;
 	--button-hover: transparent;
+	--webkit-nav: #fff;
 }
 
 .grain {

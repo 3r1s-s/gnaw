@@ -13,7 +13,7 @@ function setTheme() {
     let navbarColor = computedStyle.getPropertyValue("--navbar");
 
     if (!navbarColor || !isValidColor(navbarColor)) { //thanks chargpt
-      navbarColor = "#000";
+      navbarColor = computedStyle.getPropertyValue("--webkit-nav");
     }
 
     document.querySelector('meta[name="theme-color"]').setAttribute('content', navbarColor);
