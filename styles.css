@@ -535,6 +535,10 @@ hr {
 	display: flex;
 }
 
+.wrap {
+	word-wrap: anywhere;
+}
+
 @media screen and (max-width: 480px) {
     .read {
         margin-left: 0;

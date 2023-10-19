@@ -79,10 +79,6 @@
 			padding: 5px;
 			font-weight: lighter;
 		}
-		
-		.wrap {
-			word-wrap: anywhere;
-		}
 
 		.overflow {
 			overflow-x: hidden;
@@ -202,7 +198,7 @@
 				htmlContent += `
       <div class="project read">
         <div class="thumbnail-container">
-          <img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail">
+            <a href="project.html?project=${project.id}"><img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail"></a>
           </div>
           <div class="project-info">
     <h3 style='margin:0;' class='wrap'><a href="project.html?project=${item.id}">${item.title}</a></h3>

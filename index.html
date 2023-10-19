@@ -147,7 +147,7 @@
 					exploreHTML += `
               <div class="project read">
                 <div class="thumbnail-container">
-                  <img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail">
+					<a href="project.html?project=${project.id}"><img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail"></a>
                 </div>
                 <div class="project-info">
                   <h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
@@ -174,7 +174,7 @@
 					exploreHTML += `
               <div class="project read">
                 <div class="thumbnail-container">
-                  <img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail">
+					<a href="project.html?project=${project.id}"><img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail"></a>
                 </div>
                 <div class="project-info">
                   <h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
@@ -200,7 +200,7 @@
 					exploreHTML += `
               <div class="project read">
                 <div class="thumbnail-container">
-                  <img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail">
+					<a href="project.html?project=${project.id}"><img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail"></a>
                 </div>
                 <div class="project-info">
                   <h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
@@ -223,8 +223,6 @@
 				for(var i = 0; i < 3 && i < changelogData.length; i++) {
 					exploreHTML += `
                 <div class="project read">
-                    <div class="thumbnail-container">
-                    </div>
                     <div class="project-info">
                         <h3 style='margin:0;'>${changelogData[i].date}</h3>
                         <p style='margin:0;'>${changelogData[i].log}</p>
