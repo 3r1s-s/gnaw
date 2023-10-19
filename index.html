@@ -223,25 +223,29 @@
 						}
 						
 						function fetchChange() {
-							fetch('changelog.json').then(response => response.json()).then(changelogData => {
+							fetch('changelog.json')
+								.then(response => response.json())
+								.then(changelogData => {
 								var exploreContainer = document.getElementById('changelog');
 								var exploreHTML = '';
-								for(var i = 0; i < changelogData.length; i++) {
+								for (var i = 0; i < Math.min(3, changelogData.length); i++) {
 									exploreHTML += `
 									<div class="project read">
 										<div class="thumbnail-container">
-											</div>
-											<div class="project-info">
-                        <h3 style='margin:0;'>${changelogData[i].date}</h3>
-                        <p style='margin:0;'>${changelogData[i].log}</p>
-                    </div>
-					</div>`;
-				}
-				exploreContainer.innerHTML = exploreHTML;
-			}).catch(error => {
-				console.error('Error:', error);
-			});
-		}
+										</div>
+										<div class="project-info">
+										<h3 style='margin:0;'>${changelogData[i].date}</h3>
+										<p style='margin:0;'>${changelogData[i].log}</p>
+										</div>
+									</div>`;
+								}
+								exploreContainer.innerHTML = exploreHTML;
+								})
+								.catch(error => {
+								console.error('Error:', error);
+								});
+							}
+
 		
 		function handleSearch() {
 			var searchInput = document.getElementById("searchInput").value;
