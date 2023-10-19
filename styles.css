@@ -582,6 +582,23 @@ hr {
         padding-bottom: 5px;
         padding-top: 5px;
     }
+
+
+	.thumbnail-container {
+		margin: 0;
+		width: 100%;
+	}
+
+	.thumbnail {
+		width: 100%;
+		height: auto;
+		border-radius: 5px;
+		margin-bottom: 10px;
+	}
+
+	.project {
+		flex-direction: column;
+	}
 }
 
 .mobile-nav-item>a {
