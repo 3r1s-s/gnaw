@@ -106,6 +106,21 @@
 			overflow: hidden;
 			text-overflow: ellipsis;
 		}
+
+		.thumbnail-container {
+			flex-shrink: 0;
+			margin-right: 10px;
+		}
+
+		.thumbnail {
+			width: 100px;
+			height: auto;
+			border-radius: 5px;
+		}
+
+		.project {
+			display: flex;
+		}
 	</style>
 	<script>
 		window.addEventListener("load", function() {
@@ -198,7 +213,7 @@
 				htmlContent += `
       <div class="project read">
         <div class="thumbnail-container">
-            <a href="project.html?project=${project.id}"><img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail"></a>
+            <a href="project.html?project=${item.id}"><img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail"></a>
           </div>
           <div class="project-info">
     <h3 style='margin:0;' class='wrap'><a href="project.html?project=${item.id}">${item.title}</a></h3>
