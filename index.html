@@ -142,15 +142,7 @@
 				console.error('Error:', error);
 			});
 		}
-		window.addEventListener("load", function() {
-			clearInputs();
-			fetchNews();
-			fetchExplore();
-			fetchFeatured();
-			fetchRecommend();
-			fetchChange();
-		});
-
+		
 		function fetchExplore() {
 			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/explore/projects?q=games&mode=trending&language=en').then(response => response.json()).then(data => {
 				var exploreContainer = document.getElementById('explore-container');
@@ -159,25 +151,25 @@
 					var project = data[i];
 					var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${project.id}_480x360.png`;
 					exploreHTML += `
-              <div class="project read">
-                <div class="thumbnail-container">
-					<a href="project.html?project=${project.id}"><img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail"></a>
-                </div>
-                <div class="project-info">
-                  <h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
-                  <p>
-                    <em>by <a href='profile.html?username=${project.author.username}'>${project.author.username}</a></em>
-                    | Views: ${project.stats.views} | Loves: ${project.stats.loves} | Favorites: ${project.stats.favorites}
+					<div class="project read">
+						<div class="thumbnail-container">
+							<a href="project.html?project=${project.id}"><img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail"></a>
+							</div>
+							<div class="project-info">
+								<h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
+								<p>
+									<em>by <a href='profile.html?username=${project.author.username}'>${project.author.username}</a></em>
+									| Views: ${project.stats.views} | Loves: ${project.stats.loves} | Favorites: ${project.stats.favorites}
                   </p>
-                </div>
-              </div>`;
+				  </div>
+				  </div>`;
 				}
 				exploreContainer.innerHTML = exploreHTML; //fix the loves and faves counter later (the scratch explore api is slower to update) do the same in explore.html
 			}).catch(error => {
 				console.error('Error:', error);
 			});
 		}
-
+		
 		function fetchFeatured() {
 			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/studios/27205657/projects').then(response => response.json()).then(data => {
 				var exploreContainer = document.getElementById('featured-container');
@@ -186,24 +178,24 @@
 					var project = data[i];
 					var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${project.id}_480x360.png`;
 					exploreHTML += `
-              <div class="project read">
-                <div class="thumbnail-container">
-					<a href="project.html?project=${project.id}"><img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail"></a>
-                </div>
-                <div class="project-info">
-                  <h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
-                  <p>
-                    <em>by <a href='profile.html?username=${project.username}'>${project.username}</a></em>
-                  </p>
-                </div>
-              </div>`;
-				}
-				exploreContainer.innerHTML = exploreHTML;
-			}).catch(error => {
+					<div class="project read">
+						<div class="thumbnail-container">
+							<a href="project.html?project=${project.id}"><img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail"></a>
+							</div>
+							<div class="project-info">
+								<h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
+								<p>
+									<em>by <a href='profile.html?username=${project.username}'>${project.username}</a></em>
+									</p>
+									</div>
+									</div>`;
+								}
+								exploreContainer.innerHTML = exploreHTML;
+							}).catch(error => {
 				console.error('Error:', error);
 			});
 		}
-
+		
 		function fetchRecommend() {
 			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/studios/33806259/projects').then(response => response.json()).then(data => {
 				var exploreContainer = document.getElementById('recommend-container');
@@ -212,55 +204,53 @@
 					var project = data[i];
 					var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${project.id}_480x360.png`;
 					exploreHTML += `
-              <div class="project read">
-                <div class="thumbnail-container">
-					<a href="project.html?project=${project.id}"><img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail"></a>
-                </div>
-                <div class="project-info">
-                  <h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
-                  <p>
-                    <em>by <a href='profile.html?username=${project.username}'>${project.username}</a></em>
-                  </p>
-                </div>
-              </div>`;
-				}
-				exploreContainer.innerHTML = exploreHTML;
-			}).catch(error => {
-				console.error('Error:', error);
-			});
-		}
-
-		function fetchChange() {
-			fetch('changelog.json').then(response => response.json()).then(changelogData => {
-				var exploreContainer = document.getElementById('changelog');
-				var exploreHTML = '';
-				for(var i = 0; i < 3 && i < changelogData.length; i++) {
-					exploreHTML += `
-                <div class="project read">
-                    <div class="project-info">
+					<div class="project read">
+						<div class="thumbnail-container">
+							<a href="project.html?project=${project.id}"><img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail"></a>
+							</div>
+							<div class="project-info">
+								<h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
+								<p>
+									<em>by <a href='profile.html?username=${project.username}'>${project.username}</a></em>
+									</p>
+									</div>
+									</div>`;
+								}
+								exploreContainer.innerHTML = exploreHTML;
+							}).catch(error => {
+								console.error('Error:', error);
+							});
+						}
+						
+						function fetchChange() {
+							fetch('changelog.json').then(response => response.json()).then(changelogData => {
+								var exploreContainer = document.getElementById('changelog');
+								var exploreHTML = '';
+								for(var i = 0; i < changelogData.length; i++) {
+									exploreHTML += `
+									<div class="project read">
+										<div class="thumbnail-container">
+											</div>
+											<div class="project-info">
                         <h3 style='margin:0;'>${changelogData[i].date}</h3>
                         <p style='margin:0;'>${changelogData[i].log}</p>
                     </div>
-                </div>`;
+					</div>`;
 				}
 				exploreContainer.innerHTML = exploreHTML;
 			}).catch(error => {
 				console.error('Error:', error);
 			});
 		}
-
+		
 		function handleSearch() {
 			var searchInput = document.getElementById("searchInput").value;
 			var searchType = document.getElementById("searchType").value;
-
 			if (searchType === "user") {
-				// Handle user search
 				navigateToProfile(searchInput, null);
 			} else if (searchType === "project") {
-				// Handle project search
 				navigateToProfile(null, searchInput);
 			} else if (searchType === "projectID") {
-				// Handle project ID search
 				var projectIdInput = searchInput;
 				if (projectIdInput) {
 					var url = "project.html?project=" + encodeURIComponent(projectIdInput);
@@ -268,8 +258,16 @@
 				}
 			}
 		}
-
-	</script>
+		
+		window.addEventListener("load", function() {
+			clearInputs();
+			fetchNews();
+			fetchExplore();
+			fetchFeatured();
+			fetchRecommend();
+			fetchChange();
+		});
+		</script>
 </head>
 
 <body class="">
