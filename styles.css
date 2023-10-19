@@ -135,7 +135,7 @@
     --mobilenav: #000000aa;
     --nav-blur: blur(15px) saturate(180%);
     --button-color: transparent;
-    --button-hover: #ffffff05;
+    --button-hover: transparent;
 }
 
 .eagles {
@@ -160,7 +160,7 @@
     --accent: #cfc;
     --navbar: #cfc;
     --navtext: #322;
-    --mobilenav: #000000aa;
+    --mobilenav: #ccffccaa;
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
