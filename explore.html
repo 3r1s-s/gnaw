@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<title>Explore | gnaw</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-	<meta charset="UTF-8">
-	<meta name="background-color" content="#010409">
-	<meta name="theme-color" content="#0d1117">	
-	<link rel="icon" sizes="512x512" href="images/icon.png">
-	<link rel="icon" sizes="64x64" href="images/icon64.png">
-	<link rel="manifest" href="manifest.webmanifest">
-	<link rel="stylesheet" href="styles.css">
-	<script src="theme.js"></script>
-	<script>
-		function fetchExplore() {
-			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/explore/projects?q=games&mode=trending&language=en').then(response => response.json()).then(data => {
-				var exploreContainer = document.getElementById('explore-container');
-				var exploreHTML = '';
-				data.forEach(project => {
-					var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${project.id}_480x360.png`;
-					exploreHTML += `
+    <title>Explore | gnaw</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <meta name="background-color" content="#010409">
+    <meta name="theme-color" content="#0d1117">
+    <link rel="icon" sizes="512x512" href="images/icon.png">
+    <link rel="icon" sizes="64x64" href="images/icon64.png">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+    <script src="theme.js"></script>
+    <script>
+        function fetchExplore() {
+            fetch('https://corsproxy.io/?https://api.scratch.mit.edu/explore/projects?q=games&mode=trending&language=en').then(response => response.json()).then(data => {
+                var exploreContainer = document.getElementById('explore-container');
+                var exploreHTML = '';
+                data.forEach(project => {
+                    var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${project.id}_480x360.png`;
+                    exploreHTML += `
         <div class="project read">
           <div class="thumbnail-container">
             <a href="project.html?project=${project.id}"><img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail"></a>
@@ -30,64 +31,71 @@
           </div>
         </div>
         `;
-				});
-				exploreContainer.innerHTML = exploreHTML;
-			}).catch(error => {
-				console.error('Error:', error);
-			});
-		}
-		window.addEventListener("load", function() {
-			fetchExplore();
-		});
+                });
+                exploreContainer.innerHTML = exploreHTML;
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        }
+        window.addEventListener("load", function() {
+            fetchExplore();
+        });
 
-		function goBack() {
-			history.back();
-		}
+        function goBack() {
+            history.back();
+        }
 
-		function goToSearchPage() {
-			var url = 'index.html';
-			window.location.href = url;
-		}
-	</script>
+        function goToSearchPage() {
+            var url = 'index.html';
+            window.location.href = url;
+        }
+
+        function fetchProjectStats(projectId) {
+            return fetch(`https://corsproxy.io/?https://api.scratch.mit.edu/projects/${projectId}`)
+                .then(response => response.json());
+        }
+    </script>
 </head>
+
 <body>
-	<div class="nav">
-		<div class="inner-nav">
-			<div class="nav-item">
-				<a class="icon desktop" href="index.html">gnaw</a>
-				<a class="icon mobile" href="index.html">g</a>
-			</div>
-			<div class="nav-item desktop" style="justify-content: right;">
-				<a class="icon desktop nvl" href="explore.html">Explore</a>
-				<a class="icon desktop nvl" href="featured.html">Featured</a>
-			</div>
-		</div>
-	</div>
-	<div class="page">
-		<div class="header">
-			<h1>Explore</h1>
-			<i>Projects from the Scratch trending section</i>
-		</div>
-		<div id="explore-container"></div>
-		<div class="about">
-			<div id="about">
-				<a href="index.html" style="font-weight: bold; ">gnaw</a> / <a href="https://discord.com/users/797570703419244594">discord</a> / <a href="mailto:eris@meower.org">email me</a> / <a href="profile.html?username=3r1s_s">profile</a> / <a href="https://github.com/3r1s-s">github</a> / <a href="health.html">health</a> / <a href="about.html">about</a> / <a href="settings.html">settings</a> /
-			</div>
-		</div>
-		<div class="mobile-nav">
-			<div class="mobile-nav-item">
-				<a href="index.html"><i class="material-symbols-outlined">home</i></a>
-			</div>
-			<div class="mobile-nav-item">
-				<a href="featured.html"><i class="material-symbols-outlined">star</i></a>
-			</div>
-			<div class="mobile-nav-item">
-				<a href="explore.html"><i class="material-symbols-outlined">globe</i></a>
-			</div>
-			<div class="mobile-nav-item">
-				<a href="settings.html"><i class="material-symbols-outlined">settings</i></a>
-			</div>
-		</div>
-	</div>
+    <div class="nav">
+        <div class="inner-nav">
+            <div class="nav-item">
+                <a class="icon desktop" href="index.html">gnaw</a>
+                <a class="icon mobile" href="index.html">g</a>
+            </div>
+            <div class="nav-item desktop" style="justify-content: right;">
+                <a class="icon desktop nvl" href="explore.html">Explore</a>
+                <a class="icon desktop nvl" href="featured.html">Featured</a>
+            </div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="header">
+            <h1>Explore</h1>
+            <i>Projects from the Scratch trending section</i>
+        </div>
+        <div id="explore-container"></div>
+        <div class="about">
+            <div id="about">
+                <a href="index.html" style="font-weight: bold; ">gnaw</a> / <a href="https://discord.com/users/797570703419244594">discord</a> / <a href="mailto:eris@meower.org">email me</a> / <a href="profile.html?username=3r1s_s">profile</a> / <a href="https://github.com/3r1s-s">github</a> / <a href="health.html">health</a> / <a href="about.html">about</a> / <a href="settings.html">settings</a> /
+            </div>
+        </div>
+        <div class="mobile-nav">
+            <div class="mobile-nav-item">
+                <a href="index.html"><i class="material-symbols-outlined">home</i></a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="featured.html"><i class="material-symbols-outlined">star</i></a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="explore.html"><i class="material-symbols-outlined">globe</i></a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="settings.html"><i class="material-symbols-outlined">settings</i></a>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
