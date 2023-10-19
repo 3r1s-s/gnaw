@@ -299,6 +299,7 @@ a:hover {
 select {
     width: 100px;
     background-color: transparent;
+	background-color: var(--button-color);
     border: 1px solid var(--border-color);
     color: var(--text-color);
     font-family: Whitney;
@@ -308,6 +309,7 @@ select {
 }
 
 select:focus {
+	background-color: var(--button-hover);
     border: 1px solid var(--border-hov);
 }
 
@@ -346,9 +348,9 @@ button:focus {
 }
 
 form input {
-    width: 200px;
+	width: 200px;
     height: 30px;
-    background-color: transparent;
+    background-color: var(--button-color);
     border: 1px solid var(--border-color);
     color: var(--text-color);
     border-radius: 5px;
@@ -360,6 +362,7 @@ form input {
 }
 
 form input:focus {
+	background-color: var(--button-hover);
     border: 1px solid var(--border-hov);
 }
 
