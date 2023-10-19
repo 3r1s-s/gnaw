@@ -2,7 +2,7 @@ function setTheme() {
   const savedTheme = localStorage.getItem("selectedTheme");
   const body = document.body;
   body.classList.remove(
-    "default", "light", "grain", "zip", "dawn", "black", "rose",
+    "default", "light", "grain", "zip", "dawn", "black", "white", "rose",
     "teal", "ice", "glacier", "hamtter", "midnight", "mastodon", 
     "pleroma", "twitter", "x", "classic", "first", "eagles", "mint"
   );

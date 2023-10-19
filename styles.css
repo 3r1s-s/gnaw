@@ -40,6 +40,34 @@
     --button-hover: transparent;
 }
 
+.black {
+    --background-color: #000;
+    --text-color: #fff;
+    --border-color: #ffffff15;
+    --border-hov: #ffffff25;
+    --accent: #1c1c1e;
+    --navbar: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+    --navtext: #fff;
+    --mobilenav: #000000aa;
+    --nav-blur: blur(15px) saturate(180%);
+    --button-color: transparent;
+    --button-hover: transparent;
+}
+
+.white {
+	--background-color: #f2f2f7;
+	--text-color: #0d0d0d;
+	--border-color: #c6c6c8;
+	--border-hov: #a6a6a8;
+	--accent: #fff;
+	--navbar: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.5) 100%);
+	--navtext: #0d0d0d;
+	--mobilenav: #ffffffaa;
+	--nav-blur: blur(15px) saturate(180%);
+	--button-color: transparent;
+	--button-hover: transparent;
+}
+
 .grain {
     --background-color: #0b0b0b;
     --text-color: #fff;
@@ -124,19 +152,6 @@
     --button-hover: transparent;
 }
 
-.black {
-    --background-color: #000;
-    --text-color: #fff;
-    --border-color: #ffffff15;
-    --border-hov: #ffffff25;
-    --accent: #1c1c1e;
-    --navbar: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
-    --navtext: #fff;
-    --mobilenav: #000000aa;
-    --nav-blur: blur(15px) saturate(180%);
-    --button-color: transparent;
-    --button-hover: transparent;
-}
 
 .eagles {
     --background-color: #fff;
@@ -478,9 +493,6 @@ hr {
 
 .mobile:hover {
     text-decoration: none;
-}
-
-.desktop {
 }
 
 .about {
