@@ -169,6 +169,33 @@
 				console.error('Error:', error);
 			});
 		}
+
+		function fetchPopular() {
+			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/explore/projects?q=games&mode=popular&language=en').then(response => response.json()).then(data => {
+				var exploreContainer = document.getElementById('popular-container');
+				var exploreHTML = '';
+				for(var i = 0; i < 3; i++) {
+					var project = data[i];
+					var thumbnailUrl = `https://uploads.scratch.mit.edu/get_image/project/${project.id}_480x360.png`;
+					exploreHTML += `
+					<div class="project read">
+						<div class="thumbnail-container">
+							<a href="project.html?project=${project.id}"><img src="${thumbnailUrl}" alt="Project Thumbnail" class="thumbnail"></a>
+							</div>
+							<div class="project-info">
+								<h3 style='margin:0;'><a href="project.html?project=${project.id}">${project.title}</a></h3>
+								<p>
+									<em>by <a href='profile.html?username=${project.author.username}'>${project.author.username}</a></em>
+									| Views: ${project.stats.views} | Loves: ${project.stats.loves} | Favorites: ${project.stats.favorites}
+                  </p>
+				  </div>
+				  </div>`;
+				}
+				exploreContainer.innerHTML = exploreHTML;
+			}).catch(error => {
+				console.error('Error:', error);
+			});
+		}
 		
 		function fetchFeatured() {
     fetch('https://corsproxy.io/?https://api.scratch.mit.edu/studios/27205657/projects')
@@ -298,6 +325,7 @@ function fetchRecommend() {
 			clearInputs();
 			fetchNews();
 			fetchExplore();
+			fetchPopular();
 			fetchFeatured();
 			fetchRecommend();
 			fetchChange();
@@ -349,6 +377,10 @@ function fetchRecommend() {
 			<h2><a href="explore.html">Explore</a></h2>
 		</div>
 		<div id="explore-container"></div>
+		<div class="header">
+			<h2><a href="popular.html">Popular</a></h2>
+		</div>
+		<div id="popular-container"></div>
 		<div class="header">
 			<h2><a href="featured.html">Featured</a></h2>
 		</div>
