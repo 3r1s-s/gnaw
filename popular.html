@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Explore | gnaw</title>
+    <title>Popular | gnaw</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
     <meta name="background-color" content="#010409">
@@ -14,7 +14,7 @@
     <script src="theme.js"></script>
     <script>
         function fetchExplore() {
-            fetch('https://corsproxy.io/?https://api.scratch.mit.edu/explore/projects?q=games&mode=trending&language=en').then(response => response.json()).then(data => {
+            fetch('https://corsproxy.io/?https://api.scratch.mit.edu/explore/projects?q=games&mode=popular&language=en').then(response => response.json()).then(data => {
                 var exploreContainer = document.getElementById('explore-container');
                 var exploreHTML = '';
                 data.forEach(project => {
@@ -72,8 +72,8 @@
     </div>
     <div class="page">
         <div class="header">
-            <h1>Explore</h1>
-            <i>Projects from the Scratch trending section</i>
+            <h1>Popular</h1>
+            <i>Projects from the Scratch popular section</i>
         </div>
         <div id="explore-container"></div>
         <div class="about">

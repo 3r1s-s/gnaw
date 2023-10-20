@@ -144,7 +144,7 @@
 		}
 		
 		function fetchExplore() {
-			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/explore/projects?q=games&mode=popular&language=en').then(response => response.json()).then(data => {
+			fetch('https://corsproxy.io/?https://api.scratch.mit.edu/explore/projects?q=games&mode=trending&language=en').then(response => response.json()).then(data => {
 				var exploreContainer = document.getElementById('explore-container');
 				var exploreHTML = '';
 				for(var i = 0; i < 3; i++) {
