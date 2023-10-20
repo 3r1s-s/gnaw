@@ -214,15 +214,15 @@
 .mastodon {
     --background-color: #191b22;
     --text-color: #F8F8F2;
-    --border-color: #748294;
-    --border-hov: #9baec8;
+    --border-color: #393f4f;
+    --border-hov: #393f4f;
     --accent: #282c37;
     --navbar: #282c37;
     --navtext: #cddef5;
     --mobilenav: #282c37aa;
     --nav-blur: none;
-    --button-color: transparent;
-    --button-hover: transparent;
+    --button-color: #393f4f;
+    --button-hover: #444b5d;
 }
 
 .pleroma {
@@ -249,8 +249,8 @@
     --navtext: #1da1f2;
     --mobilenav: #15202baa;
     --nav-blur: none;
-    --button-color: #22303c;
-    --button-hover: #5f6b79;
+    --button-color: #203243;
+    --button-hover: #324e69;
 }
 
 .classic {
