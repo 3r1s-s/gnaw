@@ -240,31 +240,17 @@
 }
 
 .twitter {
-    --background-color: #e6ecf0;
-    --text-color: #0f0f0f;
-    --border-color: #fff;
-    --border-hov: #79c7f6;
-    --accent: #fff;
-    --navbar: #fff;
-    --navtext: #1da1f2;
-    --mobilenav: #ffffffaa;
-    --nav-blur: none;
-    --button-color: transparent;
-    --button-hover: transparent;
-}
-
-.x {
     --background-color: #101821;
     --text-color: #fff;
     --border-color: #15202b;
-    --border-hov: #79c7f6;
+    --border-hov: #15202b;
     --accent: #15202b;
     --navbar: #15202b;
     --navtext: #1da1f2;
     --mobilenav: #15202baa;
     --nav-blur: none;
-    --button-color: transparent;
-    --button-hover: transparent;
+    --button-color: #22303c;
+    --button-hover: #5f6b79;
 }
 
 .classic {
