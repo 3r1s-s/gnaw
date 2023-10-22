@@ -29,16 +29,16 @@
 .neue {
     --background-color: #1c1c25;
     --text-color: #f3f3f5;
-    --border-color: #4e505f;
+    --border-color: #3d3d4c;
     --border-hov: #5c5f70;
-    --accent: #2c2c38;
+    --accent: #22222c;
     --navbar: #2c2c38;
     --navtext: #f3f3f5;
     --mobilenav: #2c2c38;
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
-}
+  }
 
 .light {
     --background-color: #fcfcfc;
