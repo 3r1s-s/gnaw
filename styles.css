@@ -326,7 +326,6 @@ select {
 
 select:focus {
     background-color: var(--accent);
-	background-color: var(--button-hover);
     border: 1px solid var(--border-hov);
 }
 
