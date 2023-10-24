@@ -314,9 +314,8 @@ a:hover {
 }
 
 select {
-    width: 100px;
+    width: 200px;
     background-color: var(--accent);
-	background-color: var(--button-color);
     border: 1px solid var(--border-color);
     color: var(--text-color);
     font-family: Whitney;
