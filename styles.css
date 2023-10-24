@@ -329,10 +329,6 @@ select:focus {
     border: 1px solid var(--border-hov);
 }
 
-select::after {
-    color: var(--text-color);
-  }
-
 option {
     width: 100px;
     background-color: var(--accent-color);
