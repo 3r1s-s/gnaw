@@ -315,7 +315,7 @@ a:hover {
 
 select {
     width: 100px;
-    background-color: transparent;
+    background-color: var(--accent);
 	background-color: var(--button-color);
     border: 1px solid var(--border-color);
     color: var(--text-color);
@@ -326,13 +326,14 @@ select {
 }
 
 select:focus {
+    background-color: var(--accent);
 	background-color: var(--button-hover);
     border: 1px solid var(--border-hov);
 }
 
 option {
     width: 100px;
-    background-color: var(--background-color);
+    background-color: var(--accent-color);
     color: var(--text-color);
     font-family: Whitney;
     font-weight: 100;
