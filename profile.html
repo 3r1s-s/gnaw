@@ -44,7 +44,7 @@
 			display: flex;
 			align-items: center;
 		}
-
+		
 		#blurprofilepic {
 			filter: blur(50px);
 			border-radius: 200px;
@@ -54,22 +54,26 @@
 			width: 100%;
 			height: 300px;
 		}
-
+		
 		@media screen and (max-width: 480px) {
 			.read {
 				border: 1px solid var(--border-color);
 				margin: 5px;
 				border-radius: 5px;
 			}
+			
+			.userheader {
+				display: block;
+			}
+
+			.banner {
+				top: 0;
+			}
 
 			#usr {
 				text-align: center;
 				display: block !important;
 				margin-top: 15px;
-			}
-
-			#blurprofilepic {
-				display: none;
 			}
 
 			#profilepic {
@@ -200,7 +204,7 @@
 			var profilePicUrl = "https://cdn2.scratch.mit.edu/get_image/user/" + data.id + "_512x512.png?v=" + Date.now();
 			var blurredProfilePicUrl = "https://cdn2.scratch.mit.edu/get_image/user/" + data.id + "_90x90.png?v=" + Date.now() + "&x=0&y=0&width=90&height=90&blur=100";
 			document.title = data.username + " | gnaw";
-			userInfo.innerHTML = "<div id='usr'><div class='banner'><img id='blurprofilepic' src='" + blurredProfilePicUrl + "' alt='profile'></div>" + "</div>" + "<div class='header userheader'><img id='profilepic' src='" + profilePicUrl + "'height='80' width='80' alt='profile'><div style='display:block;'><h1 class='title'><a href='https://scratch.mit.edu/users/" + data.username + "'>" + data.username + "</a></h1>" + "<p class='sub'><em>" + formatDate(data.history.joined) + " | " + data.profile.country + "</em></p>" + "</div></div></div><div class='user-info'>" + "<div class='read wrap'>" + formatText(data.profile.bio) + "</div>" + "<div class='read wrap'>" + formatText(data.profile.status) + "</div>" + "</div>";
+			userInfo.innerHTML = "<div id='usr'><div class='banner'><img id='blurprofilepic' src='" + blurredProfilePicUrl + "' alt='profile'></div>" + "<div class='header userheader'><img id='profilepic' src='" + profilePicUrl + "'height='80' width='80' alt='profile'><div style='display:block;'><h1 class='title'><a href='https://scratch.mit.edu/users/" + data.username + "'>" + data.username + "</a></h1>" + "<p class='sub'><em>" + formatDate(data.history.joined) + " | " + data.profile.country + "</em></p>" + "</div></div></div><div class='user-info'>" + "<div class='read wrap'>" + formatText(data.profile.bio) + "</div>" + "<div class='read wrap'>" + formatText(data.profile.status) + "</div>" + "</div>";
 		}
 
 		function displayfollowing(data) {
