@@ -315,13 +315,14 @@ a:hover {
 
 select {
     width: 200px;
+    height: 30px;
     background-color: var(--accent);
-    border: 1px solid var(--border-color);
     color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
     font-family: Whitney;
     outline: none;
     box-sizing: border-box;
-    height: 30px;
 }
 
 select:focus {
@@ -469,6 +470,7 @@ hr {
 
 #searchType {
     border-left: none;
+    border-radius: 0;
 }
 
 .nvl {
