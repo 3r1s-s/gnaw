@@ -55,11 +55,29 @@
 			height: 300px;
 		}
 		
+		#usr {
+			display: flex; 
+			align-items: center;
+		}
+
+		#profilepic {
+			border-radius: 50%;
+			margin-right: 10px;
+		}
+
 		@media screen and (max-width: 480px) {
 			.read {
 				border: 1px solid var(--border-color);
 				margin: 5px;
 				border-radius: 5px;
+			}
+
+			#profilepic {
+				position: initial !important;
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				margin-right: 0;
 			}
 			
 			.userheader {
@@ -76,26 +94,11 @@
 				margin-top: 15px;
 			}
 
-			#profilepic {
-				position: initial !important;
-				width: 100px;
-				height: 100px;
-			}
-
 			.title {
 				margin-top: 0;
 			}
 		}
 
-		#usr {
-			display: flex; 
-			align-items: center;
-		}
-
-		#profilepic {
-			border-radius: 50%;
-			margin-right: 10px;
-		}
 
 		.recent {
 			margin: 5px;
