@@ -344,6 +344,7 @@ select {
 
 select:focus {
     background-color: var(--accent);
+    background-color: var(--select);
     border: 1px solid var(--border-hov);
 }
 
