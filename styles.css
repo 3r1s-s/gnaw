@@ -614,6 +614,10 @@ hr {
         display: none;
     }
 
+    .comment {
+        background-color: transparent;
+    }
+
     .mobile-nav {
         display: flex;
         position: fixed;
