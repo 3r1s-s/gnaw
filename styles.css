@@ -581,6 +581,13 @@ hr {
 	word-wrap: anywhere;
 }
 
+.comment {
+    margin: 0;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: transparent;
+}
+
 @media screen and (max-width: 480px) {
     .read {
         margin-left: 0;
@@ -614,9 +621,6 @@ hr {
         display: none;
     }
 
-    .comment {
-        background-color: transparent;
-    }
 
     .mobile-nav {
         display: flex;
