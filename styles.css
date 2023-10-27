@@ -474,7 +474,6 @@ hr {
     display: flex;
     flex: 1;
     height: 50px;
-    overflow: hidden;
     flex-wrap: wrap;
     align-items: center;
 }
