@@ -97,6 +97,7 @@
     --button-color: transparent;
     --button-hover: transparent;
     --webkit-nav: #000;
+    --select: #1c1c1c;
 }
 
 .grain {
@@ -332,6 +333,7 @@ select {
     width: 200px;
     height: 30px;
     background-color: var(--accent);
+    background-color: var(--select);
     color: var(--text-color);
     border: 1px solid var(--border-color);
     border-radius: 5px;
