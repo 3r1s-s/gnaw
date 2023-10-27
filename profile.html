@@ -45,12 +45,18 @@
 			align-items: center;
 		}
 		
+		body.ambient #blurprofilepic {
+			display: block;
+			filter: blur(40px);
+		}
+		
 		#blurprofilepic {
+			display: none;
 			border-radius: 200px;
-			opacity: 0.3;
+			opacity: 0.25;
 			width: 100%;
 			height: 300px;
-			filter: blur(40px);
+			filter: none;
 		}
 		
 		#usr {

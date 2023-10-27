@@ -70,7 +70,7 @@
 }
 
 .white {
-	--background-color: #f2f2f7;
+    --background-color: #f2f2f7;
 	--text-color: #0d0d0d;
 	--border-color: #c6c6c8;
 	--border-hov: #a6a6a8;
@@ -82,6 +82,21 @@
 	--button-color: transparent;
 	--button-hover: transparent;
 	--webkit-nav: #fff;
+}
+
+.ambient {
+    --background-color: #000;
+    --text-color: #fff;
+    --border-color: #ffffff15;
+    --border-hov: #ffffff25;
+    --accent: #ffffff1c;
+    --navbar: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+    --navtext: #fff;
+    --mobilenav: #000000aa;
+    --nav-blur: blur(15px) saturate(180%);
+    --button-color: transparent;
+    --button-hover: transparent;
+    --webkit-nav: #000;
 }
 
 .grain {
