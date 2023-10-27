@@ -10,6 +10,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
 }
 
 .default {
@@ -24,6 +25,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
 }
 
 .neue {
@@ -38,6 +40,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
   }
 
 .light {
@@ -52,6 +55,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
 }
 
 .black {
@@ -67,6 +71,7 @@
     --button-color: transparent;
     --button-hover: transparent;
 	--webkit-nav: #000;
+    --select: var(--accent);
 }
 
 .white {
@@ -82,6 +87,7 @@
 	--button-color: transparent;
 	--button-hover: transparent;
 	--webkit-nav: #fff;
+    --select: var(--accent);
 }
 
 .ambient {
@@ -112,6 +118,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
 }
 
 .zip {
@@ -126,6 +133,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
 }
 
 .dawn {
@@ -140,6 +148,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
 }
 
 .rose {
@@ -154,6 +163,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
 }
 
 .ice {
@@ -168,6 +178,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
 }
 
 .glacier {
@@ -182,6 +193,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
 }
 
 
@@ -197,6 +209,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
 }
 
 .mint {
@@ -211,6 +224,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
 }
 
 .midnight {
@@ -225,6 +239,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
 }
 
 .hamtter {
@@ -239,6 +254,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
 }
 
 .mastodon {
@@ -253,6 +269,7 @@
     --nav-blur: none;
     --button-color: #393f4f;
     --button-hover: #444b5d;
+    --select: var(--accent);
 }
 
 .pleroma {
@@ -267,6 +284,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
 }
 
 .twitter {
@@ -281,6 +299,7 @@
     --nav-blur: none;
     --button-color: #203243;
     --button-hover: #324e69;
+    --select: var(--accent);
 }
 
 .classic {
@@ -295,6 +314,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
 }
 
 .first {
@@ -309,6 +329,7 @@
     --nav-blur: none;
     --button-color: transparent;
     --button-hover: transparent;
+    --select: var(--accent);
 }
 
 
