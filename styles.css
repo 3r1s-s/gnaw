@@ -30,7 +30,7 @@
 
 
 .light {
-    --background-color: #fcfcfc;
+    --background-color: #fafafa;
     --text-color: #575e75;
     --border-color: #ccc;
     --border-hov: #bbb;
@@ -39,23 +39,23 @@
     --navtext: #fff;
     --mobilenav: #ffffff91;
     --nav-blur: none;
-    --button-color: transparent;
-    --button-hover: transparent;
+    --button-color: var(--accent);
+    --button-hover: #f2f1f5;
     --select: var(--accent);
 }
 
 .black {
     --background-color: #000;
     --text-color: #fff;
-    --border-color: #ffffff15;
-    --border-hov: #ffffff25;
+    --border-color: transparent;
+    --border-hov: transparent;
     --accent: #1c1c1e;
     --navbar: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
     --navtext: #fff;
     --mobilenav: #000000aa;
     --nav-blur: blur(15px) saturate(180%);
-    --button-color: transparent;
-    --button-hover: transparent;
+    --button-color: var(--accent);
+    --button-hover: #282a2c;
 	--webkit-nav: #000;
     --select: var(--accent);
 }
@@ -64,14 +64,14 @@
     --background-color: #f2f2f7;
 	--text-color: #0d0d0d;
 	--border-color: #c6c6c8;
-	--border-hov: #a6a6a8;
+	--border-hov: #909092;
 	--accent: #fff;
 	--navbar: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0.5) 100%);
 	--navtext: #0d0d0d;
 	--mobilenav: #ffffffaa;
 	--nav-blur: blur(15px) saturate(180%);
-	--button-color: transparent;
-	--button-hover: transparent;
+	--button-color: var(--accent);
+	--button-hover: #ececf2;
 	--webkit-nav: #fff;
     --select: var(--accent);
 }
@@ -79,8 +79,8 @@
 .ambient {
     --background-color: #000;
     --text-color: #fff;
-    --border-color: none;
-    --border-hov: none;
+    --border-color: transparent;
+    --border-hov: transparent;
     --accent: #e5f5ff1c;
     --navbar: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
     --navtext: #fff;
