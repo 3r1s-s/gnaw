@@ -590,7 +590,7 @@ hr {
     margin: 0;
     margin-bottom: 10px;
     margin-top: 10px;
-    background-color: transparent;
+    background-color: var(--accent);
 }
 
 @media screen and (max-width: 480px) {
