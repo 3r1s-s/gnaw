@@ -102,8 +102,8 @@
     --navtext: #fff;
     --mobilenav: #0e0e0eaa;
     --nav-blur: none;
-    --button-color: transparent;
-    --button-hover: transparent;
+    --button-color: #111;
+    --button-hover: #111;
     --select: var(--accent);
 }
 
@@ -117,8 +117,8 @@
     --navtext: #fff;
     --mobilenav: #1f1e24aa;
     --nav-blur: none;
-    --button-color: transparent;
-    --button-hover: transparent;
+    --button-color: #1f1e24;
+    --button-hover: #1f1e24;
     --select: var(--accent);
 }
 
