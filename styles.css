@@ -760,6 +760,10 @@ hr {
         'opsz' 24;
 }
 
+.exp-nav {
+    mask-image: linear-gradient(rgb(0, 0, 0) 55%, rgba(0, 0, 0, 0.8) 70%, rgba(0, 0, 0, 0) 100%);
+}
+
 
 /*Fonts*/
 @font-face {
