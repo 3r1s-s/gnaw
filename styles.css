@@ -203,6 +203,8 @@ bridge {
 #main {
     flex: 1;
     max-width: 800px;
+    overflow: none;
+    height: auto;
 }
 
 .side {
@@ -275,6 +277,8 @@ bridge {
         flex: none;
         width: 100vw;
         scroll-snap-align: center;
+        overflow: scroll;
+        height: 100vh;
     }
     
     .navigation {
