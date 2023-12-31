@@ -236,7 +236,7 @@ function loadpost(p) {
                     var videoId = match[4];
 
                     embeddedElement = document.createElement("iframe");
-                    embeddedElement.setAttribute("width", "560");
+                    embeddedElement.setAttribute("width", "100%");
                     embeddedElement.setAttribute("height", "315");
                     embeddedElement.setAttribute("class", "embed");
                     embeddedElement.setAttribute("src", "https://www.youtube.com/embed/" + videoId);
