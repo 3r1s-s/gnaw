@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>gnaw | Editor</title>
+    <link rel="icon" sizes="512x512" href="images/icon.png">
+	<link rel="icon" sizes="64x64" href="images/icon64.png">
+	<link rel="manifest" href="manifest.webmanifest">
+	<link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #010409;
+            color: #fff;
+            margin: 0;
+            overflow: scroll;
+        }
+        .page {
+            margin: 0;
+            max-width: 100%;
+        }
+        .navbar {
+            background-color: #0d1117;
+            height: 50px;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+            position: fixed;
+            width: 100%;
+        }
+        .inner-nav {
+            margin: 0;
+            flex-basis: auto;
+        }
+        .container {
+            margin: 5px;
+            position: relative; /* Add position relative to the container */
+        }
+        #code-editor {
+            cursor: text;
+            font-family: monospace;
+            width: 100%;
+        }
+        .cursor {
+            width: 2px; /* Adjust cursor width */
+            background-color: #fff; /* Cursor color */
+            position: absolute;
+            animation: blink 0.8s step-end infinite; /* Blinking animation */
+            height: 16px; /* Adjust cursor height */
+            top: 0; /* Position cursor at the top of the container */
+        }
+        span {
+            display: block;
+            width: 100%;
+            white-space: pre;
+            position: relative; /* Add position relative to the spans */
+            height: 16px; /* Set the height of spans to 16px */
+        }
+        span:nth-child(even) {
+            background-color: #070a0e; /* Darker background for even lines */
+        }
+        ul {
+            list-style: none; /* Remove default list bullet */
+            padding: 0; /* Remove default list padding */
+        }
+        li {
+            margin: 0;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <div class="inner-nav">
+			<div class="nav-item">
+				<a class="icon desktop" href="index.html">gnaw</a>
+				<a class="icon mobile" href="index.html">g</a>
+			</div>
+        </div>
+    </div>
+    <div class="page">
+        <div class="container">
+            <div id="code-editor"></div>
+            <div class="cursor" id="text-cursor"></div>
+        </div>
+    </div>
+    </body>
+<script src="editor.js">
+</script>
+</html>
